@@ -1,0 +1,17 @@
+# @Author: baodongdong
+# @Date:   2017-11-19T10:17:27+08:00
+# @Last modified by:   baodongdong
+# @Last modified time: 2017-11-19T18:55:58+08:00
+
+site_configs: &site_configs
+  index_html:
+    <div style="text-align:center;"></div>
+  custom_head_html:
+    <link rel="dns-prefetch" href="//assets.your-host.com">
+
+default: &default
+  <<: *site_configs
+
+development:
+  <<: *default
+  app_name: 'Chinahome'

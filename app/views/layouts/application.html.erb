@@ -1,14 +1,43 @@
+<!--
+@Author: baodongdong
+@Date:   2017-11-19T09:52:24+08:00
+@Last modified by:   baodongdong
+@Last modified time: 2017-11-19T19:33:17+08:00
+-->
+
+
+
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Chinahome</title>
-    <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title><%= content_for?(:title) ? yield(:title) : Setting.app_name %></title>
+    <meta name="apple-mobile-web-app-capable" content="no">
+    <meta content='True' name='HandheldFriendly' />
+    <link rel="alternate" type="application/rss+xml" title="订阅最新帖" href="<%= main_app.feed_topics_url %>" />
+    <%= stylesheet_link_tag 'front', 'data0-turbolinks-track': "reload" %>
+    <%= stylesheet_link_tag 'turbolinks-app', 'data-turbolinks-track': "reload" %>
+    <%= yield :stylesheets %>
+    <%= action_cable_meta_tag %>
+    <%= csrf_meta_tag %>
+    <%= raw Setting.custom_head_html %>
+    <% debugger %>
+    <%= javascript_include_tag 'app', 'data-turbolinks-track': "reload" %>
+    <%= yield :javascript %>
   </head>
 
-  <body>
+  <body class="page-<%= controller_name %><%= ' infinite-scroll' if turbolinks_app? %>" data-controller-name="<%= controller_name %>">
+    <div class="header">
+      <nav class="navbar navbar-inverse navbar-fixed-top navbar-default">
+        <div class="container">
+          <div class="navbar-header" id="navbar-header" data-turbolinks-permanent>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
     <%= yield %>
   </body>
 </html>
