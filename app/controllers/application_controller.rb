@@ -3,8 +3,6 @@
 # @Last modified by:   baodongdong
 # @Last modified time: 2017-11-19T19:23:21+08:00
 
-
-
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :turbolinks_app?
