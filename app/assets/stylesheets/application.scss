@@ -1,7 +1,7 @@
 // @Author: baodongdong
 // @Date:   2017-11-19T09:52:24+08:00
 // @Last modified by:   baodongdong
-// @Last modified time: 2017-11-19T11:12:35+08:00
+// @Last modified time: 2017-11-20T22:14:07+08:00
 
 /*
  *= require_self
@@ -16,7 +16,6 @@ body {
   color: $black;
   font-family: Helvetica, Arial, "PingFang SC", "Noto Sans", Roboto, "Microsoft Yahei", sans-serif;
   letter-spacing: .03em;
-  padding-top: 65px;
 }
 
 .header {
@@ -73,12 +72,13 @@ body {
 
   @media (max-width: 767px) {
     .navbar-header {
+      width: 100%;
       text-align: center;
-      padding: 0;
-      margin-bottom: -41px;
       .navbar-brand {
         padding: 0px;
-        font-size: 16px; float: none; margin: 0 auto;
+        font-size: 16px;
+        // float: none;
+        // margin: 0 auto;
         line-height: 45px;
       }
     }
@@ -94,15 +94,6 @@ body {
       background: #FFF;
       z-index: 10;
       top: 50px;
-    }
-
-    .navbar-nav { float: left; margin: 0px; }
-    .navbar-nav>li { float: left; }
-    .navbar-nav.navbar-right { float:right; }
-    .user-bar {
-      .dropdown-toggle { display: none; }
-      .navbar-toggle { display: block; border-radius: 0px; }
-      .dropdown.open .navbar-toggle { background-color: $grayDark; }
     }
   }
 }

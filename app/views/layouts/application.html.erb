@@ -2,7 +2,7 @@
 @Author: baodongdong
 @Date:   2017-11-19T09:52:24+08:00
 @Last modified by:   baodongdong
-@Last modified time: 2017-11-19T19:33:17+08:00
+@Last modified time: 2017-11-20T21:03:02+08:00
 -->
 
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
     <link rel="alternate" type="application/rss+xml" title="订阅最新帖" href="<%= main_app.feed_topics_url %>" />
     <%= stylesheet_link_tag 'front', 'data0-turbolinks-track': "reload" %>
     <%= stylesheet_link_tag 'turbolinks-app', 'data-turbolinks-track': "reload" %>
-    <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag 'application',media: "all" %>
     <%= yield :stylesheets %>
     <%= action_cable_meta_tag %>
     <%= csrf_meta_tag %>
