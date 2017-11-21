@@ -2,7 +2,7 @@
 @Author: baodongdong
 @Date:   2017-11-19T09:52:24+08:00
 @Last modified by:   baodongdong
-@Last modified time: 2017-11-20T21:03:02+08:00
+@Last modified time: 2017-11-21T21:50:25+08:00
 -->
 
 <!DOCTYPE html>
@@ -37,11 +37,10 @@
               <%= raw Setting.navbar_brand_html %>
           </div>
           <div class="navbar-collapse" id="main-navbar-collapse">
-            <%= yield :header %>
             <%= render "shared/navbar" %>
           </div>
-          <%= render "shared/usernav" %>
         </div>
+          <!-- <%= render "shared/usernav" %> -->
       </nav>
     </div>
     <%= yield %>

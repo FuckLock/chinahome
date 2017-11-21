@@ -1,7 +1,7 @@
 // @Author: baodongdong
 // @Date:   2017-11-19T09:52:24+08:00
 // @Last modified by:   baodongdong
-// @Last modified time: 2017-11-20T22:14:07+08:00
+// @Last modified time: 2017-11-21T22:55:32+08:00
 
 /*
  *= require_self
@@ -11,26 +11,21 @@
 @import "vars";
 @import "bootstrap.min";
 
+// 全局样式设置
 body {
-  background: #e5e5e5;
+  background: $body-back;
   color: $black;
-  font-family: Helvetica, Arial, "PingFang SC", "Noto Sans", Roboto, "Microsoft Yahei", sans-serif;
+  font-family: $font-family;
   letter-spacing: .03em;
 }
 
+// 导航头部样式
 .header {
+  border: 1px solid red;
   .navbar {
-    background-color: #FFF;
+    background-color: $nav-back;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-    &.navbar-fixed-active {
-      box-shadow: 0 1px 1px rgba(0, 0, 0,.21);
-      .navbar-collapse{
-        border-bottom-color: #FFF;
-        box-shadow: 0 1px 1px rgba(0, 0, 0,.21);
-      }
-    }
-    margin-bottom: 15px;
-    border: 0px;
+    margin-bottom: 35px;
     color: $blueText;
     z-index: 1030;
   }
@@ -67,7 +62,7 @@ body {
   }
 
   #main-nav-menu {
-    width: 40px;
+    width: 400px;
     height: 20px;
     border: 1px solid red;
     .navbar-nav {
