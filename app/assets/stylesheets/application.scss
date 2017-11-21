@@ -24,7 +24,7 @@ body {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
     &.navbar-fixed-active {
       box-shadow: 0 1px 1px rgba(0, 0, 0,.21);
-      .navbar-collapse.in {
+      .navbar-collapse{
         border-bottom-color: #FFF;
         box-shadow: 0 1px 1px rgba(0, 0, 0,.21);
       }
@@ -66,8 +66,24 @@ body {
     background-color: rgba(255,255,255,0.1);
   }
 
+  #main-nav-menu {
+    width: 40px;
+    height: 20px;
+    border: 1px solid red;
+    .navbar-nav {
+      // margin: 0px;
+      // a { color: #333; transition: all .2s ease-in-out; }
+      // float: left;
+      li {
+        display: inline-block;
+      }
+    }
+  }
+
   .navbar-collapse {
     float: left;
+    margin-left: 100px;
+    margin-top: -30px;
   }
 
   @media (max-width: 767px) {
