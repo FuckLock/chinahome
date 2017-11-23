@@ -2,7 +2,7 @@
 @Author: baodongdong
 @Date:   2017-11-19T09:52:24+08:00
 @Last modified by:   baodongdong
-@Last modified time: 2017-11-21T21:50:25+08:00
+@Last modified time: 2017-11-23T22:53:08+08:00
 -->
 
 <!DOCTYPE html>
@@ -27,20 +27,22 @@
 
   <body class="page-<%= controller_name %><%= ' infinite-scroll' if turbolinks_app? %>" data-controller-name="<%= controller_name %>">
     <div class="header">
-      <nav class="navbar navbar-inverse navbar-fixed-top navbar-default">
+      <nav class="navbar">
         <div class="container">
-          <div class="navbar-header" id="navbar-header" data-turbolinks-permanent>
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar-collapse">
-                <span class="sr-only">Toggle</span>
-                <i class="fa fa-reorder"></i>
-              </button>
+          <span data-turbolinks-permanent>
+              <i class="fa fa-reorder btn-navbar"></i>
               <%= raw Setting.navbar_brand_html %>
-          </div>
-          <div class="navbar-collapse" id="main-navbar-collapse">
-            <%= render "shared/navbar" %>
-          </div>
+          </span>
+          <span class="nav-navbar">
+            <%= render "shared/nav-navbar"%>
+          </span>
+          <span class="nav-search">
+            <%= render "shared/nav-search"%>
+          </span>
+          <span class="nav-user">
+            <%= render "shared/nav-user"%>
+          </span>
         </div>
-          <!-- <%= render "shared/usernav" %> -->
       </nav>
     </div>
     <%= yield %>

@@ -1,0 +1,17 @@
+<!--
+@Author: baodongdong
+@Date:   2017-11-21T21:09:07+08:00
+@Last modified by:   baodongdong
+@Last modified time: 2017-11-23T21:43:16+08:00
+-->
+
+<ul class="nav-list">
+  <%= render_list_items do |li|
+    li << link_to(t("menu.topics"), Setting.has_module?(:home) ? main_app.topics_path : main_app.root_path)
+    li << link_to(t("menu.press"))
+    li << link_to(t("menu.recruit"))
+    li << link_to(t("menu.wiki"))
+    li << link_to(t("menu.cool"))
+    li << link_to(t("menu.post"))
+  end %>
+</ul>

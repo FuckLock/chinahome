@@ -1,7 +1,7 @@
 // @Author: baodongdong
 // @Date:   2017-11-19T09:52:24+08:00
 // @Last modified by:   baodongdong
-// @Last modified time: 2017-11-21T22:55:32+08:00
+// @Last modified time: 2017-11-23T23:10:51+08:00
 
 /*
  *= require_self
@@ -12,6 +12,12 @@
 @import "bootstrap.min";
 
 // 全局样式设置
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background: $body-back;
   color: $black;
@@ -22,89 +28,43 @@ body {
 // 导航头部样式
 .header {
   border: 1px solid red;
-  .navbar {
-    background-color: $nav-back;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
-    margin-bottom: 35px;
-    color: $blueText;
-    z-index: 1030;
-  }
-
-  .navbar-brand {
-    line-height: 100%;
-    color: #666 !important;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: bold;
-    margin-left: 0 !important;
-    border-bottom: 0px;
-    b {
-      color: $blue;
-    }
-  }
-
-  .navbar-inverse .navbar-toggle {
-    color: #333;
-    font-size: 18px;
-    border: 1px solid rgba(255,255,255,0.1);
-    background-color: rgba(255,255,255,0.05);
-    position: absolute;
-    left: 5px;
-    top: 5px;
-    padding: 6px 9px;
-  }
-
-  .navbar-inverse .navbar-toggle:focus {
-    background-color: rgba(255,255,255,0.05);
-  }
-
-  .navbar-inverse .navbar-toggle:hover {
-    background-color: rgba(255,255,255,0.1);
-  }
-
-  #main-nav-menu {
-    width: 400px;
-    height: 20px;
-    border: 1px solid red;
-    .navbar-nav {
-      // margin: 0px;
-      // a { color: #333; transition: all .2s ease-in-out; }
-      // float: left;
+  height: 60px;
+  background: $nav-back;
+  @mixin list {
       li {
-        display: inline-block;
+        float: left;
+        list-style: none;
+        padding-right: 30px;
+        a {
+          font-size: 14px;
+          color: gray;
+          text-decoration: none;
+          &:hover {
+            color: blue;
+          }
+        }
+      }
+  }
+  .container {
+    .nav-navbar {
+      .nav-list {
+        @include list;
       }
     }
-  }
-
-  .navbar-collapse {
-    float: left;
-    margin-left: 100px;
-    margin-top: -30px;
-  }
-
-  @media (max-width: 767px) {
-    .navbar-header {
-      width: 100%;
-      text-align: center;
-      .navbar-brand {
-        padding: 0px;
-        font-size: 16px;
-        // float: none;
-        // margin: 0 auto;
-        line-height: 45px;
+    .nav-user {
+      .nav-list {
+        @include list;
       }
     }
-
-    .navbar-collapse {
-      float: none;
-      position: absolute;
-      width: 100%;
-      left: 0;
-      border-color: $gray !important;
-      box-shadow: 0 1px 1px rgba(0, 0, 0,.11);
-      margin: 0;
-      background: #FFF;
-      z-index: 10;
-      top: 50px;
+    .nav-search {
+      float: left;
+      span {
+        float: left;
+      }
+      .input-search {
+        width: 150px;
+        height: 30px;
+      }
     }
   }
 }

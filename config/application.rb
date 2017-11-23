@@ -1,3 +1,8 @@
+# @Author: baodongdong
+# @Date:   2017-11-21T21:09:07+08:00
+# @Last modified by:   baodongdong
+# @Last modified time: 2017-11-23T21:15:04+08:00
+
 require_relative 'boot'
 
 require 'rails/all'
