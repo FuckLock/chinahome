@@ -20,6 +20,15 @@ class Setting < RailsSettings::Base
     def module_list
       self.modules.split(SEPARATOR_REGEXP)
     end
+
+    def sso_enabled?
+      return false if self.sso_provider_enabled?
+      self.sso["enable"] == true
+    end
+    
+    def sso_provider_enabled?
+      self.sso["enable_provider"] == true
+    end
   end
 
 end

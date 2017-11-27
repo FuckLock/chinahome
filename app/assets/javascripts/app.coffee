@@ -3,8 +3,8 @@
 # @Last modified by:   baodongdong
 # @Last modified time: 2017-11-19T19:06:43+08:00
 
-#= require jquery
+#= require jquery3
 #= require jquery_ujs
 #= require turbolinks
-#= require_tree .
-#= require turbolinks
+#= require popper
+#= require bootstrap-sprockets

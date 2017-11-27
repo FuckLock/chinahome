@@ -8,7 +8,15 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
+
+gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'font-awesome-rails'
+
+# 登录
+gem 'devise'
+
+# 表单
+gem 'simple_form'
 
 # Setting
 gem 'rails-settings-cached'

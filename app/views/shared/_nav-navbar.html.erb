@@ -5,13 +5,13 @@
 @Last modified time: 2017-11-23T21:43:16+08:00
 -->
 
-<ul class="nav-list">
+<ul class="navbar-nav mr-auto">
   <%= render_list_items do |li|
-    li << link_to(t("menu.topics"), Setting.has_module?(:home) ? main_app.topics_path : main_app.root_path)
-    li << link_to(t("menu.press"))
-    li << link_to(t("menu.recruit"))
-    li << link_to(t("menu.wiki"))
-    li << link_to(t("menu.cool"))
-    li << link_to(t("menu.post"))
+    li << link_to(t("menu.topics"), Setting.has_module?(:home) ? main_app.topics_path : main_app.root_path,class: "nav-link")
+    li << link_to(t("menu.press"), '/fds',class: "nav-link")
+    li << link_to(t("menu.recruit"), '/fds',class: "nav-link")
+    li << link_to(t("menu.wiki"), '/fds',class: "nav-link")
+    li << link_to(t("menu.cool"), '/fds',class: "nav-link")
+    li << link_to(t("menu.post"), '/fds',class: "nav-link")
   end %>
 </ul>

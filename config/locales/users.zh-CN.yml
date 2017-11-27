@@ -1,0 +1,6 @@
+zh-CN:
+  users:
+    login: "用户名"
+    suggest_using_twitter_id: "谨慎填写，以后不可修改，建议用 Twitter ID。"
+    submit_new_user: "提交注册信息"
+    register_user: "注册新用户"

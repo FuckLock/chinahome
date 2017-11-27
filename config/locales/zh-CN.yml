@@ -1,0 +1,10 @@
+zh-CN:
+  activerecord:
+    attributes:
+      user:
+        name: "名字"
+        email: "Email"
+        email_public: "公开 Email"
+        login: "用户名"
+        password: "密码"
+        password_confirmation: "确认密码"

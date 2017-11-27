@@ -26,25 +26,23 @@
   </head>
 
   <body class="page-<%= controller_name %><%= ' infinite-scroll' if turbolinks_app? %>" data-controller-name="<%= controller_name %>">
-    <div class="header">
-      <nav class="navbar">
-        <div class="container">
-          <span data-turbolinks-permanent>
-              <i class="fa fa-reorder btn-navbar"></i>
-              <%= raw Setting.navbar_brand_html %>
-          </span>
-          <span class="nav-navbar">
-            <%= render "shared/nav-navbar"%>
-          </span>
-          <span class="nav-search">
-            <%= render "shared/nav-search"%>
-          </span>
-          <span class="nav-user">
-            <%= render "shared/nav-user"%>
-          </span>
-        </div>
-      </nav>
+    <nav class="navbar bg-light navbar-light navbar-expand-md">
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#main-navbar-collapse">
+        <i class="fa fa-reorder"></i>
+      </button>
+      <div class="ml-5">
+        <%= raw Setting.navbar_brand_html %>
+      </div>
+      <div class="collapse navbar-collapse" id="main-navbar-collapse">
+        <%= render "shared/nav-navbar" %>
+        <%= render "shared/nav-search" %>
+        <%= render "shared/nav-user" %>
+      </div>
+    </nav>
+
+    <div id="main" class="main-container container">
+      <%= yield %>
     </div>
-    <%= yield %>
+
   </body>
 </html>

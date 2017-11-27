@@ -17,4 +17,18 @@ Rails.application.routes.draw do
       get :feed
     end
   end
+
+  devise_for :users, path: 'account', controllers: {
+    registrations: :account
+  }
+
+  # SSO
+  namespace :auth do
+    resource :sso, controller: 'sso' do
+      collection do
+        get :login
+        get :provider
+      end
+    end
+  end
 end

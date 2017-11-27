@@ -9,11 +9,10 @@
  */
 
 @import "vars";
-@import "bootstrap.min";
+@import "bootstrap";
 
 // 全局样式设置
-
-*{
+* {
   margin: 0;
   padding: 0;
 }
@@ -25,46 +24,7 @@ body {
   letter-spacing: .03em;
 }
 
-// 导航头部样式
-.header {
+.row {
   border: 1px solid red;
-  height: 60px;
-  background: $nav-back;
-  @mixin list {
-      li {
-        float: left;
-        list-style: none;
-        padding-right: 30px;
-        a {
-          font-size: 14px;
-          color: gray;
-          text-decoration: none;
-          &:hover {
-            color: blue;
-          }
-        }
-      }
-  }
-  .container {
-    .nav-navbar {
-      .nav-list {
-        @include list;
-      }
-    }
-    .nav-user {
-      .nav-list {
-        @include list;
-      }
-    }
-    .nav-search {
-      float: left;
-      span {
-        float: left;
-      }
-      .input-search {
-        width: 150px;
-        height: 30px;
-      }
-    }
-  }
+
 }

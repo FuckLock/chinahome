@@ -5,7 +5,7 @@
 
 site_configs: &site_configs
   navbar_brand_html:
-    <a href="/" class="navbar-brand"><b>China</b>home</a>
+    <a href="/" class="navbar-brand ml-2"><b>China</b>home</a>
   index_html:
     <div style="text-align:center;"></div>
   custom_head_html:
@@ -13,6 +13,9 @@ site_configs: &site_configs
 
 default: &default
   <<: *site_configs
+  sso:
+    enable: false
+    enable_provider: false
 
 development:
   <<: *default

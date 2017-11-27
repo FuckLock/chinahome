@@ -16,4 +16,7 @@ module ApplicationHelper
     raw items.join(EMPTY_STRING)
   end
 
+  def title_tag(str)
+    content_for :title, raw("#{str}")
+  end
 end

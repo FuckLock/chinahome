@@ -5,7 +5,8 @@
 @Last modified time: 2017-11-23T21:57:09+08:00
 -->
 
-<%= form_tag '/search', class: "form-search", method: :get do %>
-  <span><i class="fa fa-search i-search"></i></span>
-  <span>  <%= text_field_tag 'p', nil, class: "form-control input-search", placeholder: "搜索本站内容"  %></span>
+
+<%= form_tag '/search', class: "form-inline", method: :get do %>
+  <i class="fa fa-search mr-sm-2"></i>
+  <%= text_field_tag 'p', nil, class: "form-control mr-sm-2", placeholder: "搜索本站内容"  %>
 <% end %>
