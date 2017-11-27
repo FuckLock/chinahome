@@ -24,7 +24,21 @@ body {
   letter-spacing: .03em;
 }
 
-.row {
-  border: 1px solid red;
-
+.panel {
+  margin-top: 20px;
+  background-color: white;
+  .panel-heading {
+    background: $panel-body;
+    padding: 6px 15px;
+    border-bottom-color: #eee;
+    color: #777;
+    margin-bottom: 15px;
+  }
+  .panel-body {
+    padding: 0 10px;
+    padding-bottom: 20px;
+    .btn-outline-primary {
+      cursor: pointer;
+    }
+  }
 }
