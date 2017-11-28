@@ -1,24 +1,5 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Chinahome:
+此项目根据ruby-china模仿而来,主要目的：
+1.研究下ruby-china用到的技术
+2.严格根据ruby-china代码规范写出自己的Chinahome
+形成自己的代码规范
