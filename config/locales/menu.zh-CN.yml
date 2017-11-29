@@ -8,6 +8,8 @@ zh-CN:
     register: "注册"
     login: "登录"
     submitting: "正在提交"
+    remember_me: "记住登录状态（60 天）"
+    logining: "正在登录"
   menu:
     topics: "社区"
     press: "头条"

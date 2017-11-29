@@ -7,6 +7,6 @@
 <ul class="navbar-nav">
   <%= render_list_items do |li|
     li << link_to(t("common.register"), new_user_registration_path, class: "nav-link")
-    li << link_to(t("common.login"), '/fds', class: "nav-link")
+    li << link_to(t("common.login"), new_user_session_path, class: "nav-link")
   end %>
 </ul>

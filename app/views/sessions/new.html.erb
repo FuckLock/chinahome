@@ -1,0 +1,22 @@
+<% title_tag t("common.login") %>
+  <div class="col-md-5 offset-md-2">
+    <div class="panel">
+        <div class="panel-heading"><%= t("common.login")%></div>
+        <div class="panel-body">
+          <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), remote: true) do |f| %>
+            <div class="form-group">
+              <%= f.text_field :login, type: :email, class: "form-control", placeholder: "用户名 / Email" %>
+            </div>
+            <div class="form-group">
+              <%= f.text_field :password, type: :password, class: "form-control", placeholder: "密码" %>
+            </div>
+            <div class="form-group">
+              <%= f.check_box :remember_me %> <%= t("common.remember_me") %>
+            </div>
+            <div class="form-group">
+              <%= f.submit t("common.login"), class: "btn btn-primary btn-lg btn-block", 'data-disable-with' => t("common.logining") %>
+            </div>
+          <% end %>
+        </div>
+    </div>
+  </div>

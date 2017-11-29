@@ -3,5 +3,5 @@
   Turbolinks.visit('<%= topics_url %>');
 <% else %>
   $('#new_user .alert').remove();
-  $('#new_user').prepend('<%= j render("shared/error_messages", target: resource) %>');
+  $('#new_user').prepend('<%= j(render("shared/error_messages", target: resource)) %>');
 <% end %>

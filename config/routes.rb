@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   end
 
   devise_for :users, path: 'account', controllers: {
-    registrations: :account
+    registrations: :account,
+    sessions: :sessions
   }
 
   # SSO
