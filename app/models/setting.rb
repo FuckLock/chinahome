@@ -3,8 +3,6 @@
 # @Last modified by:   baodongdong
 # @Last modified time: 2017-11-19T15:18:26+08:00
 
-
-
 # RailsSettings Model
 class Setting < RailsSettings::Base
   source Rails.root.join("config/config.yml")
@@ -13,8 +11,8 @@ class Setting < RailsSettings::Base
 
   class << self
     def has_module?(name)
-      return true if self.modules.blank? || self.modules == 'all'
-      self.module_list.include?name.to_s
+      return true if self.modules.blank? || self.modules == "all"
+      self.module_list.include? name.to_s
     end
 
     def module_list
@@ -25,10 +23,9 @@ class Setting < RailsSettings::Base
       return false if self.sso_provider_enabled?
       self.sso["enable"] == true
     end
-    
+
     def sso_provider_enabled?
       self.sso["enable_provider"] == true
     end
   end
-
 end

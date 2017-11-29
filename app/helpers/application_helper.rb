@@ -17,6 +17,7 @@ module ApplicationHelper
   end
 
   def title_tag(str)
-    content_for :title, raw("#{str}")
+    content_for :title, raw(str.to_s)
   end
+
 end

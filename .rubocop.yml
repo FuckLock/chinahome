@@ -1,0 +1,108 @@
+AllCops:
+  Exclude:
+    - 'vendor/**/*'
+    - 'lib/templates/**/*'
+    - 'lib/tasks/release.rake'
+    - 'spec/**/*'
+    - 'app/models/cache_version.rb'
+    - 'Gemfile'
+    - 'db/**/*'
+    - 'config/**/*'
+
+# 检查类上有没有注释说明，默认启用
+Style/Documentation:
+  Enabled: false
+
+# 冻结字符串，如果启用每个文件上方多出个# frozen_string_literal: true
+# 这里为了代码整洁关闭此功能，默认启用
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# 检查是否与你这个配置相符合的，这里默认改为双引号，默认启用是single_quotes
+Style/StringLiterals:
+  Enabled: true
+  EnforcedStyle: double_quotes
+
+# 不需要%Q%q，默认启用
+Style/UnneededPercentQ:
+  Enabled: true
+
+# 检查非英语的字符,默认启用
+Style/AsciiComments:
+  Enabled: false
+
+# 检查if unless规范，默认启用
+Style/IfUnlessModifier:
+  Enabled: true
+
+# 检查运算符的使用,测试数字为零，正，或负,默认启用
+Style/NumericPredicate:
+  EnforcedStyle: comparison
+
+# 检查方法命名规范，默认启用
+Style/PredicateName:
+  Enabled: false
+
+# 检查条件语句格式，默认启用
+Style/GuardClause:
+  Enabled: false
+
+# 检查self使用，默认启用
+Style/RedundantSelf:
+  Enabled: false
+
+# 检查rails异常书写规范。默认启用，默认值exploded
+Style/RaiseArgs:
+  EnforcedStyle: compact
+
+# 默认启用，检查数组，字符串的freeze
+Style/MutableConstant:
+  Enabled: false
+
+# 全局变量规范，默认启用
+Style/GlobalVars:
+  Enabled: false
+
+# 空方法书写规范，默认是compact
+Style/EmptyMethod:
+  EnforcedStyle: compact
+
+# lambda规范默认启用,默认是call
+Style/LambdaCall:
+  Enabled: true
+
+# 长度大小限制
+Metrics/LineLength:
+  Max: 1200
+
+Metrics/ClassLength:
+  Max: 1200
+
+Metrics/MethodLength:
+  Max: 1200
+
+Metrics/ModuleLength:
+  Max: 1200
+
+Metrics/BlockLength:
+  Max: 1200
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Rails/TimeZone:
+  Enabled: false
+
+# 默认启用，使用find_by而不是使用where(**: **).first
+Rails/FindBy:
+  Enabled: false
+
+# 默认启用，多对多使用 has_many :through
+Rails/HasAndBelongsToMany:
+  Enabled: false
