@@ -1,12 +1,12 @@
-<!--
-@Author: baodongdong
-@Date:   2017-11-23T21:10:51+08:00
-@Last modified by:   baodongdong
-@Last modified time: 2017-11-23T22:45:32+08:00
--->
 <ul class="navbar-nav">
-  <%= render_list_items do |li|
-    li << link_to(t("common.register"), new_user_registration_path, class: "nav-link")
-    li << link_to(t("common.login"), new_user_session_path, class: "nav-link")
-  end %>
+  <% if user_signed_in? %>
+    <%= render_list_items do |li|
+      li << link_to(t("common.logout"), destroy_user_session_path, method: "delete", class: "nav-link" )
+    end %>
+  <% else %>
+    <%= render_list_items do |li|
+      li << link_to(t("common.register"), new_user_registration_path, class: "nav-link")
+      li << link_to(t("common.login"), new_user_session_path, class: "nav-link")
+    end %>
+  <% end %>
 </ul>

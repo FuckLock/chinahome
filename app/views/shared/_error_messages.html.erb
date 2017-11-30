@@ -3,10 +3,10 @@
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
-    <h4 class="alert-heading"><%= target.errors.count %> 处问题导致无法提交</h4>
+    <b class="alert-heading"><%= target.errors.count %> 处问题导致无法提交</b>
     <ul>
       <% target.errors.full_messages.each do |msg| %>
-       <li><%= msg %></li>
+       <li class="list"><%= msg %></li>
       <% end %>
     </ul>
   </div>

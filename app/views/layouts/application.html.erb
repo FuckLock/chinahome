@@ -20,10 +20,10 @@
 
   <body class="page-<%= controller_name %><%= ' infinite-scroll' if turbolinks_app? %>" data-controller-name="<%= controller_name %>">
     <nav class="navbar bg-light navbar-light navbar-expand-md">
-      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#main-navbar-collapse">
+      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#main-navbar-collapse" data-turbolinks-permanent>
         <i class="fa fa-reorder"></i>
       </button>
-      <div class="ml-5">
+      <div class="ml-5" data-turbolinks-permanent>
         <%= raw Setting.navbar_brand_html %>
       </div>
       <div class="collapse navbar-collapse" id="main-navbar-collapse">
@@ -34,6 +34,7 @@
     </nav>
 
     <div id="main" class="main-container container">
+      <%= notice_message %>
       <%= yield %>
     </div>
 

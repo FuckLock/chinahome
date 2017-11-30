@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :turbolinks_app?
 
+
   def turbolinks_app?
     @turbolinks_ap ||= request.user_agent.to_s.include?("turbolinks-app")
   end
@@ -19,4 +20,13 @@ class ApplicationController < ActionController::Base
     session[:return_to] = nil
   end
 
+  before_action do
+    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(*User::ACCESSABLE_ATTRS)} if devise_controller?
+  end
+
+  # def configure_permitted_parameters
+  #   devise_parameter_sanitizer.permit(:sign_up) do |user|
+  #     user.permit(:login, :name, :email_public, :email, :password, :password_confirmation)
+  #   end
+  # end
 end

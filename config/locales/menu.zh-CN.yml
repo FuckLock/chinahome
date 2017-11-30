@@ -10,6 +10,7 @@ zh-CN:
     submitting: "正在提交"
     remember_me: "记住登录状态（60 天）"
     logining: "正在登录"
+    logout: "退出"
   menu:
     topics: "社区"
     press: "头条"

@@ -3,3 +3,6 @@ zh-CN:
     registrations:
       user:
         signed_in: "登录成功。"
+        destroyed: '再见！您的帐户已成功注销。我们希望很快可以再见到您。'
+    sessions:
+      signed_in: "登录成功。"
