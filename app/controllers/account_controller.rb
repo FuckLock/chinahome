@@ -7,5 +7,4 @@ class AccountController < Devise::RegistrationsController
     resource.email = params[resource_name][:email]
     sign_in(resource_name, resource) if resource.save
   end
-
 end
