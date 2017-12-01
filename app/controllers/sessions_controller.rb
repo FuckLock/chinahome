@@ -1,4 +1,4 @@
-class SessionsController < Devise::RegistrationsController
+class SessionsController < Devise::SessionsController
   before_action :require_no_sso!, only: %i[new create]
 
   def create

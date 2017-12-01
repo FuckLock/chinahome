@@ -20,6 +20,9 @@ class ApplicationController < ActionController::Base
   end
 
   before_action do
+    resource = controller_name.singularize.to_sym
+    method = "#{resource}_params"
+    params[resource] &&= send(method) if respond_to?(method, true)
     devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(*User::ACCESSABLE_ATTRS) } if devise_controller?
   end
 
