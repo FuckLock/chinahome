@@ -10,3 +10,5 @@ zh-CN:
         signed_out: "退出成功"
     failure:
       unauthenticated: '继续操作前请注册或者登录。'
+      not_found_in_database: '没有该用户，请您重新注册。'
+      invalid: '帐号或密码错误。'
