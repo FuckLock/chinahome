@@ -1,7 +1,9 @@
 require "digest/md5"
 
 class User < ApplicationRecord
-  devise :database_authenticatable, :registerable,
+  include OmniauthCallbacks
+  has_many :authorizations, dependent: :destroy
+  devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
   ACCESSABLE_ATTRS = %i[name email_public location company bio website github twitter

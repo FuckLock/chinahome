@@ -13,7 +13,8 @@ Rails.application.routes.draw do
 
   devise_for :users, path: 'account', controllers: {
     registrations: :account,
-    sessions: :sessions
+    sessions: :sessions,
+    omniauth_callbacks: 'auth/omniauth_callbacks'
   }
 
   # SSO

@@ -1,4 +1,5 @@
 <% title_tag t("common.login") %>
+<div class="row">
   <div class="col-md-5 offset-md-2">
     <div class="panel">
         <div class="panel-heading"><%= t("common.login")%></div>
@@ -22,3 +23,14 @@
         </div>
     </div>
   </div>
+  <div class="col-md-3">
+    <div class="panel">
+      <div class="panel-heading"><%= t("common.auth_with_other_services") %></div>
+      <div class="panel-body">
+        <div class="panel-github">
+          <%= link_to raw("<i class='fa fa-github'></i>Github"), omniauth_authorize_path(:user, :github), class: "btn btn-lg btn-block" %>          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

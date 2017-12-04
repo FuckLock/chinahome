@@ -21,6 +21,10 @@ gem 'simple_form'
 # Setting
 gem 'rails-settings-cached'
 
+# 第三方登录
+gem 'omniauth'
+gem 'omniauth-github'
+
 group :development, :test do
   gem 'rubocop', require: false
   gem 'rspec-rails'

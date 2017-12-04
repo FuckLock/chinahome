@@ -54,6 +54,10 @@ body {
     .btn-outline-primary {
       cursor: pointer;
     }
+    .panel-github {
+      border: 1px solid $github-border;
+      background-color: $github-back;
+    }
   }
 }
 

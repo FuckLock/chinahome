@@ -20,3 +20,5 @@ default: &default
 development:
   <<: *default
   app_name: 'Chinahome'
+  github_token: "1cc7a2102fe41b96e972"
+  github_secret: "51a7a62ffa053c105aa0e84303230cf991da3e8f"
