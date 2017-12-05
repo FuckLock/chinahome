@@ -26,16 +26,17 @@ gem 'omniauth'
 gem 'omniauth-github'
 
 group :development, :test do
+  gem 'byebug', platform: :mri
   gem 'rubocop', require: false
   gem 'rspec-rails'
-  gem 'factory_girl_rails'
+  gem 'rails-controller-testing'
+  gem 'factory_bot_rails'
   gem 'database_cleaner'
   gem 'capybara'
   gem 'simplecov'
 end
 
 group :development do
-  gem 'byebug', platform: :mri
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.0.5'
   gem 'spring'

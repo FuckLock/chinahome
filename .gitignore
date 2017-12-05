@@ -22,3 +22,6 @@
 
 # Ignore Configuration file.
 /config/*.yml
+
+# Ignore Test file.
+/coverage/*

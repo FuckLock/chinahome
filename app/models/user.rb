@@ -2,15 +2,21 @@ require "digest/md5"
 
 class User < ApplicationRecord
   include OmniauthCallbacks
+  LOGIN_FORMAT = 'A-Za-z0-9\-\_\.'
+  ALLOW_LOGIN_FORMAT_REGEXP = /\A[#{LOGIN_FORMAT}]+\z/
+
   has_many :authorizations, dependent: :destroy
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
   ACCESSABLE_ATTRS = %i[name email_public location company bio website github twitter
                         tagline avatar by current_password password password_confirmation]
-  validates :login, presence: true,
+  validates :login, format: { with: ALLOW_LOGIN_FORMAT_REGEXP, message: "只允许数字、大小写字母、中横线、下划线" },
+                    presence: true,
                     length: { in: 2..20 },
                     uniqueness: { case_sensitive: false }
+
+  validates :name, length: { maximum: 20 }
 
   def email=(val)
     self.email_md5 = Digest::MD5.hexdigest(val || "")

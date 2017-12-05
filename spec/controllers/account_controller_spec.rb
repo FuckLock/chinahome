@@ -1,20 +1,19 @@
 require 'rails_helper'
 
-RSpec.describe SessionsController, type: :controller do
+describe AccountController, type: :controller do
   describe 'GET new' do
     before { request.env['devise.mapping'] = Devise.mappings[:user] }
-    it "renders the new template" do
+    it 'renders the new template' do
       get :new
       expect(response).to render_template('new')
     end
   end
 
   describe 'POST create' do
-    let(:user) { create(:user) }
     before { request.env['devise.mapping'] = Devise.mappings[:user] }
-    it 'login a user and redirects to root path' do
-      post :create, params: { user: { login: user.login, password: user.password } }
-      expect(response).to redirect_to(root_path)
+    it 'create a user and redirects to the root path' do
+      post :create, params: { format: :js, user: { login: 'newlogin', email: 'newlogin@email.com', password: 'password' } }
+      expect(response).to be_success
     end
   end
 end

@@ -20,9 +20,13 @@ class User
         end
       end
 
-      def new_from_provider_data(provider, _uid, data)
+      def new_from_provider_data(provider, uid, data)
         User.new do |user|
-          user.email = data.email
+          user.email = if data.email
+                         data.email
+                       else
+                         "#{provider}+#{uid}@example.com"
+                       end
           user.name = data.name
           user.login = data.nickname
           user.github = data.nickname if provider == "github"
