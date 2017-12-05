@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20171204055520) do
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "login",                                  null: false
-    t.string   "name",                                   null: false
+    t.string   "name"
     t.string   "email",                                  null: false
     t.string   "email_md5",                              null: false
     t.boolean  "email_public",           default: false, null: false

@@ -2,6 +2,9 @@ require "digest/md5"
 
 class User < ApplicationRecord
   include OmniauthCallbacks
+
+  second_level_cache expires_in: 2.weeks
+
   LOGIN_FORMAT = 'A-Za-z0-9\-\_\.'
   ALLOW_LOGIN_FORMAT_REGEXP = /\A[#{LOGIN_FORMAT}]+\z/
 
@@ -28,5 +31,10 @@ class User < ApplicationRecord
     login = conditions.delete(:login)
     login.downcase!
     where(["lower(login) = :value OR lower(email) = :value and state != -1", { value: login }]).first
+  end
+
+  def self.find_by_login(slug)
+    return nil unless slug.match(ALLOW_LOGIN_FORMAT_REGEXP)
+    fetch_by_uniq_keys(login: slug) || where("lower(login) = ?", slug.downcase).take
   end
 end

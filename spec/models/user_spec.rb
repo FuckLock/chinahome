@@ -60,9 +60,9 @@ describe User, type: :model do
       let(:user1) { create(:user, login: 'ReiIs123') }
       it 'successful valid user info' do
         expect(user1.login).to eq('ReiIs123')
-        expect(User.find_by(login: 'ReiIs123').id).to eq(user1.id)
-        expect(User.find_by(login: 'reiis123').id).to eq(user1.id)
-        expect(User.find_by(login: 'rEIIs123').id).to eq(user1.id)
+        expect(User.find_by_login('ReiIs123').id).to eq(user1.id)
+        expect(User.find_by_login('reiis123').id).to eq(user1.id)
+        expect(User.find_by_login('rEIIs123').id).to eq(user1.id)
       end
     end
   end

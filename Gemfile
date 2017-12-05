@@ -15,6 +15,9 @@ gem 'font-awesome-rails'
 # 登录
 gem 'devise'
 
+# Cache
+gem 'second_level_cache'
+
 # 表单
 gem 'simple_form'
 
