@@ -28,6 +28,9 @@ gem 'rails-settings-cached'
 gem 'omniauth'
 gem 'omniauth-github'
 
+# 头像
+gem 'letter_avatar'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rubocop', require: false

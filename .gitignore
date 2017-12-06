@@ -25,3 +25,4 @@
 
 # Ignore Test file.
 /coverage/*
+/public/system/*
