@@ -20,14 +20,14 @@
 
   <body class="page-<%= controller_name %><%= ' infinite-scroll' if turbolinks_app? %>" data-controller-name="<%= controller_name %>">
     <nav class="navbar bg-light navbar-light navbar-expand-md">
-      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#main-navbar-collapse" data-turbolinks-permanent>
-        <i class="fa fa-reorder"></i>
-      </button>
-      <div class="ml-5" data-turbolinks-permanent>
+      <div class="container">
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#main-navbar-collapse" data-turbolinks-permanent>
+          <i class="fa fa-reorder"></i>
+        </button>
         <%= raw Setting.navbar_brand_html %>
-      </div>
-      <div class="collapse navbar-collapse" id="main-navbar-collapse">
-        <%= render "shared/nav-navbar" %>
+        <div class="collapse navbar-collapse" id="main-navbar-collapse">
+          <%= render "shared/nav-navbar" %>
+        </div>
         <%= render "shared/nav-search" %>
         <%= render "shared/nav-user" %>
       </div>

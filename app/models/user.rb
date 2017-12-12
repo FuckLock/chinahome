@@ -34,7 +34,11 @@ class User < ApplicationRecord
   end
 
   def self.find_by_login(slug)
-    return nil unless slug.match(ALLOW_LOGIN_FORMAT_REGEXP)
+    return nil unless slug.match ALLOW_LOGIN_FORMAT_REGEXP
     fetch_by_uniq_keys(login: slug) || where("lower(login) = ?", slug.downcase).take
+  end
+
+  def admin?
+    Setting.has_admin?(email)
   end
 end

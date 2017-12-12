@@ -26,4 +26,14 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  namespace :admin do
+    root to: 'home#index', as: 'root'
+    resources :site_configs
+  end
+
+  constraints(id: /[#{User::LOGIN_FORMAT}]*/) do
+    resources :users, path: ''
+  end
+
 end

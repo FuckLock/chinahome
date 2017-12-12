@@ -1,17 +1,21 @@
-<ul class="navbar-nav">
+<ul class="navbar-user navbar-nav navbar-right">
   <% if user_signed_in? %>
     <div class="dropdown mr-md-5">
-      <button class="btn dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <%= user_avatar_tag current_user, :sm %>
       </button>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
         <%= render_list_items do |li|
-          li << link_to(current_user.login, "#", class: "dropdown-item")
+          li << link_to(current_user.login, main_app.user_path(current_user.login), class: "dropdown-item")
           li << "<div class='dropdown-divider'></div>"
-          li << link_to(t("menu.edit_account_path"), "#", class: "dropdown-item")
+          li << link_to(t("menu.edit_account_path"), '#', class: "dropdown-item")
           li << link_to(t("menu.likes"), "#", class: "dropdown-item")
           li << link_to(t("menu.notepad"), "#", class: "dropdown-item")
           li << "<div class='dropdown-divider'></div>"
+          if current_user.admin?
+            li << link_to("后台", "/admin",class: "dropdown-item")
+            li << "<div class='dropdown-divider'></div>"
+          end
           li << link_to(t("common.logout"), destroy_user_session_path, method: "delete", class: "dropdown-item" )
         end %>
       </div>

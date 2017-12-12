@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= Setting.app_name %> - 控制台</title>
+    <%= stylesheet_link_tag 'admin' %>
+    <%= javascript_include_tag 'app' %>
+    <%= csrf_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+      <div class="container">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa fa-reorder"></i>
+        </button>
+        <a class="navbar-brand" href="<%= admin_root_path %>">控制台</a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="#">概况</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">用户</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">分类</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">节点</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">话题</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">回复</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">评论</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">图片</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">城市</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">头条</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Wiki</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">酷站</a>
+            </li>
+          </ul>
+        </div>
+        <%= render 'shared/nav-user' %>
+      </div>
+    </nav>
+    <div class="main-container container">
+      <div class="breadcrumb">
+        <a href="<%= admin_root_path %>">控制台</a> <i class="fa fa-angle-right"></i>
+        <%= yield :sitemap %>
+      </div>
+      <%= yield %>
+    </div>
+  </body>
+</html>

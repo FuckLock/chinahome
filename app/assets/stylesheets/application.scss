@@ -1,8 +1,3 @@
-// @Author: baodongdong
-// @Date:   2017-11-19T09:52:24+08:00
-// @Last modified by:   baodongdong
-// @Last modified time: 2017-11-23T23:10:51+08:00
-
 /*
  *= require_self
  *= require font-awesome
@@ -11,7 +6,7 @@
 @import "vars";
 @import "bootstrap";
 
-// 全局样式设置
+全局样式设置
 * {
   margin: 0;
   padding: 0;
@@ -30,10 +25,68 @@ body {
   text-decoration: none;
 }
 
+.alert {
+  margin-top: 10px;
+  padding: 8px 15px;
+  color: #333 !important;
+  cursor: pointer;
+}
+
+// 导航条
 .navbar {
-  .navbar-brand {
-    b {
-      color: #EB5424;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  .container {
+    .navbar-brand {
+      color: #666 !important;
+      font-size: 18px;
+      b {
+        color: #EB5424;
+      }
+    }
+    .navbar-collapse {
+      .navbar-nav>li>a {
+        color: #333;
+        font-size: 13px;
+      }
+    }
+    .navbar-user {
+      margin-bottom: 0px;
+      position: absolute;
+      right: 5px;
+      .dropdown {
+        .dropdown-toggle {
+          box-shadow: none;
+          background: #f8f9fa;
+          padding: 3px 3px;
+          &:focus {
+            background: #eff3f5;
+          }
+        }
+        .dropdown-menu {
+          position: absolute;
+          left: -100px;
+          li {
+             a {
+               background: none;
+               &:hover {
+                 color: red !important;
+               }
+             }
+          }
+        }
+        .media-object {
+          border-radius: 120px;
+        }
+      }
+    }
+    .navbar-search {
+      margin-right: 60px;
+      .form-search {
+        box-shadow: none;
+        height: 28px;
+        border: none;
+      }
     }
   }
 }
@@ -58,19 +111,91 @@ body {
       border: 1px solid $github-border;
       background-color: $github-back;
     }
+    .media {
+      .media-left {
+        margin-right: 6px;
+        .image {
+          padding: 10px 3px !important;
+        }
+        .level {
+          text-align: center;
+          margin-top: 10px;
+          .label-info {
+            color: #4A5E9E;
+            padding: 3px 3px;
+            background: #add0ff;
+            border-radius: 3px;
+          }
+        }
+      }
+      .media-body {
+        display: table-cell;
+        vertical-align: top;
+        .item {
+          margin: 5px 0px;
+        }
+        .number, .counts {
+          color: #999;
+        }
+      }
+    }
+    .follow-info {
+      margin-top: 10px;
+      padding: 10px;
+      border-top: 1px solid #f0f0f0;
+      border-bottom: 1px solid #f0f0f0;
+      text-align: center;
+      a {
+        display: block;
+      }
+      .counter {
+        font-size: 32px;
+        color: #356DD0;
+      }
+      .text {
+        color: #999;
+      }
+    }
   }
 }
 
-.alert {
-  margin-top: 10px;
-  padding: 8px 15px;
-  color: #333 !important;
-  cursor: pointer;
+@media (max-width: 992px){
+  .navbar-search {
+    display: none;
+  }
 }
 
-.navbar-nav {
-  .media-object {
-    border-radius: 120px;
+@media (max-width: 767px) {
+  .navbar {
+    .container {
+      .navbar-toggler {
+        border: 0px;
+        outline: none;
+        position: absolute;
+        left: 5px;
+        top: 8px;
+        padding: 3px 9px;
+      }
+      .navbar-brand {
+        margin: 0 auto;
+      }
+      .navbar-collapse {
+        z-index:100;
+        position: absolute;
+        left: 0px;
+        top: 40px;
+        background: #FFF;
+        box-shadow: 0 1px 1px rgba(0, 0, 0,.11);
+        width: 100%;
+        .navbar-nav {
+          display: block;
+        }
+        .navbar-nav>li {
+          float: left;
+          padding-left: 1em;
+        }
+      }
+    }
   }
 }
 

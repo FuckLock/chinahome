@@ -7,6 +7,9 @@ zh-CN:
     logining: "正在登录"
     logout: "退出"
     auth_with_other_services: "用其他平台的账号登录"
+    save: "保存"
+    saving: "正在保存"
+    cancel: "取消"
   menu:
     topics: "社区"
     press: "头条"
