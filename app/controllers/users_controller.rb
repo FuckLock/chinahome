@@ -8,5 +8,4 @@ class UsersController < ApplicationController
   def set_user
     @user = User.find_by(login: params[:id])
   end
-
 end

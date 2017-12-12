@@ -7,4 +7,5 @@
     li << link_to(t("menu.cool"), '/fds',class: "nav-link")
     li << link_to(t("menu.post"), '/fds',class: "nav-link")
   end %>
+  <%= raw Setting.navbar_html %>
 </ul>

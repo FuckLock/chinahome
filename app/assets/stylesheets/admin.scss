@@ -5,6 +5,18 @@
 
 @import "vars";
 
+.btn-default {
+  padding: 7px 12px;
+  border-radius: 0px;
+  font-size: 15px;
+  border: 1px solid #dadada;
+  color: #333;
+  border-radius: 3px;
+  &:hover {
+    background: $gray;
+  }
+}
+
 .main-container {
   margin-top: 15px;
   .breadcrumb {
@@ -23,20 +35,21 @@
     background: rgb(255, 255, 255);
     .toolbar-con {
       margin-left: 10px;
+      margin-right: 10px;
       padding-top: 10px;
+      padding-bottom: 10px;
       .btn-group {
         margin-left: 0px;
         a {
-          &.btn-default {
-            border-radius: 0px;
-            font-size: 14px;
-            border: 1px solid #dadada;
-            color: #333;
-          }
           .fa {
             padding: 3px 5px;
           }
         }
+      }
+      .help-block {
+        margin-top: 10px;
+        font-size: 12px;
+        color: #aaa;
       }
     }
     .toolbar-body {

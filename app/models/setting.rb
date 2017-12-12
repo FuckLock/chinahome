@@ -2,7 +2,7 @@ class Setting < RailsSettings::Base
   source Rails.root.join("config/config.yml")
   namespace Rails.env
   SEPARATOR_REGEXP = /[\s,]/
-  KEYS_IN_ADMIN = %w(
+  KEYS_IN_ADMIN = %w[
     custom_head_html
     navbar_html
     navbar_brand_html
@@ -24,7 +24,7 @@ class Setting < RailsSettings::Base
     blacklist_ips
     admin_emails
     ban_reasons
-  )
+  ]
 
   class << self
     def has_module?(name)
@@ -49,6 +49,5 @@ class Setting < RailsSettings::Base
       return false if self.admin_emails.blank?
       self.admin_emails.split(SEPARATOR_REGEXP).include?(email)
     end
-
   end
 end

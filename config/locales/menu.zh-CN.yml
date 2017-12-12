@@ -21,3 +21,7 @@ zh-CN:
     edit_account_path: "个人资料设置"
     likes: "我的收藏"
     notepad: "记事本"
+  setting:
+    navbar_html: "导航栏自定义 HTML"
+    navbar_brand_html: "导航栏 Logo"
+    admin_emails: "管理员 Email，在此名单的将有管理员权限（一行一个）"
