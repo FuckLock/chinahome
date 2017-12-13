@@ -1,0 +1,33 @@
+<%= simple_form_for @user, url: admin_user_path(@user) do |f| %>
+  <%= f.input :login %>
+  <%= f.input :name %>
+  <%= f.input :email %>
+  <%= f.input :location, label: "城市" %>
+  <%= f.input :github, label: "Github" %>
+  <%= f.input :twitter %>
+  <%= f.input :email_public, as: :boolean %>
+  <%= f.input :company, label: "公司" %>
+  <%= f.input :tagline, label: "签名" %>
+  <%= f.input :bio, as: :text, label: "个人介绍" %>
+  <%= f.input :website, as: :url, label: "个人主页" %>
+  <%= f.input :avatar, label: "头像" %>
+  <div class="form-group">
+    <%= user_avatar_tag(@user, :lg) %>
+  </div>
+  <%= f.input :verified, as: :boolean,label: "信任用户", hint: '信任用户将可以修改 Wiki' %>
+  <%= f.input :sign_in_count, readonly: true %>
+  <%= f.input :last_sign_in_at, as: :string, readonly: true %>
+  <%= f.input :current_sign_in_at, as: :string, readonly: true %>
+  <%= f.input :last_sign_in_ip, readonly: true %>
+  <%= f.input :current_sign_in_ip, readonly: true %>
+  <div class="row">
+    <div class="col-sm-6">
+      <%= f.submit "保存", class: "btn btn-primary btn-block" %>
+    </div>
+    <div class="col-sm-6">
+      <div class="pull-right">
+          <%= link_to '删除此用户', admin_user_path(@user.id), 'data-confirm' => '警告！此动作无法撤销，确定要删除么?', method: :delete, class: "btn btn-danger"  %>
+      </div>
+    </div>
+  </div>
+<% end %>
