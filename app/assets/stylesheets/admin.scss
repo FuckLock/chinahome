@@ -79,3 +79,14 @@
     }
   }
 }
+
+@media (max-width: 767px) {
+  .users-form {
+    .form-inline {
+      display: block;
+      .form-control {
+        width: 100%;
+      }
+    }
+  }
+}

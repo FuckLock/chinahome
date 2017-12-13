@@ -13,7 +13,11 @@
           li << link_to(t("menu.notepad"), "#", class: "dropdown-item")
           li << "<div class='dropdown-divider'></div>"
           if current_user.admin?
-            li << link_to("后台", "/admin",class: "dropdown-item")
+            if params[:controller].start_with?("admin")
+              li << link_to("前台", root_path,class: "dropdown-item")
+            else
+              li << link_to("后台", admin_root_path,class: "dropdown-item")
+            end
             li << "<div class='dropdown-divider'></div>"
           end
           li << link_to(t("common.logout"), destroy_user_session_path, method: "delete", class: "dropdown-item" )

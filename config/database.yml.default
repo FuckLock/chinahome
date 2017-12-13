@@ -1,6 +1,6 @@
 default: &default
-  adapter: mysql2
-  username: root
+  adapter: postgresql
+  username: postgres
   password:
 
 #

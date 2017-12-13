@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   if Setting.has_module?(:home)
     root to: 'home#index'
@@ -27,9 +29,16 @@ Rails.application.routes.draw do
     end
   end
 
+  authenticate :user, -> (user) { user.admin? } do
+    mount Sidekiq::Web, at: 'sidekiq'
+    mount PgHero::Engine, at: "pghero"
+    mount ExceptionTrack::Engine => "/exception-track"
+  end
+
   namespace :admin do
     root to: 'home#index', as: 'root'
     resources :site_configs
+    resources :users
   end
 
   constraints(id: /[#{User::LOGIN_FORMAT}]*/) do

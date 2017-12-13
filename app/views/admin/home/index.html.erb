@@ -7,9 +7,9 @@
     <div class="btn-group row">
       <%= link_to  raw("<i class='fa fa-cogs'></i>全局设置"), admin_site_configs_path, class: "btn btn-default" %>
       <%= link_to  raw("<i class='fa fa-cubes'></i>三方应用"), "#", class: "btn btn-default" %>
-      <%= link_to  raw("<i class='fa fa-tasks'></i>异步任务..."), "#", class: "btn btn-default" %>
-      <%= link_to  raw("<i class='fa fa-database'></i>数据库状态..."), "#", class: "btn btn-default" %>
-      <%= link_to  raw("<i class='fa fa-warning'></i>异常..."), "#", class: "btn btn-default" %>
+      <%= link_to  raw("<i class='fa fa-tasks'></i>异步任务..."), sidekiq_web_path, class: "btn btn-default", target: "_blank" %>
+      <%= link_to  raw("<i class='fa fa-database'></i>数据库状态..."), "/pghero", class: "btn btn-default", target: "_blank" %>
+      <%= link_to  raw("<i class='fa fa-warning'></i>异常..."), "/exception-track", class: "btn btn-default", target: "_blank" %>
     </div>
     <div class="row toolbar-body">
       <div class="col-md-4 col-4">

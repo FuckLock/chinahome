@@ -1,7 +1,6 @@
 source 'https://gems.ruby-china.org/'
 
 gem 'rails', '~> 5.0.5'
-gem 'mysql2'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
@@ -11,6 +10,18 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'font-awesome-rails'
+
+# 队列
+gem 'sidekiq'
+
+# pgsql
+gem 'pg'
+gem 'pghero'
+
+gem 'exception-track'
+
+# 分页
+gem 'kaminari'
 
 # 登录
 gem 'devise'

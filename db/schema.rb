@@ -10,9 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171204055520) do
+ActiveRecord::Schema.define(version: 20171213103036) do
 
-  create_table "authorizations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+  enable_extension "pg_stat_statements"
+
+  create_table "authorizations", force: :cascade do |t|
     t.string   "provider",                null: false
     t.string   "uid",        limit: 1000, null: false
     t.integer  "user_id",                 null: false
@@ -20,17 +24,24 @@ ActiveRecord::Schema.define(version: 20171204055520) do
     t.datetime "updated_at",              null: false
   end
 
-  create_table "settings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "var",                      null: false
-    t.text     "value",      limit: 65535
+  create_table "exception_tracks", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.string   "var",                   null: false
+    t.text     "value"
     t.integer  "thing_id"
     t.string   "thing_type", limit: 30
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.index ["thing_type", "thing_id", "var"], name: "index_settings_on_thing_type_and_thing_id_and_var", unique: true, using: :btree
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "login",                                  null: false
     t.string   "name"
     t.string   "email",                                  null: false
@@ -68,11 +79,12 @@ ActiveRecord::Schema.define(version: 20171204055520) do
     t.integer  "topics_count",           default: 0,     null: false
     t.integer  "replies_count",          default: 0,     null: false
     t.string   "private_token"
-    t.integer  "favorite_topic_ids"
-    t.integer  "blocked_node_ids"
-    t.integer  "blocked_user_ids"
-    t.integer  "following_ids"
-    t.integer  "follower_ids"
+    t.integer  "favorite_topic_ids",     default: [],                 array: true
+    t.integer  "blocked_node_ids",       default: [],                 array: true
+    t.integer  "blocked_user_ids",       default: [],                 array: true
+    t.integer  "following_ids",          default: [],                 array: true
+    t.integer  "follower_ids",           default: [],                 array: true
+    t.string   "type"
     t.index ["email"], name: "index_users_on_email", using: :btree
     t.index ["location"], name: "index_users_on_location", using: :btree
     t.index ["login"], name: "index_users_on_login", using: :btree
