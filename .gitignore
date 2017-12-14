@@ -26,3 +26,6 @@
 # Ignore Test file.
 /coverage/*
 /public/system/*
+
+# Ignore upload image
+/public/uploads/*
