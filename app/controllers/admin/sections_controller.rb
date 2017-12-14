@@ -1,5 +1,4 @@
 class Admin::SectionsController < Admin::ApplicationController
-
   def index
     @sections = Section.all
   end
@@ -13,7 +12,7 @@ class Admin::SectionsController < Admin::ApplicationController
     if @section.save
       redirect_to admin_sections_path, notice: "Section was successfully created."
     else
-      render action: 'new'
+      render action: "new"
     end
   end
 

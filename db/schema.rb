@@ -10,11 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171214080106) do
+ActiveRecord::Schema.define(version: 20171214132728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-  enable_extension "pg_stat_statements"
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "provider",                null: false
@@ -56,6 +55,32 @@ ActiveRecord::Schema.define(version: 20171214080106) do
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.index ["thing_type", "thing_id", "var"], name: "index_settings_on_thing_type_and_thing_id_and_var", unique: true, using: :btree
+  end
+
+  create_table "topics", force: :cascade do |t|
+    t.integer  "user_id",                               null: false
+    t.integer  "node_id",                               null: false
+    t.string   "title",                                 null: false
+    t.text     "body",                                  null: false
+    t.text     "body_html"
+    t.integer  "last_reply_id"
+    t.integer  "last_reply_user_id"
+    t.string   "last_reply_user_login"
+    t.string   "node_name"
+    t.string   "who_deleted"
+    t.integer  "last_active_mark"
+    t.boolean  "lock_node",             default: false
+    t.datetime "suggested_at"
+    t.integer  "excellent",             default: 0
+    t.datetime "replied_at"
+    t.integer  "replies_count",         default: 0,     null: false
+    t.integer  "likes_count",           default: 0
+    t.integer  "follower_ids",          default: [],                 array: true
+    t.integer  "liked_user_ids",        default: [],                 array: true
+    t.integer  "mentioned_user_ids",    default: [],                 array: true
+    t.datetime "deleted_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|

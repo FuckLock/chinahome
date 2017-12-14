@@ -10,6 +10,7 @@ class User < ApplicationRecord
   ALLOW_LOGIN_FORMAT_REGEXP = /\A[#{LOGIN_FORMAT}]+\z/
 
   has_many :authorizations, dependent: :destroy
+  has_many :topics
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
