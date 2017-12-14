@@ -1,0 +1,6 @@
+<%= simple_form_for([:admin, @section]) do |f| %>
+  <%= render 'shared/error_messages', target: @section %>
+  <%= f.input :name, label: "名称" %>
+  <%= f.input :sort, hint: "数字越大的将会排在前面", label: "排序" %>
+  <%= f.submit "保存", class: "btn btn-primary", 'data-disable-with' => '正在保存' %>
+<% end  %>

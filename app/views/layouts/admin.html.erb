@@ -24,10 +24,10 @@
               <a class="nav-link" href="<%= admin_users_path %>">用户</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">分类</a>
+              <a class="nav-link" href="<%= admin_sections_path %>">分类</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">节点</a>
+              <a class="nav-link" href="<%= admin_nodes_path %>">节点</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">话题</a>
@@ -63,7 +63,12 @@
         <a href="<%= admin_root_path %>">控制台</a> <i class="fa fa-angle-right"></i>
         <%= yield :sitemap %>
       </div>
-      <%= yield %>
+      <div class="toolbar">
+        <div class="toolbar-con">
+          <%= notice_message %>
+          <%= yield %>
+        </div>
+      </div>
     </div>
   </body>
 </html>

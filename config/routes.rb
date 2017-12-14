@@ -39,6 +39,9 @@ Rails.application.routes.draw do
     root to: 'home#index', as: 'root'
     resources :site_configs
     resources :users
+    resources :sections
+    resources :nodes
+    resources :topics
   end
 
   constraints(id: /[#{User::LOGIN_FORMAT}]*/) do

@@ -14,6 +14,10 @@ module UsersHelper
   def user_avatar_tag(user, version = :md)
     width = user_avatar_width_for_size(version)
     img_class = "media-object avatar-#{width}"
-    raw(image_tag(letter_avatar_url(user.login, width), class: img_class))
+    if user.avatar?
+      raw(image_tag(user.avatar.url, class: img_class))
+    else
+      raw(image_tag(letter_avatar_url(user.login, width), class: img_class))
+    end
   end
 end

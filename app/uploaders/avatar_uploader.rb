@@ -1,0 +1,3 @@
+class AvatarUploader < BaseUploader
+
+end

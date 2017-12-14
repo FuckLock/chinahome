@@ -3,6 +3,7 @@ require "digest/md5"
 class User < ApplicationRecord
   include OmniauthCallbacks
 
+  mount_uploader :avatar, AvatarUploader
   second_level_cache expires_in: 2.weeks
 
   LOGIN_FORMAT = 'A-Za-z0-9\-\_\.'

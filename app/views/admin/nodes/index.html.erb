@@ -1,0 +1,32 @@
+<% content_for :sitemap do %>
+  <span>节点</span>
+<% end %>
+
+<%= link_to "新建节点", new_admin_node_path, class: "btn btn-default" %>
+
+<table class="table table-bordered table-striped table-sm mt-md-2">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">名称</th>
+      <th scope="col">分类</th>
+      <th scope="col">排序</th>
+      <th scope="col">帖子数量</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @nodes.each do |node| %>
+      <tr>
+        <td><%= node.id %></td>
+        <td><%= node.name %></td>
+        <td><%= node.section.name %></td>
+        <td><%= node.sort %></td>
+        <td><%= node.topics_count %></td>
+        <td><%= link_to raw("<i class='fa fa-pencil'></i>"), edit_admin_node_path(node) %>
+          <%= link_to raw("<i class='fa fa-trash'></i>"), admin_node_path(node), method: :delete, 'data-confirm' => "Are you sure?" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

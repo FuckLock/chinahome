@@ -11,4 +11,13 @@ class Admin::UsersController < Admin::ApplicationController
   def edit
     @user = User.find_by(id: params[:id])
   end
+
+  def update
+    @user = User.find_by(id: params[:id])
+    if @user.update(params[:user].permit!)
+      redirect_to(edit_admin_user_path(@user.id), notice: "User was successfully updated.")
+    else
+      render action: "edit"
+    end
+  end
 end

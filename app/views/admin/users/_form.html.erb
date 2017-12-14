@@ -1,4 +1,5 @@
 <%= simple_form_for @user, url: admin_user_path(@user) do |f| %>
+  <%= render 'shared/error_messages', target: @user %>
   <%= f.input :login %>
   <%= f.input :name %>
   <%= f.input :email %>
@@ -10,11 +11,12 @@
   <%= f.input :tagline, label: "签名" %>
   <%= f.input :bio, as: :text, label: "个人介绍" %>
   <%= f.input :website, as: :url, label: "个人主页" %>
-  <%= f.input :avatar, label: "头像" %>
+  <%= f.input :avatar, as: :file, label: "头像", input_html: { class: "form-control" } %>
   <div class="form-group">
     <%= user_avatar_tag(@user, :lg) %>
   </div>
   <%= f.input :verified, as: :boolean,label: "信任用户", hint: '信任用户将可以修改 Wiki' %>
+  <%= f.input :state, label: "状态" %>
   <%= f.input :sign_in_count, readonly: true %>
   <%= f.input :last_sign_in_at, as: :string, readonly: true %>
   <%= f.input :current_sign_in_at, as: :string, readonly: true %>
