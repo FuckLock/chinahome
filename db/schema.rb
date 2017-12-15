@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20171214132728) do
     t.integer  "user_id",                 null: false
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.index ["provider", "uid"], name: "index_authorizations_on_provider_and_uid", using: :btree
   end
 
   create_table "exception_tracks", force: :cascade do |t|
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(version: 20171214132728) do
     t.integer  "topics_count", default: 0, null: false
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.index ["section_id"], name: "index_nodes_on_section_id", using: :btree
   end
 
   create_table "sections", force: :cascade do |t|
@@ -45,6 +47,7 @@ ActiveRecord::Schema.define(version: 20171214132728) do
     t.integer  "sort",       default: 0, null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.index ["sort"], name: "index_sections_on_sort", using: :btree
   end
 
   create_table "settings", force: :cascade do |t|
@@ -81,6 +84,12 @@ ActiveRecord::Schema.define(version: 20171214132728) do
     t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.index ["excellent"], name: "index_topics_on_excellent", using: :btree
+    t.index ["last_active_mark"], name: "index_topics_on_last_active_mark", using: :btree
+    t.index ["likes_count"], name: "index_topics_on_likes_count", using: :btree
+    t.index ["node_id"], name: "index_topics_on_node_id", using: :btree
+    t.index ["suggested_at"], name: "index_topics_on_suggested_at", using: :btree
+    t.index ["user_id"], name: "index_topics_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

@@ -5,5 +5,7 @@ class CreateSections < ActiveRecord::Migration[5.0]
       t.integer 'sort', default: 0, null: false
       t.timestamps
     end
+
+    add_index :sections, %w[sort]
   end
 end

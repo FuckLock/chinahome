@@ -8,5 +8,7 @@ class CreateNodes < ActiveRecord::Migration[5.0]
       t.integer "topics_count", default: 0, null: false
       t.timestamps
     end
+
+    add_index :nodes, %w[section_id]
   end
 end

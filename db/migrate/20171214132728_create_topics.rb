@@ -25,5 +25,12 @@ class CreateTopics < ActiveRecord::Migration[5.0]
       t.datetime 'created_at'
       t.datetime 'updated_at'
     end
+
+    add_index :topics, %w[excellent]
+    add_index :topics, %w[last_active_mark]
+    add_index :topics, %w[likes_count]
+    add_index :topics, %w[node_id]
+    add_index :topics, %w[suggested_at]
+    add_index :topics, %w[user_id]
   end
 end
