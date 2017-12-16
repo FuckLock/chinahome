@@ -1,0 +1,15 @@
+<% if user_signed_in? %>
+<i class="fa fa-bell"></i>
+<ul class="navbar-nav navbar-topic d-none d-md-block">
+  <div class="dropdow">
+    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="fa fa-plus"></i> <span class="caret"></span>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right dropdown-topic" aria-labelledby="dropdownMenuButton">
+      <%= render_list_items do |li|
+        li << link_to(t("topics.new_topic"), "#", class: "dropdown-item")
+      end  %>
+    </div>
+  </div>
+</ul>
+<% end %>

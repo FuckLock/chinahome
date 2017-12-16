@@ -1,4 +1,4 @@
-<%= form_tag '/search', class: "form-inline navbar-search", method: :get do %>
-  <i class="fa fa-search mr-sm-2"></i>
-  <%= text_field_tag 'p', nil, class: "form-control mr-sm-2 form-search", placeholder: "搜索本站内容"  %>
+<%= form_tag '/search', class: "form-inline navbar-search d-none d-lg-block", method: :get do %>
+  <i class="fa fa-search"></i>
+  <%= text_field_tag 'p', nil, class: "form-control mr-sm-5 form-search", placeholder: "搜索本站内容"  %>
 <% end %>

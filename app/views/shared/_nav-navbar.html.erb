@@ -1,11 +1,17 @@
-<ul class="navbar-nav mr-auto">
-  <%= render_list_items do |li|
-    li << link_to(t("menu.topics"), Setting.has_module?(:home) ? main_app.topics_path : main_app.root_path,class: "nav-link")
-    li << link_to(t("menu.press"), '/fds',class: "nav-link")
-    li << link_to(t("menu.recruit"), '/fds',class: "nav-link")
-    li << link_to(t("menu.wiki"), '/fds',class: "nav-link")
-    li << link_to(t("menu.cool"), '/fds',class: "nav-link")
-    li << link_to(t("menu.post"), '/fds',class: "nav-link")
-  end %>
-  <%= raw Setting.navbar_html %>
-</ul>
+<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#main-navbar-collapse" data-turbolinks-permanent>
+  <i class="fa fa-reorder"></i>
+</button>
+<%= raw Setting.navbar_brand_html %>
+<div class="collapse navbar-collapse" id="main-navbar-collapse">
+  <ul class="navbar-nav mr-auto">
+    <%= render_list_items do |li|
+      li << link_to(t("menu.topics"), Setting.has_module?(:home) ? main_app.topics_path : main_app.root_path,class: "nav-link")
+      li << link_to(t("menu.press"), '/fds',class: "nav-link")
+      li << link_to(t("menu.recruit"), '/fds',class: "nav-link")
+      li << link_to(t("menu.wiki"), '/fds',class: "nav-link")
+      li << link_to(t("menu.cool"), '/fds',class: "nav-link")
+      li << link_to(t("menu.post"), '/fds',class: "nav-link")
+    end %>
+    <%= raw Setting.navbar_html %>
+  </ul>
+</div>
