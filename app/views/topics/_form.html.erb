@@ -1,0 +1,18 @@
+<%= simple_form_for @topic, url: topics_path, method: :post do |f| %>
+  <div class="form-group">
+    <div class="input-group">
+      <button type="button" class="btn btn-default" data-toggle="modal" data-target="#node-selector" id="node-selector-button">
+        <%= @topic.node&.name || '选择节点...' %>
+      </button>
+      <%= f.text_field :title, class: "form-control", placeholder: "在这里填写标题" %>
+    </div>
+  </div>
+
+  <%= render "editor_toolbar" %>
+
+  <div class="form-group">
+    <%= f.text_area :body, class: "form-control topic-editor", rows: 20 %>
+  </div>
+<% end %>
+
+<%= render 'node_selector' %>

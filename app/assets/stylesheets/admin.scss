@@ -5,18 +5,6 @@
 
 @import "vars";
 
-.btn-default {
-  padding: 7px 12px;
-  border-radius: 0px;
-  font-size: 15px;
-  border: 1px solid #dadada;
-  color: #333;
-  border-radius: 3px;
-  &:hover {
-    background: $gray;
-  }
-}
-
 .main-container {
   margin-top: 15px;
   .breadcrumb {

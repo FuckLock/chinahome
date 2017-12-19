@@ -11,6 +11,12 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootstrap', '~> 4.0.0.beta2.1'
 gem 'font-awesome-rails'
 
+gem 'jquery-atwho-rails'
+
+gem 'sanitize'
+
+gem 'html-pipeline'
+
 # 上传
 gem 'carrierwave'
 

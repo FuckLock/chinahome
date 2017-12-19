@@ -1,0 +1,15 @@
+<div class="editor-toolbar">
+  <%= link_to t("topics.editor_toolbar_edit"), "#", class: "edit active" %>
+  <%= link_to t("topics.editor_toolbar_preview"), "#", class: "preview" %>
+  <div class="pull-right">
+    <span class="dropdown">
+      <span class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown">
+        <i class="fa fa-code"></i>
+      </span>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <%= insert_code_menu_items_tag %>
+      </ul>
+    </span>
+    <i class="fa fa-image"></i>
+  </div>
+</div>

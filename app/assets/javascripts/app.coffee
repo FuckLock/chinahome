@@ -3,6 +3,9 @@
 #= require turbolinks
 #= require popper
 #= require bootstrap-sprockets
+#= require topics
+#= require_self
+#= require jquery.atwho
 
 window.App =
   alert : (msg,to) ->

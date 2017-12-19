@@ -31,3 +31,7 @@ zh-CN:
       previous: "上一页"
       first: "首页"
       last: "尾页"
+  topics:
+    new_topic: "发布新话题"
+    editor_toolbar_edit: "编辑"
+    editor_toolbar_preview: "预览"

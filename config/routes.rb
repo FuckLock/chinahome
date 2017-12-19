@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :topics do
     collection do
       get :feed
+      post :preview
     end
   end
 
@@ -47,5 +48,7 @@ Rails.application.routes.draw do
   constraints(id: /[#{User::LOGIN_FORMAT}]*/) do
     resources :users, path: ''
   end
+
+  get 'topics/node:id', to: 'topics#node', as: 'node_topics'
 
 end

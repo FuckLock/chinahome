@@ -32,6 +32,18 @@ body {
   cursor: pointer;
 }
 
+.btn-default {
+  padding: 7px 12px;
+  border-radius: 0px;
+  font-size: 15px;
+  border: 1px solid #dadada;
+  color: #333;
+  border-radius: 3px;
+  &:hover {
+    background: $gray;
+  }
+}
+
 // 导航条
 .navbar {
   padding-top: 1px;
@@ -229,3 +241,83 @@ body {
 .avatar-32 { width: 32px; height: 32px; border-radius: 120px; }
 .avatar-48 { width: 48px; height: 48px; border-radius: 120px; }
 .avatar-96 { width: 96px; height: 96px; border-radius: 120px; }
+
+// modal
+.modal {
+  .modal-header {
+    border-bottom: 0px;
+    margin-bottom: 0px;
+  }
+  .modal-body {
+    padding-top: 0px;
+    .node-list {
+      margin-bottom: 10px;
+    }
+  }
+  .close {
+    opacity: .2;
+    line-height: 0.3;
+    font-weight: 500;
+    font-size: 20px;
+    outline: none;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  @media (min-width: 768px) {
+    .modal-dialog {
+      max-width: 768px !important;
+    }
+  }
+  .media-left {
+    padding-left: 100px;
+    padding-right: 10px;
+    color: #aaa;
+  }
+  .node-name {
+    display: inline-block;
+    width: 100px;
+  }
+}
+
+// topic
+.new_topic {
+ .form-control {
+   box-shadow: none;
+ }
+}
+
+.editor-toolbar {
+  .edit {
+    padding: 5px 20px;
+    background: #d0d0d0;
+    color: #666;
+    margin-right: 10px;
+    text-decoration: none;
+  }
+  .preview {
+    padding: 5px 20px;
+    background: #f0f0f0;
+    color: #999;
+    text-decoration: none;
+  }
+  .pull-right {
+    .fa-image {
+      margin-right: 10px;
+    }
+    .dropdown-toggle {
+      margin-right: 10px;
+      &:after {
+        content: none;
+      }
+    }
+    .dropdown-menu {
+      .dropdown-item {
+        margin-left: 5px;
+        color: #666;
+        padding: 5px;
+        font-size: 14px;
+      }
+    }
+  }
+}
