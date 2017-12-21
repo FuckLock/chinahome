@@ -1,4 +1,4 @@
-class FormStorage
+@FormStorage =
   init: ->
     if window.localStorage
       $(document).on 'input', 'textarea[name*=body]', ->
