@@ -6,6 +6,7 @@
 #= require topics
 #= require_self
 #= require jquery.atwho
+#= require form_storage
 
 window.App =
   alert : (msg,to) ->

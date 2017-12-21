@@ -1,17 +1,3 @@
-# class TopicView
-#   init: ->
-#     @initComponents()
-#
-#   initComponents: ->
-#     @hookPreview()
-#
-#   hookPreview: ->
-#     preview_box = $(document.createElement("div")).attr "id", "preview"
-#     preview_box.addClass("markdown form-control")
-#
-# topicView = new TopicView
-# topicView.init()
-
 $(document).on 'click', '.node-a', (e) ->
   $("#node-selector").modal('hide')
   $nodeName = $(e.currentTarget).text()
@@ -58,25 +44,3 @@ $(document).on 'click', '.edit', ->
   $('.topic-editor').show()
   $('#preview').hide()
   return false
-
-FormStorage =
-  key: (element) ->
-    "#{$(element).prop('id')}"
-
-  init: ->
-    if window.localStorage
-      $(document).on 'input', 'textarea[name*=body]', ->
-        textarea = $(this)
-        localStorage.setItem(FormStorage.key(textarea), textarea.val())
-
-  restore: ->
-    if window.localStorage
-      $('textarea[name*=body]').each ->
-        textarea = $(this)
-        if value = localStorage.getItem(FormStorage.key(textarea))
-          textarea.val(value)
-
-FormStorage.init()
-
-window.onload = ->
-  FormStorage.restore()

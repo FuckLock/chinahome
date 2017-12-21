@@ -105,9 +105,6 @@ GEM
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     hashie (3.5.6)
-    html-pipeline (2.7.1)
-      activesupport (>= 2)
-      nokogiri (>= 1.4)
     i18n (0.9.1)
       concurrent-ruby (~> 1.0)
     jbuilder (2.7.0)
@@ -154,8 +151,6 @@ GEM
     nio4r (2.1.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
-    nokogumbo (1.4.13)
-      nokogiri
     oauth2 (1.4.0)
       faraday (>= 0.8, < 0.13)
       jwt (~> 1.0)
@@ -251,10 +246,6 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.9.0)
-    sanitize (4.5.0)
-      crass (~> 1.0.2)
-      nokogiri (>= 1.4.4)
-      nokogumbo (~> 1.4.1)
     sass (3.5.3)
       sass-listen (~> 4.0.0)
     sass-listen (4.0.0)
@@ -333,7 +324,6 @@ DEPENDENCIES
   exception-track
   factory_bot_rails
   font-awesome-rails
-  html-pipeline
   jbuilder (~> 2.5)
   jquery-atwho-rails
   jquery-rails
@@ -350,7 +340,6 @@ DEPENDENCIES
   redcarpet
   rspec-rails
   rubocop
-  sanitize
   sass-rails (~> 5.0)
   second_level_cache
   sidekiq
