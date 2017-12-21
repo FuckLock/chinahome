@@ -7,7 +7,7 @@
     </button>
     <div class="dropdown-menu dropdown-menu-right dropdown-topic" aria-labelledby="dropdownMenuButton">
       <%= render_list_items do |li|
-        li << link_to(t("topics.new_topic"), new_topic_path, class: "dropdown-item")
+        li << link_to(t("topics.new_topic"), new_topic_path, class: "dropdown-item new-topic")
       end  %>
     </div>
   </div>

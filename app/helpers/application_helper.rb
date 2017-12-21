@@ -48,14 +48,23 @@ module ApplicationHelper
     raw lang_list.join(EMPTY_STRING)
   end
 
-  def markdown
-    return nil if text.blank?
-    Rails.cache.fetch(["markdown", Digest::MD5.hexdigest(text)]) do
-      sanitize_markdown(Homeland::Markdown.call(text))
-    end
+  def markdown text
+    options = {
+      :autolink => true,
+      :space_after_headers => true,
+      :fenced_code_blocks => true,
+      :no_intra_emphasis => true,
+      :hard_wrap => true,
+      :strikethrough =>true,
+      :disable_indented_code_blocks => true
+    }
+    markdown = Redcarpet::Markdown.new(HTMLwithCodeRay,options)
+    raw(markdown.render(text))
   end
 
-  def sanitize_markdown(html)
-    raw Sanitize.fragment(html, Homeland::Sanitize::DEFAULT)
+  class HTMLwithCodeRay < Redcarpet::Render::HTML
+    def block_code(code, language)
+      CodeRay.scan(code, language).div(:tab_width=>2)
+    end
   end
 end

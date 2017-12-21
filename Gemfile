@@ -13,9 +13,9 @@ gem 'font-awesome-rails'
 
 gem 'jquery-atwho-rails'
 
-gem 'sanitize'
-
-gem 'html-pipeline'
+# markdown
+gem 'redcarpet'
+gem 'coderay'
 
 # 上传
 gem 'carrierwave'

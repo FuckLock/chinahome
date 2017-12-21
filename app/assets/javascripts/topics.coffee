@@ -39,7 +39,7 @@ $(document).on 'click', '.preview', ->
   $("#preview").show()
   $('.topic-editor').hide()
   if $("#preview").length == 0
-    preview_box = $(document.createElement("textarea"))
+    preview_box = $(document.createElement("div"))
     preview_box.attr("id", "preview").attr("rows", '20')
     preview_box.addClass("markdown form-control")
     $('.topic-editor').after preview_box
@@ -51,11 +51,32 @@ $(document).on 'click', '.preview', ->
   $.post "/topics/preview",
     "body": body,
     (data) ->
-      $("#preview").html data.body
-    "json"
+      $("#preview").html (data.body)
   return false
 
 $(document).on 'click', '.edit', ->
   $('.topic-editor').show()
   $('#preview').hide()
   return false
+
+FormStorage =
+  key: (element) ->
+    "#{$(element).prop('id')}"
+
+  init: ->
+    if window.localStorage
+      $(document).on 'input', 'textarea[name*=body]', ->
+        textarea = $(this)
+        localStorage.setItem(FormStorage.key(textarea), textarea.val())
+
+  restore: ->
+    if window.localStorage
+      $('textarea[name*=body]').each ->
+        textarea = $(this)
+        if value = localStorage.getItem(FormStorage.key(textarea))
+          textarea.val(value)
+
+FormStorage.init()
+
+window.onload = ->
+  FormStorage.restore()

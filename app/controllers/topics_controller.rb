@@ -3,6 +3,7 @@ class TopicsController < ApplicationController
 
   def new
     @topic = Topic.new
+    # fresh_when @topic
   end
 
   def preview

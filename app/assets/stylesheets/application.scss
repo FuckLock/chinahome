@@ -321,3 +321,13 @@ body {
     }
   }
 }
+
+// markdown css
+#preview {
+  min-height: 500px;
+  background: #f5f5f5;
+  .CodeRay {
+    font-size: 12px;
+    line-height: 150%;
+  }
+}
