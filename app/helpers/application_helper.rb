@@ -58,13 +58,16 @@ module ApplicationHelper
       :strikethrough =>true,
       :disable_indented_code_blocks => true
     }
-    markdown = Redcarpet::Markdown.new(HTMLwithCodeRay,options)
-    raw(markdown.render(text))
+    renderer = HTMLwithPygments.new(hard_wrap: true, filter_html: true)
+    Redcarpet::Markdown.new(renderer, options).render(text).html_safe
   end
 
-  class HTMLwithCodeRay < Redcarpet::Render::HTML
+  class HTMLwithPygments < Redcarpet::Render::HTML
     def block_code(code, language)
-      CodeRay.scan(code, language).div(:tab_width=>2)
+      sha = Digest::SHA1.hexdigest(code)
+      Rails.cache.fetch(["code", language, sha], expires_in: 12.hours) do
+        Pygments.highlight(code, lexer: language)
+      end
     end
   end
 end

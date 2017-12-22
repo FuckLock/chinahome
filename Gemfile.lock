@@ -176,6 +176,8 @@ GEM
     popper_js (1.12.5)
     powerpack (0.1.1)
     public_suffix (3.0.1)
+    pygments.rb (1.2.1)
+      multi_json (>= 1.0.0)
     rack (2.0.3)
     rack-protection (2.0.0)
       rack
@@ -334,6 +336,7 @@ DEPENDENCIES
   omniauth-github
   pg
   pghero
+  pygments.rb
   rails (~> 5.0.5)
   rails-controller-testing
   rails-settings-cached

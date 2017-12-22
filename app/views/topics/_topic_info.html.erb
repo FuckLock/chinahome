@@ -1,0 +1,13 @@
+<% cache @topics do %>
+  <div class="topic-info">
+    <div class="">
+      <%= @topic.node.name %> <%= @topic.title %>
+    </div>
+    <div class="">
+      <%= current_user.login %> . 发布于<%= @topic.created_at %>
+    </div>
+    <div class="">
+      <%= @tit %>
+    </div>
+  </div>
+<% end %>

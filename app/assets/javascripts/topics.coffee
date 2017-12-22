@@ -1,7 +1,10 @@
 $(document).on 'click', '.node-a', (e) ->
+  el = $(e.currentTarget)
   $("#node-selector").modal('hide')
   $nodeName = $(e.currentTarget).text()
+  $nodeId = el.data('id')
   $('#node-selector-button').html($nodeName)
+  $('#topic_node_id').val($nodeId)
   return false
 
 $(document).on 'click', '.insert-codes',(e) ->

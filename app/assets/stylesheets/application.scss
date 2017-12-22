@@ -1,6 +1,7 @@
 /*
  *= require_self
  *= require font-awesome
+ *= require highlight
  */
 
 @import "vars";
@@ -10,6 +11,7 @@
 * {
   margin: 0;
   padding: 0;
+
 }
 
 body {
@@ -322,12 +324,52 @@ body {
   }
 }
 
+.topic {
+
+  .topic-left {
+    position: relative;
+    top: 15px;
+    display: table-cell;
+  }
+
+  .topic-body {
+    .node-title {
+      color: #777;
+    }
+    .topic-info {
+      color: #8f8d8b;
+      font-size: 12px;
+    }
+    position: relative;
+    left: 8px;
+    top: 5px;
+    display: table-cell;
+    a {
+      color: #222;
+      text-decoration: none;
+    }
+  }
+  .topic-right {
+    position: relative;
+    right: 10px;
+    top: -25px;
+    display: table-cell;
+    float: right;
+    background: #CFD3E6;
+    color: white;
+    border-radius: 120px;
+    padding: 1px 10px;
+    cursor: pointer;
+  }
+}
+
 // markdown css
 #preview {
-  min-height: 500px;
-  background: #f5f5f5;
-  .CodeRay {
+  &.form-control {
+    padding: 10px 0px;;
+  }
+  .highlight {
+    background: #f5f5f5;
     font-size: 12px;
-    line-height: 150%;
   }
 }

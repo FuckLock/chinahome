@@ -15,7 +15,8 @@ gem 'jquery-atwho-rails'
 
 # markdown
 gem 'redcarpet'
-gem 'coderay'
+# gem 'coderay'
+gem 'pygments.rb'
 
 # 上传
 gem 'carrierwave'
