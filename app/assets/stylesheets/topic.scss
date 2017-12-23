@@ -1,0 +1,121 @@
+.new_topic {
+ .form-control {
+   box-shadow: none;
+ }
+}
+
+.editor-toolbar {
+  .edit {
+    padding: 5px 20px;
+    background: #d0d0d0;
+    color: #666;
+    margin-right: 10px;
+    text-decoration: none;
+  }
+  .preview {
+    padding: 5px 20px;
+    background: #f0f0f0;
+    color: #999;
+    text-decoration: none;
+  }
+  .pull-right {
+    .fa-image {
+      margin-right: 10px;
+    }
+    .dropdown-toggle {
+      margin-right: 10px;
+      &:after {
+        content: none;
+      }
+    }
+    .dropdown-menu {
+      .dropdown-item {
+        margin-left: 5px;
+        color: #666;
+        padding: 5px;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.topic {
+  border-bottom: 1px solid #F0F0F0;
+  padding-bottom: 10px;
+  .topic-left {
+    padding-top: 10px;
+    display: inline-block;
+    margin-right: 5px;
+  }
+  .topic-body {
+    .node-name {
+      color: #777;
+    }
+    .topic-title {
+      a {
+        color: #333;
+        text-decoration: none;
+      }
+    }
+    .topic-info {
+      color: #8f8d8b;
+      font-size: 12px;
+    }
+    vertical-align: middle;
+    display: inline-block;
+  }
+  .topic-right {
+    float: right;
+    margin-top: 25px;
+    margin-right: 15px;
+    display: inline-block;
+    background: #CFD3E6;
+    border-radius: 100px;
+    padding: 0px 9px;
+    color: white;
+  }
+}
+
+.topic-info {
+  background: #fafafa;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #F0F0F0;
+  .topic-info-left {
+    .node-name {
+      font-size: 20px;
+      color: #777;
+      margin-right: 10px;
+    }
+    .topic-title {
+      font-size: 20px;
+      color: black;
+    }
+    .topic-date {
+      margin-top: 5px;
+      color: #8f8d8b;
+      font-size: 12px;
+    }
+    padding: 15px 15px;
+    vertical-align: middle;
+    display: inline-block;
+  }
+  .topic-info-right {
+    float: right;
+    margin-top: 20px;
+    margin-right: 10px;
+    display: inline-block;
+  }
+}
+
+.buttons {
+  padding: 5px 5px;
+  background: #fafafa;
+  ul {
+    padding: 0 10px;
+    li {
+      list-style: none;
+      margin-right: 10px;
+      float: left;
+    }
+  }
+}

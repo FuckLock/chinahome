@@ -13,7 +13,7 @@ Rails.application.routes.draw do
       post :preview
     end
   end
-
+  resources :replies
   devise_for :users, path: 'account', controllers: {
     registrations: :account,
     sessions: :sessions,

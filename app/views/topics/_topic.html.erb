@@ -1,4 +1,4 @@
-<% cache([topic] do %>
+<% cache([topic]) do %>
   <div class="topic">
     <div class="topic-left avatar">
       <%= user_avatar_tag current_user, :md %>
@@ -6,8 +6,8 @@
 
     <div class="topic-body">
       <div>
-        <span class="node-title"><%= topic.node.name %></span>
-        <span><%= link_to topic.title, topic_path(topic) %></span>
+        <span class="node-name"><%= topic.node.name %></span>
+        <span class="topic-title"><%= link_to topic.title, topic_path(topic) %></span>
       </div>
       <div class="topic-info">
         <%= current_user.login %> . 发布于<%= topic.created_at.to_date %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171214132728) do
+ActiveRecord::Schema.define(version: 20171223095426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,22 @@ ActiveRecord::Schema.define(version: 20171214132728) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.index ["section_id"], name: "index_nodes_on_section_id", using: :btree
+  end
+
+  create_table "replies", force: :cascade do |t|
+    t.integer  "user_id",                         null: false
+    t.integer  "topic_id",                        null: false
+    t.text     "body",                            null: false
+    t.text     "body_html"
+    t.integer  "state",              default: 1,  null: false
+    t.integer  "liked_user_ids",     default: [],              array: true
+    t.integer  "likes_count",        default: 0
+    t.integer  "mentioned_user_ids", default: [],              array: true
+    t.datetime "deleted_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["topic_id"], name: "index_replies_on_topic_id", using: :btree
+    t.index ["user_id"], name: "index_replies_on_user_id", using: :btree
   end
 
   create_table "sections", force: :cascade do |t|

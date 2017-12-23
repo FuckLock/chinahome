@@ -13,6 +13,8 @@ gem 'font-awesome-rails'
 
 gem 'jquery-atwho-rails'
 
+gem 'newrelic_rpm'
+
 # markdown
 gem 'redcarpet'
 # gem 'coderay'

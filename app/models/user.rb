@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   has_many :authorizations, dependent: :destroy
   has_many :topics
+  has_many :replies
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 

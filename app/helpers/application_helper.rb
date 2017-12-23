@@ -59,7 +59,7 @@ module ApplicationHelper
       :disable_indented_code_blocks => true
     }
     renderer = HTMLwithPygments.new(hard_wrap: true, filter_html: true)
-    Redcarpet::Markdown.new(renderer, options).render(text).html_safe
+    raw(Redcarpet::Markdown.new(renderer, options).render(text))
   end
 
   class HTMLwithPygments < Redcarpet::Render::HTML

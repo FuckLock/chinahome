@@ -2,6 +2,7 @@
  *= require_self
  *= require font-awesome
  *= require highlight
+ *= require topic
  */
 
 @import "vars";
@@ -144,8 +145,7 @@ body {
     margin-bottom: 15px;
   }
   .panel-body {
-    padding: 0 10px;
-    padding-bottom: 20px;
+    padding: 10px 10px;
     .btn-outline-primary {
       cursor: pointer;
     }
@@ -279,97 +279,5 @@ body {
   .node-name {
     display: inline-block;
     width: 100px;
-  }
-}
-
-// topic
-.new_topic {
- .form-control {
-   box-shadow: none;
- }
-}
-
-.editor-toolbar {
-  .edit {
-    padding: 5px 20px;
-    background: #d0d0d0;
-    color: #666;
-    margin-right: 10px;
-    text-decoration: none;
-  }
-  .preview {
-    padding: 5px 20px;
-    background: #f0f0f0;
-    color: #999;
-    text-decoration: none;
-  }
-  .pull-right {
-    .fa-image {
-      margin-right: 10px;
-    }
-    .dropdown-toggle {
-      margin-right: 10px;
-      &:after {
-        content: none;
-      }
-    }
-    .dropdown-menu {
-      .dropdown-item {
-        margin-left: 5px;
-        color: #666;
-        padding: 5px;
-        font-size: 14px;
-      }
-    }
-  }
-}
-
-.topic {
-
-  .topic-left {
-    position: relative;
-    top: 15px;
-    display: table-cell;
-  }
-
-  .topic-body {
-    .node-title {
-      color: #777;
-    }
-    .topic-info {
-      color: #8f8d8b;
-      font-size: 12px;
-    }
-    position: relative;
-    left: 8px;
-    top: 5px;
-    display: table-cell;
-    a {
-      color: #222;
-      text-decoration: none;
-    }
-  }
-  .topic-right {
-    position: relative;
-    right: 10px;
-    top: -25px;
-    display: table-cell;
-    float: right;
-    background: #CFD3E6;
-    color: white;
-    border-radius: 120px;
-    padding: 1px 10px;
-    cursor: pointer;
-  }
-}
-
-// markdown css
-#preview {
-  &.form-control {
-    padding: 10px 0px;;
-  }
-  .highlight {
-    background: #f5f5f5;
-    font-size: 12px;
   }
 }

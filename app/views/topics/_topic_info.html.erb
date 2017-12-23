@@ -1,13 +1,16 @@
-<% cache @topics do %>
+<% cache([@topic]) do %>
   <div class="topic-info">
-    <div class="">
-      <%= @topic.node.name %> <%= @topic.title %>
+    <div class="topic-info-left">
+      <div>
+        <span class="node-name"><%= @topic.node.name %></span>
+        <span class="topic-title"><%= @topic.title %></span>
+      </div>
+      <div class="topic-date">
+        <%= current_user.login %> · 发布于<%= @topic.created_at.to_date %>
+      </div>
     </div>
-    <div class="">
-      <%= current_user.login %> . 发布于<%= @topic.created_at %>
-    </div>
-    <div class="">
-      <%= @tit %>
+    <div class="topic-info-right">
+      <%= user_avatar_tag current_user, :md %>
     </div>
   </div>
 <% end %>
