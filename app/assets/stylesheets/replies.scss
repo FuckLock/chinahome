@@ -1,0 +1,25 @@
+.light { background:#F7F2FC; }
+.reply {
+  border-bottom: 1px solid #eee;
+  display:flex;
+  padding-left: 15px;
+  padding-top: 10px;
+  .reply-left {
+    margin-right: 15px;
+    flex: none
+  }
+  .reply-right {
+    flex: 1;
+    padding-right: 15px;
+    .reply-right-top {
+      margin-bottom: 10px;
+      .reply-user {
+        color: black;
+        font-weight: bold;
+      }
+      .reply-button {
+        float: right;
+      }
+    }
+  }
+}

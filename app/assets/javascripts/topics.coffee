@@ -47,3 +47,9 @@ $(document).on 'click', '.edit', ->
   $('.topic-editor').show()
   $('#preview').hide()
   return false
+
+class TopicView
+  resetClearReplyHightTimer: ->
+    clearHightTimer = setTimeout('$(".reply").removeClass("light")',10000)
+
+window.topicView = new TopicView()

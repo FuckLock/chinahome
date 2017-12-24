@@ -8,12 +8,13 @@ Rails.application.routes.draw do
   end
 
   resources :topics do
+    resources :replies
     collection do
       get :feed
       post :preview
     end
   end
-  resources :replies
+
   devise_for :users, path: 'account', controllers: {
     registrations: :account,
     sessions: :sessions,

@@ -1,6 +1,6 @@
 <%= render 'editor_toolbar' %>
 
-<%= simple_form_for @reply, url: replies_path, method: :post do |f| %>
+<%= simple_form_for @reply, url: topic_replies_path(@topic), method: :post, remote: true do |f| %>
   <div class="form-group">
     <%= f.text_area :body, class: "topic-editor form-control", rows: "4" %>
   </div>

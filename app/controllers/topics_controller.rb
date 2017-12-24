@@ -25,11 +25,11 @@ class TopicsController < ApplicationController
 
   def index
     @topics = Topic.includes(:node)
-
   end
 
   def show
     @topic = Topic.find_by(id: params[:id])
     @reply = Reply.new
+    @replies = Reply.all
   end
 end

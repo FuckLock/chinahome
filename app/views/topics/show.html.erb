@@ -12,6 +12,13 @@
       </div>
     </div>
     <div class="panel">
+      <div class="panel-heading">共收到 <%= @replies.count %>回复</div>
+      <div class="reply-all">
+        <%= render partial: "replies/reply", collection: @replies %>
+      </div>
+    </div>
+    <div class="reply-alert"></div>
+    <div class="panel">
       <div class="panel-heading">回帖</div>
       <div class="panel-body">
         <%= render 'reply_form' %>

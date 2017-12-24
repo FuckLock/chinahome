@@ -1,0 +1,19 @@
+<div class="reply">
+  <div class="reply-left">
+    <%= user_avatar_tag current_user, :md %>
+  </div>
+
+  <div class="reply-right">
+     <div class="reply-right-top">
+       <div class="reply-user"><%= current_user.login %></div>
+       <div class="reply-button">
+         <i class="fa fa-pencil"></i>
+         <i class="fa fa-mail-reply"></i>
+         <i class="fa fa-heart"></i>
+       </div>
+     </div>
+     <div class="reply-body">
+       <%= reply.body_html %>
+     </div>
+  </div>
+</div>
