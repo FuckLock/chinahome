@@ -1,0 +1,10 @@
+<% cache(["sidebar_box_count_info",Time.now.strftime("%Y-%m-%d %H")]) do %>
+  <div class="panel">
+    <div class="panel-heading">统计信息</div>
+    <ul class="list-group">
+      <li class="list-group-item">社区会员：<%= User.all.count %>人</li>
+      <li class="list-group-item">帖子数：<%= Topic.all.count %>个</li>
+      <li class="list-group-item">回帖数：<%= Reply.all.count %>个</li>
+    </ul>
+  </div>
+<% end %>

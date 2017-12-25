@@ -1,21 +1,19 @@
-<% cache([topic]) do %>
-  <div class="topic">
-    <div class="topic-left avatar">
-      <%= user_avatar_tag current_user, :md %>
-    </div>
+<div class="topic">
+  <div class="topic-left avatar">
+    <%= user_avatar_tag current_user, :md %>
+  </div>
 
-    <div class="topic-body">
-      <div>
-        <span class="node-name"><%= topic.node.name %></span>
-        <span class="topic-title"><%= link_to topic.title, topic_path(topic) %></span>
-      </div>
-      <div class="topic-info">
-        <%= current_user.login %> . 发布于<%= topic.created_at.to_date %>
-      </div>
+  <div class="topic-body">
+    <div>
+      <span class="node-name"><%= topic.node.name %></span>
+      <span class="topic-title"><%= link_to topic.title, topic_path(topic) %></span>
     </div>
-
-    <div class="topic-right">
-      <%= topic.replies_count %>
+    <div class="topic-info">
+      <%= current_user.login %> . 发布于<%= topic.created_at.to_date %>
     </div>
   </div>
-<% end %>
+
+  <div class="topic-right">
+    <%= topic.replies_count %>
+  </div>
+</div>

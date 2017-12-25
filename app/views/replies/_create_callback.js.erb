@@ -1,4 +1,5 @@
 var dom = $("<%= j(render('reply', reply: reply)) %>");
 $(".reply-all").append(dom);
 dom.last().addClass('light');
-topicView.resetClearReplyHightTimer()
+topicView.resetClearReplyHightTimer();
+topicView.clearTextArea();

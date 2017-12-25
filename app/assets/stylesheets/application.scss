@@ -50,6 +50,7 @@ body {
 
 // 导航条
 .navbar {
+  box-shadow: 0 1px 5px rgba(0, 0, 0,.11);
   padding-top: 1px;
   padding-bottom: 1px;
   .container {
@@ -143,7 +144,6 @@ body {
     padding: 6px 15px;
     border-bottom-color: #eee;
     color: #777;
-    margin-bottom: 15px;
   }
   .panel-body {
     padding: 10px 10px;

@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   end
 
   resources :topics do
+    collection  do
+      get 'recent'
+    end
     resources :replies
     collection do
       get :feed

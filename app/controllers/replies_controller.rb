@@ -7,7 +7,7 @@ class RepliesController < ApplicationController
     if @reply.save
       @msg = "回复成功"
     else
-      @msg = "回复内容不能为空字符<br />回复内容不能重复提交。"
+      @msg = @reply.errors.full_messages.join("<br />")
     end
   end
 

@@ -1,0 +1,18 @@
+<%= render 'node_selector' %>
+
+<% content_for :node_navbar do %>
+  <div class="nav-node">
+    <div class="container">
+      <ul class="row">
+        <li data-toggle="modal" data-target="#node-selector" id="node-selector-button">
+          <span class="all-node">所有节点</span><i class="fa fa-caret-right"></i>
+        </li>
+        <li></li>
+        <li>默认</li>
+        <li><i class="fa fa-diamond"></i> 优质帖子</li>
+        <li>无人问津</li>
+        <li><%= link_to "最新发布", recent_topics_path %></li>
+      </ul>
+    </div>
+  </div>
+<% end %>

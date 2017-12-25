@@ -8,7 +8,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <% Section.includes(:nodes).each do |section| %>
+        <% @sections.each do |section| %>
           <div class="node-list">
             <span class="media-left"><%= section.name %></span>
             <% section.nodes.each do |node| %>

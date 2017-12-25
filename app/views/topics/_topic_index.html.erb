@@ -1,0 +1,7 @@
+<div class="panel">
+  <div class="panel-body">
+    <% cache([:topic_index, @topics.max.updated_at.to_i]) do %>
+      <%= render partial: 'topics/topic', collection: @topics %>
+    <% end %>
+  </div>
+</div>

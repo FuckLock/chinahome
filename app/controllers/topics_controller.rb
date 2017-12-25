@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  def index; end
+  before_action :find_sections, only: %i[index new recent]
 
   def new
     @topic = Topic.new
@@ -30,6 +30,16 @@ class TopicsController < ApplicationController
   def show
     @topic = Topic.find_by(id: params[:id])
     @reply = Reply.new
-    @replies = Reply.all
+    @replies = Reply.where(topic_id: @topic.id)
+  end
+
+  def recent
+    @topics = Topic.order(id: :desc).includes(:user)
+    render action: :index
+  end
+
+  private
+  def find_sections
+    @sections = Section.includes(:nodes)
   end
 end

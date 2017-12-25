@@ -12,10 +12,12 @@
       </div>
     </div>
     <div class="panel">
-      <div class="panel-heading">共收到 <%= @replies.count %>回复</div>
-      <div class="reply-all">
-        <%= render partial: "replies/reply", collection: @replies %>
-      </div>
+      <% cache([:replies, @replies.max.updated_at.to_i]) do %>
+        <div class="panel-heading">共收到 <%= @replies.count %>回复</div>
+        <div class="reply-all">
+          <%= render partial: "replies/reply", collection: @replies %>
+        </div>
+      <% end %>
     </div>
     <div class="reply-alert"></div>
     <div class="panel">

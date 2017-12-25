@@ -70,4 +70,10 @@ module ApplicationHelper
       end
     end
   end
+
+  def random_tips
+    tips = Setting.tips
+    return "" if tips.blank?
+    tips.split("\n").sample
+  end
 end

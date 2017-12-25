@@ -1,13 +1,13 @@
+<%= render "topics/node_info" %>
 <div class="row">
-  <div class="col-md-9">
-    <div class="panel">
-      <div class="panel-body">
-        <%= render partial: 'topics/topic', collection: @topics %>
-      </div>
-    </div>
+  <div class="col-lg-9">
+    <%= render 'topic_index' %>
   </div>
 
-  <div class="col-md-3">
-
+  <div class="col-lg-3">
+    <%= render 'sidebar_box_new_topic' %>
+    <%= render 'sidebar_box_help_hints' %>
+    <%= render 'sidebar_box_tips' %>
+    <%= render 'sidebar_box_count_info' %>
   </div>
 </div>

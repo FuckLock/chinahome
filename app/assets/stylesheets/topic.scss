@@ -123,3 +123,23 @@
     }
   }
 }
+
+.nav-node {
+  background: #f9f9f9;
+  .container {
+    ul {
+      .all-node {
+        margin-right: 15px;
+      }
+      #node-selector-button {
+        cursor: pointer;
+      }
+      li {
+        list-style: none;
+        padding-right: 15px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+      }
+    }
+  }
+}
