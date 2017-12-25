@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_action :find_sections, only: %i[index new recent]
+  before_action :find_sections, only: %i[index new recent no_reply]
 
   def new
     @topic = Topic.new
@@ -35,6 +35,11 @@ class TopicsController < ApplicationController
 
   def recent
     @topics = Topic.order(id: :desc).includes(:user)
+    render action: :index
+  end
+
+  def no_reply
+    @topics = Topic.no_reply
     render action: :index
   end
 

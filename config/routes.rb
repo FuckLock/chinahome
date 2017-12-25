@@ -9,7 +9,8 @@ Rails.application.routes.draw do
 
   resources :topics do
     collection  do
-      get 'recent'
+      get :recent
+      get :no_reply
     end
     resources :replies
     collection do
