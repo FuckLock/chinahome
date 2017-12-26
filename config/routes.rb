@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     root to: 'topics#index'
   end
 
+  get 'topics/node:id', to: 'topics#node', as: 'node_topics'
+
   resources :topics do
     collection  do
       get :recent
@@ -54,6 +56,10 @@ Rails.application.routes.draw do
     resources :users, path: ''
   end
 
-  get 'topics/node:id', to: 'topics#node', as: 'node_topics'
-
+  resources :nodes do
+    member do
+      post :unblock
+      post :block
+    end
+  end
 end

@@ -12,7 +12,7 @@
           <div class="node-list">
             <span class="media-left"><%= section.name %></span>
             <% section.nodes.each do |node| %>
-              <span class="node-name"><%= link_to(node.name, node_topics_path(node), title: node.name, data: { id: node.id }, class: "node-a")%></span>
+              <span class="node-name"><%= link_to(node.name, node_topics_path(node.id), title: node.name, data: { id: node.id }, class: "node-a")%></span>
             <% end %>
           </div>
         <% end %>

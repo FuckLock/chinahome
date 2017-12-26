@@ -14,4 +14,18 @@ window.App =
     $(to).before("<div class='alert alert-warning'><a class='close' href='#' data-dismiss='alert'><i class='fa fa-close'></i></a>#{msg}</div>")
 
 $(document).on 'ajax:error', '#new_user', (event, xhr, status, error) ->
-                                            App.alert(xhr.responseText, '#main')
+  App.alert(xhr.responseText, '#main')
+
+$(document).on 'click', '.button-block-node', (e) ->
+  btn = $(e.currentTarget)
+  nodeId = btn.data('id')
+  span = btn.find("span")
+  if btn.hasClass("active")
+    $.post("/nodes/#{nodeId}/unblock")
+    btn.removeClass('active')
+    span.text("忽略节点")
+  else
+    $.post("/nodes/#{nodeId}/block")
+    btn.addClass('active')
+    span.text("取消屏蔽")
+  return false

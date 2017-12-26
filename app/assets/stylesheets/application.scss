@@ -278,6 +278,10 @@ body {
     color: #aaa;
   }
   .node-name {
+    a {
+      text-decoration: none;
+      color: black;
+    }
     display: inline-block;
     width: 100px;
   }

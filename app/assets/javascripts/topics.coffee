@@ -10,11 +10,14 @@ class TopicView
 $(document).on 'click', '.node-a', (e) ->
   el = $(e.currentTarget)
   $("#node-selector").modal('hide')
-  $nodeName = $(e.currentTarget).text()
-  $nodeId = el.data('id')
-  $('#node-selector-button').html($nodeName)
-  $('#topic_node_id').val($nodeId)
-  return false
+  if $('.form input[name="topic[node_id]"]').length > 0
+    $nodeName = $(e.currentTarget).text()
+    $nodeId = el.data('id')
+    $('#node-selector-button').html($nodeName)
+    $('#topic_node_id').val($nodeId)
+    return false
+  else
+    return true
 
 $(document).on 'click', '.insert-codes',(e) ->
   link = $(e.currentTarget)

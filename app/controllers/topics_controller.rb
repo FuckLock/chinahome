@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
-  before_action :find_sections, only: %i[index new recent no_reply]
+  before_action :find_sections, only: %i[index new recent no_reply node]
 
   def new
     @topic = Topic.new
@@ -40,6 +40,12 @@ class TopicsController < ApplicationController
 
   def no_reply
     @topics = Topic.no_reply
+    render action: :index
+  end
+
+  def node
+    @node = Node.find_by(id: params[:id])
+    @topics = @node.topics
     render action: :index
   end
 

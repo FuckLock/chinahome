@@ -1,18 +1,31 @@
-<%= render 'node_selector' %>
-
 <% content_for :node_navbar do %>
   <div class="nav-node">
     <div class="container">
-      <ul class="row">
-        <li data-toggle="modal" data-target="#node-selector" id="node-selector-button">
-          <span class="all-node">所有节点</span><i class="fa fa-caret-right"></i>
-        </li>
-        <li></li>
-        <li>默认</li>
-        <li><i class="fa fa-diamond"></i> 优质帖子</li>
-        <li><%= link_to "无人问津", no_reply_topics_path %></li>
-        <li><%= link_to "最新发布", recent_topics_path %></li>
-      </ul>
+      <% if @node.present? %>
+        <div class="title">
+          <div class="node-name"><%= node.name %></div>
+          <div class="topic-total">共有<%= node.topics_count %>个讨论主题</div>
+          <% if current_user %>
+            <div class="igno-node">
+              <%= link_to raw('<i class="fa fa-eye-slash"></i><span>忽略节点</span>'), "#", class: "btn btn-default button-block-node", data: { id: node.id } %>
+            </div>
+          <% end %>
+        </div>
+        <div class="summary">
+          <%= raw(node.summary) %>
+        </div>
+      <% else %>
+        <%= render 'node_selector' %>
+        <ul class="row">
+          <li data-toggle="modal" data-target="#node-selector" id="node-selector-button">
+            <span class="all-node">所有节点</span><i class="fa fa-caret-right"></i>
+          </li>
+          <li><%= link_to "默认", topics_path %></li>
+          <li><i class="fa fa-diamond"></i> 优质帖子</li>
+          <li><%= link_to "无人问津", no_reply_topics_path %></li>
+          <li><%= link_to "最新发布", recent_topics_path %></li>
+        </ul>
+      <% end %>
     </div>
   </div>
 <% end %>
