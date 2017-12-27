@@ -1,12 +1,11 @@
 class NodesController < ApplicationController
 
   def block
-    debugger
-    a =1 
+      current_user.block_node(params[:id])
   end
 
   def unblock
-
+    current_user.unblock_node(params[:id])
   end
 
 end

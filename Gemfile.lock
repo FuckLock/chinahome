@@ -1,3 +1,8 @@
+PATH
+  remote: /Users/baodongdong/rails_projects/action_plugin
+  specs:
+    action_plugin (0.1.0)
+
 GEM
   remote: https://gems.ruby-china.org/
   specs:
@@ -315,6 +320,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  action_plugin!
   bootstrap (~> 4.0.0.beta2.1)
   byebug
   capybara

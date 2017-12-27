@@ -6,5 +6,6 @@ class Topic < ApplicationRecord
   has_many :replies
 
   scope :no_reply, -> { where(replies_count: 0) }
+  scope :exclude_column_ids, -> (ids) { where.not(node_id: ids) }
 
 end

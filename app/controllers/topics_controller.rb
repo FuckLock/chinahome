@@ -24,7 +24,12 @@ class TopicsController < ApplicationController
   end
 
   def index
-    @topics = Topic.includes(:node)
+    if current_user
+      ids = current_user.block_node_ids
+      @topics = Topic.exclude_column_ids(ids).includes(:node)
+    else
+      @topics = Topic.includes(:node)
+    end
   end
 
   def show

@@ -15,6 +15,8 @@ gem 'jquery-atwho-rails'
 
 gem 'newrelic_rpm'
 
+gem 'action_plugin', path: File.expand_path('../../action_plugin', __FILE__)
+
 # markdown
 gem 'redcarpet'
 # gem 'coderay'

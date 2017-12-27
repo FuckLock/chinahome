@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171223095426) do
+ActiveRecord::Schema.define(version: 20171227055702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "actions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "user_type"
+    t.string   "action_type"
+    t.string   "target_type"
+    t.integer  "target_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["target_type", "target_id", "action_type"], name: "index_actions_on_target_type_and_target_id_and_action_type", using: :btree
+    t.index ["user_type", "user_id", "action_type"], name: "index_actions_on_user_type_and_user_id_and_action_type", using: :btree
+  end
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "provider",                null: false

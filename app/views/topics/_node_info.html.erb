@@ -2,12 +2,14 @@
   <div class="nav-node">
     <div class="container">
       <% if @node.present? %>
+        <% block = "active"  if current_user.block_node?(@node.id) %>
+        <% span = current_user.block_node?(@node.id) ? "取消屏蔽" : "忽略节点" %>
         <div class="title">
           <div class="node-name"><%= node.name %></div>
           <div class="topic-total">共有<%= node.topics_count %>个讨论主题</div>
           <% if current_user %>
             <div class="igno-node">
-              <%= link_to raw('<i class="fa fa-eye-slash"></i><span>忽略节点</span>'), "#", class: "btn btn-default button-block-node", data: { id: node.id } %>
+              <%= link_to raw("<i class='fa fa-eye-slash'></i><span>#{span}</span>"), "#", class: "btn btn-default button-block-node #{block}", data: { id: node.id } %>
             </div>
           <% end %>
         </div>
