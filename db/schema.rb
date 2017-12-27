@@ -16,15 +16,15 @@ ActiveRecord::Schema.define(version: 20171227055702) do
   enable_extension "plpgsql"
 
   create_table "actions", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "user_type"
+    t.integer  "subject_id"
+    t.string   "subject_type"
     t.string   "action_type"
     t.string   "target_type"
     t.integer  "target_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["subject_type", "subject_id", "action_type"], name: "index_actions_on_subject_type_and_subject_id_and_action_type", using: :btree
     t.index ["target_type", "target_id", "action_type"], name: "index_actions_on_target_type_and_target_id_and_action_type", using: :btree
-    t.index ["user_type", "user_id", "action_type"], name: "index_actions_on_user_type_and_user_id_and_action_type", using: :btree
   end
 
   create_table "authorizations", force: :cascade do |t|
@@ -52,14 +52,6 @@ ActiveRecord::Schema.define(version: 20171227055702) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.index ["section_id"], name: "index_nodes_on_section_id", using: :btree
-  end
-
-  create_table "photos", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "image",      null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_photos_on_user_id", using: :btree
   end
 
   create_table "replies", force: :cascade do |t|

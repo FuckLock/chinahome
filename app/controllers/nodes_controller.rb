@@ -1,11 +1,13 @@
 class NodesController < ApplicationController
 
   def block
-      current_user.block_node(params[:id])
+    @node = Node.find_by(id: params[:id])
+    current_user.block_node(@node)
   end
 
   def unblock
-    current_user.unblock_node(params[:id])
+    @node = Node.find_by(id: params[:id])
+    current_user.unblock_node(@node)
   end
 
 end
