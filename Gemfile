@@ -15,6 +15,8 @@ gem 'jquery-atwho-rails'
 
 gem 'newrelic_rpm'
 
+gem 'action_plugin'
+
 # markdown
 gem 'redcarpet'
 # gem 'coderay'

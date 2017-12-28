@@ -10,7 +10,7 @@ class CreateActions < ActiveRecord::Migration[5.0]
       t.timestamps
     end
 
-    add_index :actions, %w[subject_type subject_id action_type]
-    add_index :actions, %w[target_type target_id action_type]
+    add_index :actions, %w[subject_id subject_type action_type]
+    add_index :actions, %w[target_id target_type action_type]
   end
 end

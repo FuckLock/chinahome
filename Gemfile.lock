@@ -1,6 +1,7 @@
 GEM
   remote: https://gems.ruby-china.org/
   specs:
+    action_plugin (0.1.0)
     actioncable (5.0.6)
       actionpack (= 5.0.6)
       nio4r (>= 1.2, < 3.0)
@@ -315,6 +316,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  action_plugin
   bootstrap (~> 4.0.0.beta2.1)
   byebug
   capybara

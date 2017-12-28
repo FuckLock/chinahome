@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171227055702) do
+ActiveRecord::Schema.define(version: 20171228185621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 20171227055702) do
     t.integer  "target_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["subject_type", "subject_id", "action_type"], name: "index_actions_on_subject_type_and_subject_id_and_action_type", using: :btree
-    t.index ["target_type", "target_id", "action_type"], name: "index_actions_on_target_type_and_target_id_and_action_type", using: :btree
+    t.index ["subject_id", "subject_type", "action_type"], name: "index_actions_on_subject_id_and_subject_type_and_action_type", using: :btree
+    t.index ["target_id", "target_type", "action_type"], name: "index_actions_on_target_id_and_target_type_and_action_type", using: :btree
   end
 
   create_table "authorizations", force: :cascade do |t|
@@ -52,6 +52,14 @@ ActiveRecord::Schema.define(version: 20171227055702) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.index ["section_id"], name: "index_nodes_on_section_id", using: :btree
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "image",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_photos_on_user_id", using: :btree
   end
 
   create_table "replies", force: :cascade do |t|

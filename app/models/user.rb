@@ -2,6 +2,7 @@ require "digest/md5"
 
 class User < ApplicationRecord
   include OmniauthCallbacks
+  include BlockPlugin
 
   mount_uploader :avatar, AvatarUploader
   second_level_cache expires_in: 2.weeks
@@ -12,11 +13,6 @@ class User < ApplicationRecord
   has_many :authorizations, dependent: :destroy
   has_many :topics
   has_many :replies
-  has_many :block_node_actions, -> { where(subject_type: "User", action_type: "block", target_type: "Node") },
-   class_name: "Action",
-   foreign_key: 'subject_id'
-
-  has_many :block_nodes, through: :block_node_actions, source: :target, source_type: 'Node'
 
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
@@ -49,40 +45,6 @@ class User < ApplicationRecord
 
   def admin?
     Setting.has_admin?(email)
-  end
-
-  def block_node(target)
-    subject_type = self.class.name
-    target_type = target.class.name
-    Action.find_or_create_by(
-      subject_id: self.id,
-      subject_type: subject_type,
-      action_type: "block",
-      target_id: target.id,
-      target_type: target_type
-    )
-  end
-
-  def block_node? target
-    action = find_action(target)
-    action.present?
-  end
-
-  def unblock_node target
-    action = find_action(target)
-    action.destroy
-  end
-
-  def find_action(target)
-    subject_type = self.class.name
-    target_type = target.class.name
-    action =  Action.find_by(
-      subject_id: self.id,
-      subject_type: subject_type,
-      action_type: "block",
-      target_id: target.id,
-      target_type: target_type
-    )
   end
 
 end
