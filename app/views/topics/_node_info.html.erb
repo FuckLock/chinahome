@@ -2,8 +2,10 @@
   <div class="nav-node">
     <div class="container">
       <% if @node.present? %>
-        <% block = "active"  if current_user.block_node?(@node) %>
-        <% span = current_user.block_node?(@node) ? "取消屏蔽" : "忽略节点" %>
+        <% if current_user %>
+          <% block = "active"  if current_user.block_node?(@node) %>
+          <% span = current_user.block_node?(@node) ? "取消屏蔽" : "忽略节点" %>
+        <% end %>
         <div class="title">
           <div class="node-name"><%= node.name %></div>
           <div class="topic-total">共有<%= node.topics_count %>个讨论主题</div>

@@ -54,6 +54,23 @@ class TopicsController < ApplicationController
     render action: :index
   end
 
+  def like
+    @topic = Topic.find_by(id: params[:id])
+    current_user.like_topic(@topic)
+    render json: {
+      data: @topic.like_users.count
+    }
+  end
+
+  def unlike
+    @topic = Topic.find_by(id: params[:id])
+    current_user.unlike_topic(@topic)
+    render json: {
+      data: @topic.like_users.count
+    }
+  end
+
+
   private
   def find_sections
     @sections = Section.includes(:nodes)

@@ -2,7 +2,7 @@ require "digest/md5"
 
 class User < ApplicationRecord
   include OmniauthCallbacks
-  include BlockPlugin
+  include Actionable
 
   mount_uploader :avatar, AvatarUploader
   second_level_cache expires_in: 2.weeks

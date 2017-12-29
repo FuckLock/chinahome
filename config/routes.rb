@@ -19,6 +19,10 @@ Rails.application.routes.draw do
       get :feed
       post :preview
     end
+    member do
+      post :unlike
+      post :like
+    end
   end
 
   devise_for :users, path: 'account', controllers: {
