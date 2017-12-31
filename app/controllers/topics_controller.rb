@@ -1,4 +1,8 @@
 class TopicsController < ApplicationController
+  include UsersHelper
+  include ActionView::Helpers::AssetTagHelper
+  include ActionView::Helpers::UrlHelper
+
   before_action :find_sections, only: %i[index new recent no_reply node]
 
   def new
@@ -58,7 +62,10 @@ class TopicsController < ApplicationController
     @topic = Topic.find_by(id: params[:id])
     current_user.like_topic(@topic)
     render json: {
-      data: @topic.like_users.count
+      data: {
+        like_users_count: @topic.like_users.count,
+        like_users: user_avatar_tag(@topic.like_users, :xs, link: true)
+      }
     }
   end
 
@@ -66,12 +73,15 @@ class TopicsController < ApplicationController
     @topic = Topic.find_by(id: params[:id])
     current_user.unlike_topic(@topic)
     render json: {
-      data: @topic.like_users.count
+      data: {
+        like_users_count: @topic.like_users.count,
+        like_users: user_avatar_tag(@topic.like_users, :xs, link: true)
+      }
     }
   end
 
-
   private
+
   def find_sections
     @sections = Section.includes(:nodes)
   end

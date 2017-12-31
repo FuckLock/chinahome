@@ -294,5 +294,14 @@ body {
   }
   .active {
     color: #e76f3c;
+    .fa-heart {
+    -webkit-animation: myactive .3s;
+    }
   }
+}
+
+@-webkit-keyframes myactive
+{
+  from {font-size: 14px;}
+  to {font-size: 20px;}
 }

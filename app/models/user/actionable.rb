@@ -6,6 +6,5 @@ class User
       action_plugin :User, :block, :Node
       action_plugin :User, :like, :Topic
     end
-
   end
 end

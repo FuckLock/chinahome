@@ -6,6 +6,23 @@ class TopicView
   resetClearReplyHightTimer: ->
     clearHightTimer = setTimeout('$(".reply").removeClass("light")',10000)
 
+  initializeLikeable: ->
+    $('[data-toggle="popover"]').popover(
+      container: "body",
+      trigger: "hover",
+      html: true,
+      placement: 'bottom',
+      delay:
+        hide: 100
+    ).on('shown.bs.popover', (event) ->
+      $('.popover').attr('in', true)
+    ).on('mouseleave', (event) ->
+      $('.popover').removeAttr('in')
+      $('.popover').popover('hide')
+    ).on('hide.bs.popover', (event) ->
+      if ($('.popover').attr('in'))
+        event.preventDefault()
+    )
 
 $(document).on 'click', '.node-a', (e) ->
   el = $(e.currentTarget)

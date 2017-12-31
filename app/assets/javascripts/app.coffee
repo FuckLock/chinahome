@@ -8,13 +8,18 @@
 #= require jquery.atwho
 #= require form_storage
 
-window.App =
+class App
+  isLogined: ->
+    document.getElementsByName('current-user').length > 0
+    
   alert : (msg,to) ->
     $(".alert").remove()
     $(to).before("<div class='alert alert-warning'><a class='close' href='#' data-dismiss='alert'><i class='fa fa-close'></i></a>#{msg}</div>")
 
+app = new App()
+
 $(document).on 'ajax:error', '#new_user', (event, xhr, status, error) ->
-  App.alert(xhr.responseText, '#main')
+  app.alert(xhr.responseText, '#main')
 
 $(document).on 'click', '.button-block-node', (e) ->
   btn = $(e.currentTarget)
@@ -31,12 +36,19 @@ $(document).on 'click', '.button-block-node', (e) ->
   return false
 
 $(document).on 'click', '.buttons-heart', (e) ->
+  if !app.isLogined()
+    location.href = '/account/sign_in'
+    return false
   btn = $(e.currentTarget)
   topicId = btn.data('id')
   span = btn.find("span")
+  popover = $('[data-toggle="popover"]')
+  popover.popover('hide')
   if btn.hasClass("active")
     $.post("/topics/#{topicId}/unlike", (data) ->
-      likeTopicCount = data.data
+      data = data.data
+      likeTopicCount = data.like_users_count
+      popover.attr('data-content', data.like_users)
       if  likeTopicCount > 0
         span.text(" #{likeTopicCount} 个 赞")
       else
@@ -45,8 +57,10 @@ $(document).on 'click', '.buttons-heart', (e) ->
     btn.removeClass('active')
   else
     $.post("/topics/#{topicId}/like", (data) ->
-      likeTopicCount = data.data
-      if data.data > 0
+      data = data.data
+      likeTopicCount = data.like_users_count
+      popover.attr('data-content', data.like_users)
+      if likeTopicCount > 0
         span.text(" #{likeTopicCount} 个 赞")
       else
         span.text("")

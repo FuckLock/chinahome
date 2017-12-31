@@ -43,20 +43,20 @@ module ApplicationHelper
   def insert_code_menu_items_tag
     lang_list = []
     LANGUAGES_LISTS.each do |k, l|
-      lang_list << content_tag(:li, raw(link_to raw(k), "#", data: { lang: l }, class: "dropdown-item insert-codes"))
+      lang_list << content_tag(:li, raw(link_to(raw(k), "#", data: { lang: l }, class: "dropdown-item insert-codes")))
     end
     raw lang_list.join(EMPTY_STRING)
   end
 
-  def markdown text
+  def markdown(text)
     options = {
-      :autolink => true,
-      :space_after_headers => true,
-      :fenced_code_blocks => true,
-      :no_intra_emphasis => true,
-      :hard_wrap => true,
-      :strikethrough =>true,
-      :disable_indented_code_blocks => true
+      autolink: true,
+      space_after_headers: true,
+      fenced_code_blocks: true,
+      no_intra_emphasis: true,
+      hard_wrap: true,
+      strikethrough: true,
+      disable_indented_code_blocks: true
     }
     renderer = HTMLwithPygments.new(hard_wrap: true, filter_html: true)
     raw(Redcarpet::Markdown.new(renderer, options).render(text))

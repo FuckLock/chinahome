@@ -46,5 +46,4 @@ class User < ApplicationRecord
   def admin?
     Setting.has_admin?(email)
   end
-
 end

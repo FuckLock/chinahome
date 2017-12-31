@@ -1,10 +1,15 @@
 <div class="buttons">
   <% if current_user %>
     <% active = "active" if current_user.like_topic?(@topic) %>
-    <% like = " #{@topic.like_users.count} 个 赞" if @topic.like_users.present? %>
+  <% end %>
+  <% if @topic.like_users.present? %>
+    <% like = " #{@topic.like_users.count} 个 赞" %>
   <% end %>
   <ul>
-    <li><%= link_to raw("<i class='fa fa fa-heart'></i><span>#{like}</span>"), "#", class: " buttons-heart #{active}", data: { id: topic.id } %></li>
+    <li data-toggle="popover" data-content='<%= user_avatar_tag(@topic.like_users, :xs, link: true) %>'>
+      <%= link_to raw("<i class='fa fa fa-heart'></i><span>#{like}</span>"), "#",
+          class: " buttons-heart #{active}", data: { id: topic.id } %>
+    </li>
     <li><i class="fa fa-bookmark"></i>收藏</li>
     <li><i class="fa fa-angle-double-up"></i>置顶</li>
     <li><i class="fa fa-diamond"></i>加精</li>
@@ -16,3 +21,7 @@
     </div>
   </ul>
 </div>
+
+<script type="text/javascript">
+  topicView.initializeLikeable()
+</script>

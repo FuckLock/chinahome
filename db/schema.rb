@@ -54,14 +54,6 @@ ActiveRecord::Schema.define(version: 20171228185621) do
     t.index ["section_id"], name: "index_nodes_on_section_id", using: :btree
   end
 
-  create_table "photos", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "image",      null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_photos_on_user_id", using: :btree
-  end
-
   create_table "replies", force: :cascade do |t|
     t.integer  "user_id",                         null: false
     t.integer  "topic_id",                        null: false
