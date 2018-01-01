@@ -22,6 +22,8 @@ Rails.application.routes.draw do
     member do
       post :unlike
       post :like
+      post :collect
+      post :uncollect
     end
   end
 
@@ -53,7 +55,12 @@ Rails.application.routes.draw do
     resources :users
     resources :sections
     resources :nodes
-    resources :topics
+    resources :topics do
+      member do
+        post :suggest
+        post :unsuggest
+      end
+    end
   end
 
   constraints(id: /[#{User::LOGIN_FORMAT}]*/) do

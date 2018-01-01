@@ -80,6 +80,16 @@ class TopicsController < ApplicationController
     }
   end
 
+  def collect
+    @topic = Topic.find_by(id: params[:id])
+    current_user.collect_topic(@topic)
+  end
+
+  def uncollect
+    @topic = Topic.find_by(id: params[:id])
+    current_user.uncollect_topic(@topic)
+  end
+
   private
 
   def find_sections

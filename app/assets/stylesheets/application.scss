@@ -294,8 +294,8 @@ body {
   }
   .active {
     color: #e76f3c;
-    .fa-heart {
-    -webkit-animation: myactive .3s;
+    .fa-heart, .fa-bookmark {
+      -webkit-animation: myactive .3s;
     }
   }
 }

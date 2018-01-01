@@ -1,17 +1,17 @@
 <div class="buttons">
-  <% if current_user %>
-    <% active = "active" if current_user.like_topic?(@topic) %>
-  <% end %>
-  <% if @topic.like_users.present? %>
-    <% like = " #{@topic.like_users.count} 个 赞" %>
-  <% end %>
   <ul>
-    <li data-toggle="popover" data-content='<%= user_avatar_tag(@topic.like_users, :xs, link: true) %>'>
-      <%= link_to raw("<i class='fa fa fa-heart'></i><span>#{like}</span>"), "#",
-          class: " buttons-heart #{active}", data: { id: topic.id } %>
-    </li>
-    <li><i class="fa fa-bookmark"></i>收藏</li>
-    <li><i class="fa fa-angle-double-up"></i>置顶</li>
+    <%= like_topic_tag %>
+    <%= collect_topic_tag %>
+    <% if current_user && current_user.admin?  %>
+      <li>
+        <% if @topic.suggested_at.present?  %>
+          <%= link_to raw("<i class='fa fa-angle-double-up'></i> 取消"), unsuggest_admin_topic_path(@topic), method: :post, remote: true %>
+        <% else %>
+          <%= link_to raw('<i class="fa fa-angle-double-up"></i>置顶'),
+              suggest_admin_topic_path(@topic), method: :post, remote: true %>
+        <% end %>
+      </li>
+    <% end %>
     <li><i class="fa fa-diamond"></i>加精</li>
     <li><i class="fa fa-ban"></i>屏蔽</li>
     <div class="pull-right">

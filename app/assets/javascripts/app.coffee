@@ -11,7 +11,7 @@
 class App
   isLogined: ->
     document.getElementsByName('current-user').length > 0
-    
+
   alert : (msg,to) ->
     $(".alert").remove()
     $(to).before("<div class='alert alert-warning'><a class='close' href='#' data-dismiss='alert'><i class='fa fa-close'></i></a>#{msg}</div>")
@@ -35,7 +35,7 @@ $(document).on 'click', '.button-block-node', (e) ->
     span.text("取消屏蔽")
   return false
 
-$(document).on 'click', '.buttons-heart', (e) ->
+$(document).on 'click', '.button-heart', (e) ->
   if !app.isLogined()
     location.href = '/account/sign_in'
     return false
@@ -65,5 +65,19 @@ $(document).on 'click', '.buttons-heart', (e) ->
       else
         span.text("")
     )
+    btn.addClass('active')
+  return false
+
+$(document).on 'click', '.button-collect', (e) ->
+  if !app.isLogined()
+    location.href = '/account/sign_in'
+    return false
+  btn = $(e.currentTarget)
+  topicId = btn.data('id')
+  if btn.hasClass('active')
+    $.post("/topics/#{topicId}/uncollect")
+    btn.removeClass('active')
+  else
+    $.post("/topics/#{topicId}/collect")
     btn.addClass('active')
   return false
