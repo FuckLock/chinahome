@@ -42,8 +42,7 @@ $(document).on 'click', '.button-heart', (e) ->
   btn = $(e.currentTarget)
   topicId = btn.data('id')
   span = btn.find("span")
-  popover = $('[data-toggle="popover"]')
-  popover.popover('hide')
+  popover = $('[data-toggle="popover"]').popover('hide')
   if btn.hasClass("active")
     $.post("/topics/#{topicId}/unlike", (data) ->
       data = data.data

@@ -3,17 +3,13 @@
     <%= like_topic_tag %>
     <%= collect_topic_tag %>
     <% if current_user && current_user.admin?  %>
-      <li>
-        <% if @topic.suggested_at.present?  %>
-          <%= link_to raw("<i class='fa fa-angle-double-up'></i> 取消"), unsuggest_admin_topic_path(@topic), method: :post, remote: true %>
-        <% else %>
-          <%= link_to raw('<i class="fa fa-angle-double-up"></i>置顶'),
-              suggest_admin_topic_path(@topic), method: :post, remote: true %>
-        <% end %>
-      </li>
+      <%= suggest_topic_tag %>
+      <%= excellent_topic_tag %>
     <% end %>
-    <li><i class="fa fa-diamond"></i>加精</li>
-    <li><i class="fa fa-ban"></i>屏蔽</li>
+    <li>
+      <%= link_to raw('<i class="fa fa-ban"></i>屏蔽'),
+          ban_admin_topic_path(@topic), method: :post, remote: true %>
+    </li>
     <div class="pull-right">
       <li><i class="fa fa-check"></i></li>
       <li><i class="fa fa-pencil"></i></li>

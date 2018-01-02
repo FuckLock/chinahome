@@ -1,0 +1,7 @@
+$('.alert-excelllent').remove();
+$('#main').prepend("<%= j render 'admin/topics/alert_excellent', target: @msg %>");
+$(".alert-excell").remove();
+var buttons = $("<%= j render 'topics/buttons' %>");
+var dom = $("<%= j render 'replies/reply', reply: @reply %>");
+$('.panel-footer .buttons').html($(buttons).html());
+$(".reply-all").append(dom);

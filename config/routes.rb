@@ -59,6 +59,11 @@ Rails.application.routes.draw do
       member do
         post :suggest
         post :unsuggest
+        post :excellent
+        post :unexcellent
+        post :ban
+        post :unban
+        post :action
       end
     end
   end

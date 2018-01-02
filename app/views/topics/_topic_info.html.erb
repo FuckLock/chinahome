@@ -1,4 +1,4 @@
-<% cache([:topic_info, @topic]) do %>
+<% cache([:topic_info, @topic.updated_at]) do %>
   <div class="topic-info">
     <div class="topic-info-left">
       <div>
@@ -13,4 +13,8 @@
       <%= user_avatar_tag current_user, :md %>
     </div>
   </div>
+<% end %>
+
+<% if @topic.excellent == 1 %>
+  <%= render 'admin/topics/excellent' %>
 <% end %>

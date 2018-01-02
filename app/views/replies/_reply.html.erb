@@ -1,19 +1,53 @@
-<div class="reply">
-  <div class="reply-left">
-    <%= user_avatar_tag reply.user, :md, link: true %>
-  </div>
+<% if reply.action.blank? %>
+  <div class="reply">
+    <div class="reply-left">
+      <%= user_avatar_tag reply.user, :md, link: true %>
+    </div>
 
-  <div class="reply-right">
-     <div class="reply-right-top">
-       <div class="reply-user"><%= reply.user.login %></div>
-       <div class="reply-button">
-         <i class="fa fa-pencil"></i>
-         <i class="fa fa-mail-reply"></i>
-         <i class="fa fa-heart"></i>
+    <div class="reply-right">
+       <div class="reply-right-top">
+         <div class="reply-user"><%= reply.user.login %></div>
+         <div class="reply-button">
+           <i class="fa fa-pencil"></i>
+           <i class="fa fa-mail-reply"></i>
+           <i class="fa fa-heart"></i>
+         </div>
        </div>
-     </div>
-     <div class="reply-body">
-       <%= reply.body_html %>
-     </div>
+       <div class="reply-body">
+         <%= reply.body_html %>
+       </div>
+    </div>
   </div>
-</div>
+<% end %>
+
+<% if reply.action == "excellent" %>
+  <div class="reply">
+    <div class="reply-left">
+      <%= user_avatar_tag reply.user, :xs, link: true %>
+    </div>
+
+    <div class="reply-right">
+       <div class="reply-right-top">
+         <div class="reply-user">
+           <span class="admin-reply"><%= reply.user.login %>  将本帖设为了精华贴</span>
+         </div>
+       </div>
+    </div>
+  </div>
+<% end %>
+
+<% if reply.action == "unexcellent" %>
+  <div class="reply">
+    <div class="reply-left">
+      <%= user_avatar_tag reply.user, :xs, link: true %>
+    </div>
+
+    <div class="reply-right">
+       <div class="reply-right-top">
+         <div class="reply-user">
+           <span class="admin-reply"><%= reply.user.login %>  取消了精华贴</span>
+         </div>
+       </div>
+    </div>
+  </div>
+<% end %>

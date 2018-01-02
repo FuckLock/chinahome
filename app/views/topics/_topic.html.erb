@@ -6,7 +6,11 @@
   <div class="topic-body">
     <div>
       <span class="node-name"><%= topic.node.name %></span>
-      <span class="topic-title"><%= link_to topic.title, topic_path(topic) %></span>
+      <span class="topic-title"><%= link_to topic.title, topic_path(topic) %>
+        <% if topic.excellent == 1  %>
+          <i class="fa fa-diamond"></i>
+        <% end %>
+      </span>
     </div>
     <div class="topic-info">
       <%= current_user.login %> . 发布于<%= topic.created_at.to_date %>

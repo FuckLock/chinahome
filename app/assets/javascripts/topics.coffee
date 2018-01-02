@@ -15,13 +15,15 @@ class TopicView
       delay:
         hide: 100
     ).on('shown.bs.popover', (event) ->
-      $('.popover').attr('in', true)
-    ).on('mouseleave', (event) ->
-      $('.popover').removeAttr('in')
-      $('.popover').popover('hide')
-    ).on('hide.bs.popover', (event) ->
-      if ($('.popover').attr('in'))
-        event.preventDefault()
+        $('.popover').on('mouseenter', () ->
+          $('.popover').attr('in', true)
+        ).on('mouseleave', () ->
+          $('.popover').removeAttr('in')
+          $('.popover').popover('hide')
+        )
+      ).on('hide.bs.popover', (event) ->
+        if ($('.popover').attr('in'))
+          event.preventDefault()
     )
 
 $(document).on 'click', '.node-a', (e) ->

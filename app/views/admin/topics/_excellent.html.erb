@@ -1,0 +1,7 @@
+<div class="alert alert-warning alert-dismissible fade show alert-excell" role="alert">
+  <i class="fa fa-diamond awesome"></i>本帖已被设为精华帖！
+  <div class="pull-right">
+    <%= link_to raw('<i class="fa fa-close"></i>'),
+        unexcellent_admin_topic_path(@topic), method: :post, remote: true %>
+  </div>
+</div>

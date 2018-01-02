@@ -16,6 +16,10 @@
       .reply-user {
         color: black;
         font-weight: bold;
+        .admin-reply {
+          font-size: 12px;
+          color: #666;
+        }
       }
       .reply-button {
         float: right;
