@@ -1,15 +1,18 @@
 <div class="modal fade ban-modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <%= simple_form_for '', url: action_admin_topic_path(@topic), method: :post, remote: true do |f| %>
+      <%= simple_form_for '', url: action_admin_topic_path(@topic, type: "ban"), method: :post, remote: true do |f| %>
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <%= f.input :title, as: :select, label: '选择原因' %>
-          <%= f.input :reason, as: :text, input_html: { rows: 4 }, label: '手工原因' %>
+          <% reasons = Setting.ban_reason_list %>
+          <%= f.input :reason, as: :select, label: '选择原因',
+              collection: reasons.collect { |s| [s, s] }, selected: reasons[0],
+              input_html: { onchange: "$('.ban-modal textarea').val($(this).val())" } %>
+          <%= f.input :reason_text, as: :text, input_html: { rows: 4 }, label: '手工原因' %>
         <div class="modal-footer">
           <%= f.submit "确定", class: "btn btn-primary" %>
           <a class="btn btn-default" data-dismiss="modal">取消</a>

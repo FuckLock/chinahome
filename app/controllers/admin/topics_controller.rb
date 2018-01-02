@@ -30,14 +30,18 @@ class Admin::TopicsController < Admin::ApplicationController
   end
 
   def ban
-
   end
 
   def unban
-
   end
 
-
+  def action
+    case params[:type]
+    when "ban"
+      params[:reason_text] ||= params[:reason] || ""
+      render partial: 'banban'
+    end
+  end
 
   def set_topic
     @topic = Topic.unscoped.find(params[:id])

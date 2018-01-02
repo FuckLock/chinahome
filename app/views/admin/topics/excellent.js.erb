@@ -4,3 +4,4 @@ $('.topic-info').after("<%= j render 'admin/topics/excellent' %>");
 $('.excell-li').remove();
 var dom = $("<%= j render 'replies/reply', reply: @reply %>");
 $(".reply-all").append(dom);
+$('html,body').animate({ scrollTop:0 },5);

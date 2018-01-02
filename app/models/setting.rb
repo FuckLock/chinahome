@@ -49,5 +49,9 @@ class Setting < RailsSettings::Base
       return false if self.admin_emails.blank?
       self.admin_emails.split(SEPARATOR_REGEXP).include?(email)
     end
+
+    def ban_reason_list
+      (self.ban_reasons || "").split("\n")
+    end
   end
 end
