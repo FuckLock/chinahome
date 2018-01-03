@@ -6,10 +6,6 @@ class ApplicationController < ActionController::Base
     @turbolinks_ap ||= request.user_agent.to_s.include?("turbolinks-app")
   end
 
-  before_action do
-    resource = controller_name.singularize.to_sym
-  end
-
   def require_no_sso!
     redirect_to auth_sso_path if Setting.sso_enabled?
   end
@@ -24,11 +20,9 @@ class ApplicationController < ActionController::Base
     method = "#{resource}_params"
     params[resource] &&= send(method) if respond_to?(method, true)
     devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(*User::ACCESSABLE_ATTRS) } if devise_controller?
+
+    User.current = current_user
   end
 
-  # def configure_permitted_parameters
-  #   devise_parameter_sanitizer.permit(:sign_up) do |user|
-  #     user.permit(:login, :name, :email_public, :email, :password, :password_confirmation)
-  #   end
-  # end
+
 end

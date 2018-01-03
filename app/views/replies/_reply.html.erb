@@ -18,9 +18,7 @@
        </div>
     </div>
   </div>
-<% end %>
-
-<% if reply.action == "excellent" %>
+<% else %>
   <div class="reply">
     <div class="reply-left">
       <%= user_avatar_tag reply.user, :xs, link: true %>
@@ -29,14 +27,14 @@
     <div class="reply-right">
        <div class="reply-right-top">
          <div class="reply-user">
-           <span class="admin-reply"><%= reply.user.login %>  将本帖设为了精华贴</span>
+           <span class="admin-reply"><%= reply.user.login %> <%= reply.body %></span>
          </div>
        </div>
     </div>
   </div>
 <% end %>
 
-<% if reply.action == "unexcellent" %>
+<% if reply.action == "ban" %>
   <div class="reply">
     <div class="reply-left">
       <%= user_avatar_tag reply.user, :xs, link: true %>
@@ -45,7 +43,7 @@
     <div class="reply-right">
        <div class="reply-right-top">
          <div class="reply-user">
-           <span class="admin-reply"><%= reply.user.login %>  取消了精华贴</span>
+           <span class="admin-reply"><%= reply.user.login %>  <%= reply.ban_title %> </span>
          </div>
        </div>
     </div>

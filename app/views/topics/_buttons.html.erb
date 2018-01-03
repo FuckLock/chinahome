@@ -5,14 +5,21 @@
     <% if current_user && current_user.admin?  %>
       <%= suggest_topic_tag %>
       <%= excellent_topic_tag %>
+      <% if @topic.node_name != "NoPoint" %>
+        <%= ban_topic_tag %>
+      <% end %>
     <% end %>
-    <li>
-      <%= link_to raw('<i class="fa fa-ban"></i>屏蔽'),
-          ban_admin_topic_path(@topic), method: :post, remote: true %>
-    </li>
     <div class="pull-right">
-      <li><i class="fa fa-check"></i></li>
-      <li><i class="fa fa-pencil"></i></li>
+      <li>
+        <% if @topic.discuss %>
+          <%= link_to raw('<i class="fa fa-check"></i>'),
+            action_admin_topic_path(@topic, type: "close"), method: :post, remote: true %>
+        <% else %>
+          <%= link_to raw('<i class="fa fa-undo"></i>'),
+            action_admin_topic_path(@topic, type: "open"), method: :post, remote: true %>
+        <% end %>
+      </li>
+      <li><%= link_to raw('<i class="fa fa-pencil"></i>'), edit_topic_path(@topic) %></li>
       <li><i class="fa fa-trash"></i></li>
     </div>
   </ul>

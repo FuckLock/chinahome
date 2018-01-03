@@ -1,0 +1,9 @@
+$('.alert-action').remove();
+$('.alert-close').remove();
+$('#main').prepend("<%= j render 'admin/topics/alert_action', target: @msg %>");
+var dom = $("<%= j render 'replies/reply', reply: @reply %>")
+$(".reply-all").append(dom);
+var buttons = $("<%= j render 'topics/buttons', topic: @topic %>")
+$('.buttons-footer').html(buttons)
+$('.topic-show-editor').show();
+$('html,body').animate({ scrollTop:0 },5);

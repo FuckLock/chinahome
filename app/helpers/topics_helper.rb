@@ -36,4 +36,10 @@ module TopicsHelper
                       excellent_admin_topic_path(@topic), method: :post, remote: true
     raw(content_tag("li", content, class: "excell-li"))
   end
+
+  def ban_topic_tag
+    content = link_to raw('<i class="fa fa-ban"></i>屏蔽'),
+        ban_admin_topic_path(@topic), method: :post, remote: true
+    raw(content_tag("li", content, class: "ban-li"))
+  end
 end

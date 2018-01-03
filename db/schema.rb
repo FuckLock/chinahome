@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180102033209) do
+ActiveRecord::Schema.define(version: 20180103090847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,14 @@ ActiveRecord::Schema.define(version: 20180102033209) do
     t.index ["section_id"], name: "index_nodes_on_section_id", using: :btree
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "image",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_photos_on_user_id", using: :btree
+  end
+
   create_table "replies", force: :cascade do |t|
     t.integer  "user_id",                         null: false
     t.integer  "topic_id",                        null: false
@@ -67,6 +75,7 @@ ActiveRecord::Schema.define(version: 20180102033209) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "action"
+    t.string   "ban_title"
     t.index ["topic_id"], name: "index_replies_on_topic_id", using: :btree
     t.index ["user_id"], name: "index_replies_on_user_id", using: :btree
   end
@@ -113,6 +122,7 @@ ActiveRecord::Schema.define(version: 20180102033209) do
     t.datetime "deleted_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "discuss",               default: true
     t.index ["excellent"], name: "index_topics_on_excellent", using: :btree
     t.index ["last_active_mark"], name: "index_topics_on_last_active_mark", using: :btree
     t.index ["likes_count"], name: "index_topics_on_likes_count", using: :btree

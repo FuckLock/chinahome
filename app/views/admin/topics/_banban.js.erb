@@ -1,1 +1,6 @@
 $('.ban-modal').modal('hide')
+$('#main').prepend("<%= j render 'admin/topics/alert_action', target: @msg %>");
+$('.ban-li').remove();
+$('.panel-topic').after("<%= j render 'admin/topics/alert_nopoint', target: @reply %>");
+var dom = $("<%= j render 'replies/reply', reply: @reply %>")
+$(".reply-all").append(dom);

@@ -1,5 +1,5 @@
 class Admin::TopicsController < Admin::ApplicationController
-  before_action :set_topic, only: %i[suggest unsuggest excellent unexcellent ban unban]
+  before_action :set_topic, only: %i[suggest unsuggest excellent unexcellent ban unban action]
 
   def index
     @topics = Topic.all
@@ -16,16 +16,12 @@ class Admin::TopicsController < Admin::ApplicationController
   end
 
   def excellent
-    @topic.update_attribute(:excellent, 1)
-    @reply = Reply.new(user_id: current_user.id, topic_id: @topic.id, action: "excellent", body: "")
-    @reply.save(validate: false)
+    @reply = @topic.excellent!
     @msg = "加精成功"
   end
 
   def unexcellent
-    @topic.update_attribute(:excellent, 0)
-    @reply = Reply.new(user_id: current_user.id, topic_id: @topic.id, action: "unexcellent", body: "")
-    @reply.save(validate: false)
+    @reply = @topic.unexcellent!
     @msg = "加精已经取消"
   end
 
@@ -38,9 +34,21 @@ class Admin::TopicsController < Admin::ApplicationController
   def action
     case params[:type]
     when "ban"
-      params[:reason_text] ||= params[:reason] || ""
+      params[:reason] ||= ""
+      params[:reason_text] ||= ""
+      @reply = @topic.ban!(reason: params[:reason],reason_text: params[:reason_text])
+      @msg = "已转移到 NoPoint 节点。"
       render partial: 'banban'
+    when "close"
+      @reply = @topic.close!
+      @msg = "话题已关闭，将不再接受任何新的回复。"
+      render partial: 'close'
+    when "open"
+      @reply = @topic.open!
+      @msg = "话题已重启开启。"
+      render partial: 'open'
     end
+
   end
 
   def set_topic

@@ -1,7 +1,10 @@
 $('.alert-action').remove();
+$('.alert_close').remove();
 $('#main').prepend("<%= j render 'admin/topics/alert_action', target: @msg %>");
-$('.topic-info').after("<%= j render 'admin/topics/excellent' %>");
-$('.excell-li').remove();
 var dom = $("<%= j render 'replies/reply', reply: @reply %>");
+var buttons = $("<%= j render 'topics/buttons', topic: @topic %>")
+$('.buttons-footer').html(buttons)
 $(".reply-all").append(dom);
+$('.topic-show-editor').hide();
+$('.reply-info').after("<%= j render 'admin/topics/alert_close' %>");
 $('html,body').animate({ scrollTop:0 },5);

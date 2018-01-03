@@ -29,7 +29,7 @@ class TopicView
 $(document).on 'click', '.node-a', (e) ->
   el = $(e.currentTarget)
   $("#node-selector").modal('hide')
-  if $('.form input[name="topic[node_id]"]').length > 0
+  if $('form input[name="topic[node_id]"]').length > 0
     $nodeName = $(e.currentTarget).text()
     $nodeId = el.data('id')
     $('#node-selector-button').html($nodeName)

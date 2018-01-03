@@ -3,7 +3,7 @@ class TopicsController < ApplicationController
   include ActionView::Helpers::AssetTagHelper
   include ActionView::Helpers::UrlHelper
 
-  before_action :find_sections, only: %i[index new recent no_reply node]
+  before_action :find_sections, only: %i[index new recent no_reply node edit]
 
   def new
     @topic = Topic.new
@@ -20,6 +20,7 @@ class TopicsController < ApplicationController
   def create
     @topic = Topic.new(topic_params)
     @topic.user_id = current_user.id
+    @topic.node_name = Node.find_by(id: topic_params[:node_id]).name
     @topic.save
   end
 
@@ -40,6 +41,21 @@ class TopicsController < ApplicationController
     @topic = Topic.find_by(id: params[:id])
     @reply = Reply.new
     @replies = Reply.where(topic_id: @topic.id)
+    @ban_reply = @topic.replies.where(action: "ban").order('id desc').limit(1).first
+  end
+
+  def edit
+    @topic = Topic.find_by(id: params[:id])
+  end
+
+  def update
+    @topic = Topic.find_by(id: params[:id])
+    @topic.node_name = Node.find_by(id: topic_params[:node_id]).name
+    @topic.node_id = topic_params[:node_id]
+    @topic.title = topic_params[:title]
+    @topic.body = topic_params[:body]
+    @topic.save
+    render action: :index
   end
 
   def recent
