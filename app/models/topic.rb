@@ -8,23 +8,35 @@ class Topic < ApplicationRecord
   scope :no_reply, -> { where(replies_count: 0) }
   scope :exclude_column_ids, ->(ids) { where.not(node_id: ids) }
 
+  def place_top!
+    transaction do
+      update_attribute(:place_top, true)
+    end
+  end
+
+  def cancel!
+    transaction do
+      update_attribute(:place_top, false)
+    end
+  end
+
   def excellent!
     transaction do
-      update_attribute(:excellent, 1)
+      update_attribute(:excellent, true)
       Reply.create_action(topic_id: self.id, action: "excellent", body: "将本帖设为了精华贴")
     end
   end
 
   def unexcellent!
     transaction do
-      update_attribute(:excellent, 0)
+      update_attribute(:excellent, false)
       Reply.create_action(topic_id: self.id, action: "unexcellent", body: "取消了精华贴")
     end
   end
 
-  def ban! opts = {}
+  def banban!(opts = {})
     transaction do
-      update_attributes(lock_node: true, node_id: Node.no_point.id, node_name: "NoPoint")
+      update_attributes(node_id: Node.no_point.id, node_name: "NoPoint", ban: true)
       if opts[:reason] && opts[:reason_text]
         Reply.create_action(topic_id: self.id, action: "ban", body: opts[:reason_text], ban_title: opts[:reason])
       end
@@ -44,5 +56,4 @@ class Topic < ApplicationRecord
       Reply.create_action(topic_id: self.id, action: "open", body: "重新开启了讨论")
     end
   end
-
 end

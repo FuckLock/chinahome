@@ -57,12 +57,6 @@ Rails.application.routes.draw do
     resources :nodes
     resources :topics do
       member do
-        post :suggest
-        post :unsuggest
-        post :excellent
-        post :unexcellent
-        post :ban
-        post :unban
         post :action
       end
     end

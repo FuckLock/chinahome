@@ -5,7 +5,7 @@ class Reply < ApplicationRecord
   belongs_to :topic, touch: true
 
   class << self
-    def create_action opts = {}
+    def create_action(opts = {})
       opts[:body] ||= ""
       opts[:user] ||= User.current
       return false if opts[:action].blank?

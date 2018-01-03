@@ -2,6 +2,6 @@
   <i class="fa fa-diamond awesome"></i>本帖已被设为精华帖！
   <div class="pull-right">
     <%= link_to raw('<i class="fa fa-close"></i>'),
-        unexcellent_admin_topic_path(@topic), method: :post, remote: true %>
+        action_admin_topic_path(@topic, type: "unexcellent"), method: :post, remote: true %>
   </div>
 </div>

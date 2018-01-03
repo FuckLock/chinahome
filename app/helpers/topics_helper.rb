@@ -19,27 +19,56 @@ module TopicsHelper
     raw(content_tag("li", content))
   end
 
-  def suggest_topic_tag
-    content = if @topic.suggested_at.present?
+  def place_top_topic_tag
+    return nil unless @admin
+    content = if @topic.place_top
                 link_to raw("<i class='fa fa-angle-double-up'></i> 取消"),
-                        unsuggest_admin_topic_path(@topic), method: :post, remote: true
+                        action_admin_topic_path(@topic, type: "cancel"), method: :post, remote: true
               else
                 link_to raw('<i class="fa fa-angle-double-up"></i>置顶'),
-                        suggest_admin_topic_path(@topic), method: :post, remote: true
+                        action_admin_topic_path(@topic, type: "place_top"), method: :post, remote: true
               end
     raw(content_tag("li", content))
   end
 
   def excellent_topic_tag
-    return nil unless @topic.excellent.zero?
+    return nil unless @admin
+    return nil if @topic.excellent
     content = link_to raw('<i class="fa fa-diamond"></i>加精'),
-                      excellent_admin_topic_path(@topic), method: :post, remote: true
+                      action_admin_topic_path(@topic, type: "excellent"), method: :post, remote: true
     raw(content_tag("li", content, class: "excell-li"))
   end
 
   def ban_topic_tag
+    return nil unless @admin
+    return nil if @topic.ban
     content = link_to raw('<i class="fa fa-ban"></i>屏蔽'),
-        ban_admin_topic_path(@topic), method: :post, remote: true
+                      action_admin_topic_path(@topic, type: "ban"), method: :post, remote: true
     raw(content_tag("li", content, class: "ban-li"))
+  end
+
+  def discuss_topic_tag
+    return nil unless @user || @admin
+    content = if @topic.discuss
+                link_to raw('<i class="fa fa-check"></i>'),
+                        action_admin_topic_path(@topic, type: "close"), method: :post, remote: true
+              else
+                link_to raw('<i class="fa fa-undo"></i>'),
+                        action_admin_topic_path(@topic, type: "open"), method: :post, remote: true
+              end
+    raw(content_tag("li", content))
+  end
+
+  def edit_topic_tag
+    content = link_to raw('<i class="fa fa-pencil"></i>'), edit_topic_path(@topic)
+    raw(content_tag("li", content))
+  end
+
+  def user_admin?
+    @admin = current_user && current_user.admin?
+  end
+
+  def topic_belong_to_user?
+    @user = current_user && current_user.id == @topic.user_id
   end
 end

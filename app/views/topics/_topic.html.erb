@@ -7,7 +7,7 @@
     <div>
       <span class="node-name"><%= topic.node.name %></span>
       <span class="topic-title"><%= link_to topic.title, topic_path(topic) %>
-        <% if topic.excellent == 1  %>
+        <% if topic.excellent  %>
           <i class="fa fa-diamond"></i>
         <% end %>
       </span>

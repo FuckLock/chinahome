@@ -1,6 +1,6 @@
 $('.alert-action').remove();
 $('#main').prepend("<%= j render 'admin/topics/alert_action', target: @msg %>");
-$('.topic-info').after("<%= j render 'admin/topics/excellent' %>");
+$('.topic-info').after("<%= j render 'admin/topics/excell' %>");
 $('.excell-li').remove();
 var dom = $("<%= j render 'replies/reply', reply: @reply %>");
 $(".reply-all").append(dom);

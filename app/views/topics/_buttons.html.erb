@@ -1,25 +1,15 @@
 <div class="buttons">
   <ul>
+    <% user_admin? %>
+    <% topic_belong_to_user? %>
     <%= like_topic_tag %>
     <%= collect_topic_tag %>
-    <% if current_user && current_user.admin?  %>
-      <%= suggest_topic_tag %>
-      <%= excellent_topic_tag %>
-      <% if @topic.node_name != "NoPoint" %>
-        <%= ban_topic_tag %>
-      <% end %>
-    <% end %>
+    <%= place_top_topic_tag %>
+    <%= excellent_topic_tag %>
+    <%= ban_topic_tag %>
     <div class="pull-right">
-      <li>
-        <% if @topic.discuss %>
-          <%= link_to raw('<i class="fa fa-check"></i>'),
-            action_admin_topic_path(@topic, type: "close"), method: :post, remote: true %>
-        <% else %>
-          <%= link_to raw('<i class="fa fa-undo"></i>'),
-            action_admin_topic_path(@topic, type: "open"), method: :post, remote: true %>
-        <% end %>
-      </li>
-      <li><%= link_to raw('<i class="fa fa-pencil"></i>'), edit_topic_path(@topic) %></li>
+      <%= discuss_topic_tag %>
+      <%= edit_topic_tag %>
       <li><i class="fa fa-trash"></i></li>
     </div>
   </ul>

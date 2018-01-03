@@ -1,0 +1,5 @@
+$('.alert-action').remove();
+var buttons = $("<%= j render 'topics/buttons', topic: @topic %>")
+$('#main').prepend("<%= j render 'admin/topics/alert_action', target: @msg %>");
+$('.buttons-footer').html(buttons)
+$('html,body').animate({ scrollTop:0 },5);

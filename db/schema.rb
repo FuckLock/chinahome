@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180103090847) do
+ActiveRecord::Schema.define(version: 20180103123719) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,14 +52,6 @@ ActiveRecord::Schema.define(version: 20180103090847) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.index ["section_id"], name: "index_nodes_on_section_id", using: :btree
-  end
-
-  create_table "photos", force: :cascade do |t|
-    t.integer  "user_id"
-    t.string   "image",      null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_photos_on_user_id", using: :btree
   end
 
   create_table "replies", force: :cascade do |t|
@@ -112,7 +104,6 @@ ActiveRecord::Schema.define(version: 20180103090847) do
     t.integer  "last_active_mark"
     t.boolean  "lock_node",             default: false
     t.datetime "suggested_at"
-    t.integer  "excellent",             default: 0
     t.datetime "replied_at"
     t.integer  "replies_count",         default: 0,     null: false
     t.integer  "likes_count",           default: 0
@@ -123,10 +114,16 @@ ActiveRecord::Schema.define(version: 20180103090847) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "discuss",               default: true
+    t.boolean  "place_top",             default: false
+    t.boolean  "excellent",             default: false
+    t.boolean  "ban",                   default: false
+    t.index ["ban"], name: "index_topics_on_ban", using: :btree
+    t.index ["discuss"], name: "index_topics_on_discuss", using: :btree
     t.index ["excellent"], name: "index_topics_on_excellent", using: :btree
     t.index ["last_active_mark"], name: "index_topics_on_last_active_mark", using: :btree
     t.index ["likes_count"], name: "index_topics_on_likes_count", using: :btree
     t.index ["node_id"], name: "index_topics_on_node_id", using: :btree
+    t.index ["place_top"], name: "index_topics_on_place_top", using: :btree
     t.index ["suggested_at"], name: "index_topics_on_suggested_at", using: :btree
     t.index ["user_id"], name: "index_topics_on_user_id", using: :btree
   end

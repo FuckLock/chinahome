@@ -6,5 +6,4 @@ class Node < ApplicationRecord
   validates :section_id, presence: true
 
   scope :no_point, -> { find_by(name: "NoPoint") }
-  
 end

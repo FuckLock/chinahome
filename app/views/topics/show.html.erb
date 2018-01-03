@@ -12,7 +12,7 @@
       </div>
     </div>
 
-    <% if @topic.node_name == "NoPoint" %>
+    <% if @topic.ban %>
       <%= render 'admin/topics/alert_nopoint', target: @ban_reply %>
     <% end %>
 

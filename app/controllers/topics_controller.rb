@@ -41,7 +41,7 @@ class TopicsController < ApplicationController
     @topic = Topic.find_by(id: params[:id])
     @reply = Reply.new
     @replies = Reply.where(topic_id: @topic.id)
-    @ban_reply = @topic.replies.where(action: "ban").order('id desc').limit(1).first
+    @ban_reply = @topic.replies.where(action: "ban").order("id desc").limit(1).first
   end
 
   def edit
