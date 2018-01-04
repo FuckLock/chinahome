@@ -51,16 +51,27 @@ module TopicsHelper
     return nil unless @user || @admin
     content = if @topic.discuss
                 link_to raw('<i class="fa fa-check"></i>'),
-                        action_admin_topic_path(@topic, type: "close"), method: :post, remote: true
+                        action_admin_topic_path(@topic, type: "close"), method: :post, remote: true,
+                        "data-toggle" => "tooltip", "data-placement" => "top", title: "关闭讨论／问题已解决"
               else
                 link_to raw('<i class="fa fa-undo"></i>'),
-                        action_admin_topic_path(@topic, type: "open"), method: :post, remote: true
+                        action_admin_topic_path(@topic, type: "open"), method: :post, remote: true,
+                        "data-toggle" => "tooltip", "data-placement" => "top", title: "重新开启话题"
               end
     raw(content_tag("li", content))
   end
 
   def edit_topic_tag
-    content = link_to raw('<i class="fa fa-pencil"></i>'), edit_topic_path(@topic)
+    content = link_to raw('<i class="fa fa-pencil"></i>'), edit_topic_path(@topic),
+              "data-toggle" => "tooltip", "data-placement" => "top", title: "编辑话题"
+    raw(content_tag("li", content))
+  end
+
+  def delete_topic_tag
+    return nil unless @user || @admin
+    content = link_to raw('<i class="fa fa-trash"></i>'),
+              topic_path(@topic), method: :delete, 'data-confirm': '确认删除吗？',
+              "data-toggle" => "tooltip", "data-placement" => "top", title: "删除话题"
     raw(content_tag("li", content))
   end
 

@@ -8,6 +8,7 @@
 
 @import "vars";
 @import "bootstrap";
+@import "social-share-button";
 
 全局样式设置
 * {
@@ -285,23 +286,4 @@ body {
     display: inline-block;
     width: 100px;
   }
-}
-
-.buttons {
-  a {
-    color: black;
-    text-decoration: none;
-  }
-  .active {
-    color: #e76f3c;
-    .fa-heart, .fa-bookmark {
-      -webkit-animation: myactive .3s;
-    }
-  }
-}
-
-@-webkit-keyframes myactive
-{
-  from {font-size: 14px;}
-  to {font-size: 20px;}
 }

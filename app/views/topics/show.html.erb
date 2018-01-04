@@ -25,16 +25,20 @@
       <% end %>
     </div>
 
-    <div class="reply-alert"></div>
     <% if @topic.discuss %>
       <div class="panel topic-show-editor">
-        <div class="panel-heading">回帖</div>
-        <div class="panel-body">
-          <%= render 'reply_form' %>
-        </div>
+        <%= render 'editor_footer' %>
       </div>
     <% else %>
       <%= render 'admin/topics/alert_close' %>
     <% end %>
+  </div>
+
+  <div class="col-md-3">
+    <div class="panel">
+      <div class="panel-body">
+        <%= render 'topic_sidebar' %>
+      </div>
+    </div>
   </div>
 </div>

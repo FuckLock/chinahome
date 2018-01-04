@@ -4,3 +4,4 @@ $('.ban-li').remove();
 $('.panel-topic').after("<%= j render 'admin/topics/alert_nopoint', target: @reply %>");
 var dom = $("<%= j render 'replies/reply', reply: @reply %>")
 $(".reply-all").append(dom);
+$('html,body').animate({ scrollTop:0 },5);

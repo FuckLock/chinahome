@@ -7,6 +7,8 @@
 #= require_self
 #= require jquery.atwho
 #= require form_storage
+#= require social-share-button
+#= require social-share-button/wechat
 
 class App
   isLogined: ->

@@ -67,6 +67,14 @@
     }
     vertical-align: middle;
     display: inline-block;
+    .fa-angle-double-up {
+      cursor: pointer;
+      color: #45c723;
+    }
+    .fa-check {
+      color: #45c723;
+      cursor: pointer;
+    }
   }
   .topic-right {
     float: right;
@@ -171,10 +179,49 @@
     }
   }
 }
+
+.buttons {
+  a {
+    color: black;
+    text-decoration: none;
+  }
+  .active {
+    color: #e76f3c;
+    .fa-heart, .fa-bookmark {
+      -webkit-animation: myactive .3s;
+    }
+  }
+}
+
+@-webkit-keyframes myactive
+{
+  from {font-size: 14px;}
+  to {font-size: 20px;}
+}
+
 .fa-diamond {
   color: #EB5424;
 }
 .alert-success {
   margin-bottom: 0px;
   background-color: #d1ffc5;
+}
+
+.like-collect-button {
+  border-bottom: 1px solid #eee;
+  text-align: center;
+  .like {
+    padding: 30px 0px;
+    .button-heart {
+      font-size: 40px;
+      color: #333;
+    }
+  }
+  .collect {
+    padding-bottom: 20px;
+    .button-collect {
+      text-decoration: none;
+      color: #333;
+    }
+  }
 }

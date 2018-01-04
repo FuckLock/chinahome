@@ -1,0 +1,18 @@
+<div class="topic-up">
+  <%= link_to raw('<i class="fa fa-arrow-up"></i>'), '#', class: "btn btn-block btn-default" %>
+</div>
+
+<div class="like-collect-button">
+  <div class="like">
+    <%= link_to raw("<i class='fa fa fa-heart'></i>"), "#",
+                      class: "button-heart", data: { id: @topic.id } %>
+  </div>
+  <div class="collect">
+    <%= link_to raw('<i class="fa fa-bookmark"></i>收藏'), "#",
+                      class: "button-collect btn-default", data: { id: @topic.id } %>
+  </div>
+</div>
+
+<div class="share-button">
+  
+</div>

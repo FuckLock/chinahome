@@ -3,14 +3,18 @@ class Topic < ApplicationRecord
 
   belongs_to :node, touch: true
   belongs_to :user, touch: true
-  has_many :replies
+  has_many :replies, dependent: :destroy
 
-  scope :no_reply, -> { where(replies_count: 0) }
-  scope :exclude_column_ids, ->(ids) { where.not(node_id: ids) }
+  scope :no_reply,              -> { where(replies_count: 0) }
+  scope :without_ban,           -> { where.not(ban: true) }
+  scope :place_top,             -> { where(place_top: true).order(suggested_at: :desc) }
+  scope :without_place_top,     -> { where(place_top: false) }
+
+  scope :exclude_column_ids,    ->(ids) { where.not(node_id: ids) }
 
   def place_top!
     transaction do
-      update_attribute(:place_top, true)
+      update_attributes(place_top: true, suggested_at: Time.now)
     end
   end
 

@@ -10,6 +10,12 @@
         <% if topic.excellent  %>
           <i class="fa fa-diamond"></i>
         <% end %>
+        <% if topic.place_top %>
+          <i class="fa fa-angle-double-up" title="置顶" data-toggle="tooltip"></i>
+        <% end %>
+        <% unless topic.discuss %>
+          <i class="fa fa-check" data-toggle="tooltip" title="问题已解决／话题已结束讨论"></i>
+        <% end %>
       </span>
     </div>
     <div class="topic-info">
@@ -21,3 +27,11 @@
     <%= topic.replies_count %>
   </div>
 </div>
+
+<script type="text/javascript">
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip().on('click', function() {
+      $(this).tooltip('hide')
+    })
+  })
+</script>

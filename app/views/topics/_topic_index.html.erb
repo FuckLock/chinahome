@@ -1,6 +1,11 @@
+<% @place_top_topics = @place_top_topics.to_a %>
 <div class="panel">
   <div class="panel-body">
-    <% cache([:topic_index, @topics.maximum(:updated_at)]) do %>
+    <% cache([:topic_index, @topics.maximum(:updated_at), @topics.count]) do %>
+      <% if @place_top_topics.present? %>
+        <%= render partial: '/topics/topic', collection: @place_top_topics %>
+      <% end %>
+
       <%= render partial: 'topics/topic', collection: @topics %>
     <% end %>
   </div>

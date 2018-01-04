@@ -5,5 +5,7 @@ var dom = $("<%= j render 'replies/reply', reply: @reply %>")
 $(".reply-all").append(dom);
 var buttons = $("<%= j render 'topics/buttons', topic: @topic %>")
 $('.buttons-footer').html(buttons)
-$('.topic-show-editor').show();
+var editor_footer = $("<%= j render 'topics/editor_footer' %>")
+$('.topic-show-editor').html(editor_footer);
+$('textarea[name="reply[body]"]').html('')
 $('html,body').animate({ scrollTop:0 },5);

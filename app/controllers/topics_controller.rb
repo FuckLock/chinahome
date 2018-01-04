@@ -4,10 +4,51 @@ class TopicsController < ApplicationController
   include ActionView::Helpers::UrlHelper
 
   before_action :find_sections, only: %i[index new recent no_reply node edit]
+  before_action :find_topic, only: %i[show edit update destroy like unlike collect uncollect]
+  before_action :authenticate_user!, only: %i[new create preview]
 
   def new
     @topic = Topic.new
-    # fresh_when @topic
+  end
+
+  def create
+    @topic = Topic.new(topic_params)
+    @topic.user_id = current_user.id
+    @topic.node_name = Node.node_name(topic_params[:node_id])
+    @topic.save
+    redirect_to topics_path
+  end
+
+  def show
+    @reply = Reply.new
+    @replies = @topic.replies.order("id asc")
+    @ban_reply = @topic.replies.where(action: "ban").order("id desc").limit(1).first
+  end
+
+  def index
+    @place_top_topics = Topic.place_top.limit(3)
+    @topics = Topic.without_place_top
+    @topics = if current_user
+                @topics.exclude_column_ids(current_user.block_node_ids)
+              end
+    @topics.without_ban.includes(:node)
+  end
+
+  def edit
+  end
+
+  def update
+    node_name = Node.node_name(topic_params[:node_id])
+    @topic.ban = false if node_name != "NoPoint"
+    @topic.node_name = node_name
+    @topic.update_attributes(topic_params)
+    @topic.save
+    redirect_to topic_path(@topic)
+  end
+
+  def destroy
+    @topic.destroy
+    redirect_to @topic
   end
 
   def preview
@@ -15,47 +56,6 @@ class TopicsController < ApplicationController
     respond_to do |format|
       format.json
     end
-  end
-
-  def create
-    @topic = Topic.new(topic_params)
-    @topic.user_id = current_user.id
-    @topic.node_name = Node.find_by(id: topic_params[:node_id]).name
-    @topic.save
-  end
-
-  def topic_params
-    params.require(:topic).permit(:title, :body, :node_id)
-  end
-
-  def index
-    if current_user
-      ids = current_user.block_node_ids
-      @topics = Topic.exclude_column_ids(ids).includes(:node)
-    else
-      @topics = Topic.includes(:node)
-    end
-  end
-
-  def show
-    @topic = Topic.find_by(id: params[:id])
-    @reply = Reply.new
-    @replies = Reply.where(topic_id: @topic.id)
-    @ban_reply = @topic.replies.where(action: "ban").order("id desc").limit(1).first
-  end
-
-  def edit
-    @topic = Topic.find_by(id: params[:id])
-  end
-
-  def update
-    @topic = Topic.find_by(id: params[:id])
-    @topic.node_name = Node.find_by(id: topic_params[:node_id]).name
-    @topic.node_id = topic_params[:node_id]
-    @topic.title = topic_params[:title]
-    @topic.body = topic_params[:body]
-    @topic.save
-    render action: :index
   end
 
   def recent
@@ -75,7 +75,6 @@ class TopicsController < ApplicationController
   end
 
   def like
-    @topic = Topic.find_by(id: params[:id])
     current_user.like_topic(@topic)
     render json: {
       data: {
@@ -86,7 +85,6 @@ class TopicsController < ApplicationController
   end
 
   def unlike
-    @topic = Topic.find_by(id: params[:id])
     current_user.unlike_topic(@topic)
     render json: {
       data: {
@@ -97,18 +95,24 @@ class TopicsController < ApplicationController
   end
 
   def collect
-    @topic = Topic.find_by(id: params[:id])
     current_user.collect_topic(@topic)
   end
 
   def uncollect
-    @topic = Topic.find_by(id: params[:id])
     current_user.uncollect_topic(@topic)
   end
 
   private
 
+  def topic_params
+    params.require(:topic).permit(:title, :body, :node_id)
+  end
+
   def find_sections
     @sections = Section.includes(:nodes)
+  end
+
+  def find_topic
+    @topic = Topic.find_by(id: params[:id])
   end
 end

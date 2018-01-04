@@ -17,6 +17,9 @@ gem 'newrelic_rpm'
 
 gem 'action_plugin'
 
+# share-button
+gem 'social-share-button'
+
 # markdown
 gem 'redcarpet'
 # gem 'coderay'

@@ -5,6 +5,6 @@ var dom = $("<%= j render 'replies/reply', reply: @reply %>");
 var buttons = $("<%= j render 'topics/buttons', topic: @topic %>")
 $('.buttons-footer').html(buttons)
 $(".reply-all").append(dom);
-$('.topic-show-editor').hide();
+$('.topic-show-editor').html('');
 $('.reply-info').after("<%= j render 'admin/topics/alert_close' %>");
 $('html,body').animate({ scrollTop:0 },5);

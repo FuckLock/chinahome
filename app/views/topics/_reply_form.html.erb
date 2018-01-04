@@ -1,4 +1,4 @@
-<%= render 'editor_toolbar' %>
+<%= render 'topics/editor_toolbar' %>
 
 <%= simple_form_for @reply, url: topic_replies_path(@topic), method: :post, remote: true do |f| %>
   <div class="form-group">
