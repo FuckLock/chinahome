@@ -34,8 +34,7 @@ class TopicsController < ApplicationController
     @topics.without_ban.includes(:node)
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     node_name = Node.node_name(topic_params[:node_id])

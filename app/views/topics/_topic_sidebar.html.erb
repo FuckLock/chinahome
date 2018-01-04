@@ -4,15 +4,31 @@
 
 <div class="like-collect-button">
   <div class="like">
-    <%= link_to raw("<i class='fa fa fa-heart'></i>"), "#",
-                      class: "button-heart", data: { id: @topic.id } %>
+    <%= like_topic_tag label: false %>
   </div>
   <div class="collect">
-    <%= link_to raw('<i class="fa fa-bookmark"></i>收藏'), "#",
-                      class: "button-collect btn-default", data: { id: @topic.id } %>
+    <span class="btn btn-default">
+      <%=  collect_topic_tag label: false %>
+    </span>
   </div>
 </div>
 
 <div class="share-button">
-  
+  <%= social_share_button_tag(@topic.title) %>
+</div>
+
+<div class="group-buttons">
+  <div class="group-buttons-top">
+    <%= place_top_topic_tag label: false %>
+    <%= excellent_topic_tag label: false%>
+  </div>
+  <div class="group-buttons-bottom">
+    <%= discuss_topic_tag label: false %>
+    <%= edit_topic_tag label: false %>
+    <%= delete_topic_tag label: false %>
+  </div >
+</div>
+
+<div class="topic-down">
+  <%= link_to raw('<i class="fa fa-arrow-down"></i>'), '#', class: "btn btn-block btn-default" %>
 </div>

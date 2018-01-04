@@ -7,5 +7,4 @@ class Node < ApplicationRecord
 
   scope :no_point, -> { find_by(name: "NoPoint") }
   scope :node_name, ->(id) { find_by(id: id).name }
-  
 end

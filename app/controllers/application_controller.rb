@@ -23,5 +23,4 @@ class ApplicationController < ActionController::Base
 
     User.current = current_user
   end
-
 end
