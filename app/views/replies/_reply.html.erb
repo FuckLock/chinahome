@@ -3,10 +3,13 @@
     <div class="reply-left">
       <%= user_avatar_tag reply.user, :md, link: true %>
     </div>
-
+    <% debugger %>
     <div class="reply-right">
        <div class="reply-right-top">
-         <div class="reply-user"><%= reply.user.login %></div>
+         <div class="reply-user">
+           <span class="admin-reply"><%= reply.user.login %></span> ·
+           <span class="admin-reply"><%= timeago_tag(reply.created_at) %></span>
+         </div>
          <div class="reply-button">
            <i class="fa fa-pencil"></i>
            <i class="fa fa-mail-reply"></i>
@@ -27,7 +30,8 @@
     <div class="reply-right">
        <div class="reply-right-top">
          <div class="reply-user">
-           <span class="admin-reply"><%= reply.user.login %> <%= reply.body %></span>
+           <span class="admin-reply"><%= reply.user.login %> <%= reply.body %></span> ·
+           <span class="admin-reply"><%= timeago_tag(reply.created_at) %></span>
          </div>
        </div>
     </div>

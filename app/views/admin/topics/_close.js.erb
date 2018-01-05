@@ -1,5 +1,6 @@
 $('.alert-action').remove();
 $('.alert_close').remove();
+$(".topic-sidebar-panel").attr("style","top:95px;")
 $('#main').prepend("<%= j render 'admin/topics/alert_action', target: @msg %>");
 var dom = $("<%= j render 'replies/reply', reply: @reply %>");
 var buttons = $("<%= j render 'topics/buttons', topic: @topic %>")
@@ -7,4 +8,6 @@ $('.buttons-footer').html(buttons)
 $(".reply-all").append(dom);
 $('.topic-show-editor').html('');
 $('.reply-info').after("<%= j render 'admin/topics/alert_close' %>");
+var group_buttons = $("<%= j render 'topics/group_buttons', topic: @topic %>")
+$('.group-buttons').html(group_buttons)
 $('html,body').animate({ scrollTop:0 },5);

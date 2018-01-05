@@ -1,5 +1,5 @@
 <div class="topic-up">
-  <%= link_to raw('<i class="fa fa-arrow-up"></i>'), '#', class: "btn btn-block btn-default" %>
+  <%= link_to raw('<i class="fa fa-arrow-up"></i>'), '#', class: "btn btn-block btn-default topic-arrow-up" %>
 </div>
 
 <div class="like-collect-button">
@@ -17,18 +17,14 @@
   <%= social_share_button_tag(@topic.title) %>
 </div>
 
+<div class="replies-count">
+  <span>共收到 <%= @replies.count %> 条回复</span>
+</div>
+
 <div class="group-buttons">
-  <div class="group-buttons-top">
-    <%= place_top_topic_tag label: false %>
-    <%= excellent_topic_tag label: false%>
-  </div>
-  <div class="group-buttons-bottom">
-    <%= discuss_topic_tag label: false %>
-    <%= edit_topic_tag label: false %>
-    <%= delete_topic_tag label: false %>
-  </div >
+  <%= render 'group_buttons' %>
 </div>
 
 <div class="topic-down">
-  <%= link_to raw('<i class="fa fa-arrow-down"></i>'), '#', class: "btn btn-block btn-default" %>
+  <%= link_to raw('<i class="fa fa-arrow-down"></i>'), '#', class: "btn btn-block btn-default topic-arrow-down" %>
 </div>

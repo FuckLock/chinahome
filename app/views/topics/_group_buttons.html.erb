@@ -1,0 +1,11 @@
+<% user_admin? %>
+<% topic_belong_to_user? %>
+<div class="group-buttons-top">
+  <%= place_top_topic_tag label: false %>
+  <%= excellent_topic_tag label: false %>
+</div>
+<div class="group-buttons-bottom">
+  <%= discuss_topic_tag label: false %>
+  <%= edit_topic_tag label: false %>
+  <%= delete_topic_tag label: false %>
+</div >

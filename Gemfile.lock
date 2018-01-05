@@ -207,6 +207,9 @@ GEM
       loofah (~> 2.0)
     rails-settings-cached (0.6.6)
       rails (>= 4.2.0)
+    rails-timeago (2.16.0)
+      actionpack (>= 3.1)
+      activesupport (>= 3.1)
     railties (5.0.6)
       actionpack (= 5.0.6)
       activesupport (= 5.0.6)
@@ -344,6 +347,7 @@ DEPENDENCIES
   rails (~> 5.0.5)
   rails-controller-testing
   rails-settings-cached
+  rails-timeago
   redcarpet
   rspec-rails
   rubocop

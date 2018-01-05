@@ -193,12 +193,6 @@
   }
 }
 
-@-webkit-keyframes myactive
-{
-  from {font-size: 14px;}
-  to {font-size: 20px;}
-}
-
 .fa-diamond {
   color: #EB5424;
 }
@@ -207,36 +201,115 @@
   background-color: #d1ffc5;
 }
 
-.like-collect-button {
-  border-bottom: 1px solid #eee;
-  text-align: center;
-  .like {
-    padding: 30px 0px;
-    .button-heart {
-      font-size: 40px;
-      color: #333;
+.panel-body.topic-sidebar {
+  .like-collect-button {
+    border-bottom: 1px solid #eee;
+    text-align: center;
+    .like {
+      padding: 30px 0px;
+      .button-heart {
+        text-decoration: none;
+        font-size: 40px;
+        color: #333;
+        span {
+          display: block;
+          font-size: 15px;
+        }
+      }
+      .active {
+        text-decoration: none;
+        color: #e76f3c;
+        .fa-heart, .fa-bookmark {
+          -webkit-animation: mybiglike .3s;
+        }
+      }
+    }
+    .collect {
+
+      padding-bottom: 20px;
+      .button-collect {
+        text-decoration: none;
+        color: #333;
+      }
+      .button-collect {
+
+      }
+      .active {
+        text-decoration: none;
+        color: #e76f3c;
+        -webkit-animation: mybigcollect .3s;
+
+      }
     }
   }
-  .collect {
+
+  .replies-count {
+    text-align: center;
+    padding: 20px 0px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .share-button {
+    padding: 20px 0px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+  }
+
+  .group-buttons {
     padding-bottom: 20px;
-    .button-collect {
-      text-decoration: none;
-      color: #333;
+    .group-buttons-top {
+      padding-top: 20px;
+      text-align: center;
+      a {
+        color: #666;
+        padding-right: 5px;
+        text-decoration: none;
+      }
+    }
+    .group-buttons-bottom {
+      margin-top: 10px;
+      text-align: center;
+      a {
+        color: #666;
+        padding-right: 5px;
+      }
     }
   }
 }
 
-.share-button {
-  padding: 20px 0px;
-  text-align: center;
-  border-bottom: 1px solid #eee;
+.topic-sidebar-panel {
+  position: fixed;
+  top: 45px;
+  right: 50px;
 }
 
-.group-buttons {
-  .group-buttons-top {
-    text-align: center;
+.topic-right-siderbar {
+  padding-right: 40px;
+}
+
+@media (max-width: 768px) {
+  .topic-sidebar-panel {
+    display: none;
   }
-  .group-buttons-bottom {
-    text-align: center;
+  .topic-right-siderbar {
+    padding-right: 10px;
   }
+}
+
+@-webkit-keyframes myactive
+{
+  from {font-size: 14px;}
+  to {font-size: 20px;}
+}
+
+@-webkit-keyframes mybiglike
+{
+  from {font-size: 40px;}
+  to {font-size: 50px;}
+}
+
+@-webkit-keyframes mybigcollect
+{
+  from {font-size: 15px;}
+  to {font-size: 20px;}
 }

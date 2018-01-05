@@ -11,7 +11,7 @@
           <i class="fa fa-diamond"></i>
         <% end %>
         <% if topic.place_top %>
-          <i class="fa fa-angle-double-up" title="置顶" data-toggle="tooltip"></i>
+          <i class="fa fa-angle-double-up" title="置顶"></i>
         <% end %>
         <% unless topic.discuss %>
           <i class="fa fa-check" data-toggle="tooltip" title="问题已解决／话题已结束讨论"></i>
@@ -19,7 +19,7 @@
       </span>
     </div>
     <div class="topic-info">
-      <%= current_user.login %> . 发布于<%= topic.created_at.to_date %>
+      <%= current_user.login %> · 发布于 · <%= timeago_tag(topic.created_at) %>
     </div>
   </div>
 

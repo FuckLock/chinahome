@@ -9,6 +9,8 @@
 #= require form_storage
 #= require social-share-button
 #= require social-share-button/wechat
+#= require rails-timeago
+#= require locales/jquery.timeago.zh-CN.js
 
 class App
   isLogined: ->
@@ -43,7 +45,7 @@ $(document).on 'click', '.button-heart', (e) ->
     return false
   btn = $(e.currentTarget)
   topicId = btn.data('id')
-  span = btn.find("span")
+  span = $('.button-heart').find("span")
   popover = $('[data-toggle="popover"]').popover('hide')
   if btn.hasClass("active")
     $.post("/topics/#{topicId}/unlike", (data) ->
@@ -55,7 +57,7 @@ $(document).on 'click', '.button-heart', (e) ->
       else
         span.text("")
     )
-    btn.removeClass('active')
+    $('.button-heart').removeClass('active')
   else
     $.post("/topics/#{topicId}/like", (data) ->
       data = data.data
@@ -66,7 +68,7 @@ $(document).on 'click', '.button-heart', (e) ->
       else
         span.text("")
     )
-    btn.addClass('active')
+    $('.button-heart').addClass('active')
   return false
 
 $(document).on 'click', '.button-collect', (e) ->
@@ -77,8 +79,8 @@ $(document).on 'click', '.button-collect', (e) ->
   topicId = btn.data('id')
   if btn.hasClass('active')
     $.post("/topics/#{topicId}/uncollect")
-    btn.removeClass('active')
+    $('.button-collect').removeClass('active')
   else
     $.post("/topics/#{topicId}/collect")
-    btn.addClass('active')
+    $('.button-collect').addClass('active')
   return false

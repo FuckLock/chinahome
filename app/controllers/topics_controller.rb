@@ -28,9 +28,7 @@ class TopicsController < ApplicationController
   def index
     @place_top_topics = Topic.place_top.limit(3)
     @topics = Topic.without_place_top
-    @topics = if current_user
-                @topics.exclude_column_ids(current_user.block_node_ids)
-              end
+    @topics = @topics.exclude_column_ids(current_user.block_node_ids) if current_user
     @topics.without_ban.includes(:node)
   end
 

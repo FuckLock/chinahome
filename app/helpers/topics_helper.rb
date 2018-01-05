@@ -87,6 +87,7 @@ module TopicsHelper
   end
 
   def edit_topic_tag opts = {}
+    return nil unless @user || @admin
     content = link_to raw('<i class="fa fa-pencil"></i>'), edit_topic_path(@topic),
               "data-toggle" => "tooltip", "data-placement" => "top", title: "编辑话题"
     if opts[:label] == false

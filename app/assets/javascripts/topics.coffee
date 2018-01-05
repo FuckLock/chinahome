@@ -79,4 +79,14 @@ $(document).on 'click', '.edit', ->
   $('#preview').hide()
   return false
 
+$(document).on 'click', '.topic-arrow-up', ->
+  $('html,body').animate({ scrollTop: 0 }, 250);
+  return false
+
+$(document).on 'click', '.topic-arrow-down', ->
+  height = $('body').height()
+  $('html,body').animate({ scrollTop: height }, 250);
+  return false
+
+
 window.topicView = new TopicView()

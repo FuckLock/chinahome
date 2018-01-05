@@ -17,6 +17,8 @@ gem 'newrelic_rpm'
 
 gem 'action_plugin'
 
+gem 'rails-timeago'
+
 # share-button
 gem 'social-share-button'
 

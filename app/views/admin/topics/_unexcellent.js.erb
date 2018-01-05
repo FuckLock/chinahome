@@ -1,7 +1,10 @@
 $('.alert-action').remove();
+$(".topic-sidebar-panel").attr("style","top:95px;")
 $('#main').prepend("<%= j render 'admin/topics/alert_action', target: @msg %>");
 $(".alert-excell").remove();
 var buttons = $("<%= j render 'topics/buttons' %>");
 var dom = $("<%= j render 'replies/reply', reply: @reply %>");
-$('.panel-footer .buttons').html($(buttons).html());
+var group_buttons = $("<%= j render 'topics/group_buttons', topic: @topic %>")
 $(".reply-all").append(dom);
+$('.group-buttons').html(group_buttons)
+$('.panel-footer .buttons').html($(buttons).html());
