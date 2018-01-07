@@ -88,34 +88,37 @@
   }
 }
 
-.topic-info {
-  background: #fafafa;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #F0F0F0;
-  .topic-info-left {
-    .node-name {
-      font-size: 20px;
-      color: #777;
+.panel-topic {
+  margin-top: 65px;
+  .topic-info {
+    background: #fafafa;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #F0F0F0;
+    .topic-info-left {
+      .node-name {
+        font-size: 20px;
+        color: #777;
+        margin-right: 10px;
+      }
+      .topic-title {
+        font-size: 20px;
+        color: black;
+      }
+      .topic-date {
+        margin-top: 5px;
+        color: #8f8d8b;
+        font-size: 12px;
+      }
+      padding: 15px 15px;
+      vertical-align: middle;
+      display: inline-block;
+    }
+    .topic-info-right {
+      float: right;
+      margin-top: 20px;
       margin-right: 10px;
+      display: inline-block;
     }
-    .topic-title {
-      font-size: 20px;
-      color: black;
-    }
-    .topic-date {
-      margin-top: 5px;
-      color: #8f8d8b;
-      font-size: 12px;
-    }
-    padding: 15px 15px;
-    vertical-align: middle;
-    display: inline-block;
-  }
-  .topic-info-right {
-    float: right;
-    margin-top: 20px;
-    margin-right: 10px;
-    display: inline-block;
   }
 }
 
@@ -133,6 +136,7 @@
 }
 
 .nav-node {
+  margin-top: 40px;
   background: #f9f9f9;
   .container {
     .title {
@@ -160,6 +164,7 @@
       padding: 3px 3px;
     }
     ul {
+      margin-top: 40px;
       .all-node {
         margin-right: 15px;
       }
@@ -225,7 +230,6 @@
       }
     }
     .collect {
-
       padding-bottom: 20px;
       .button-collect {
         text-decoration: none;

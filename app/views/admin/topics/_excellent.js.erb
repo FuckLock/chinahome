@@ -1,10 +1,10 @@
 $('.alert-action').remove();
-$(".topic-sidebar-panel").attr("style","top:95px;")
+<%= render 'admin/topics/change_location' %>
 $('#main').prepend("<%= j render 'admin/topics/alert_action', target: @msg %>");
 $('.topic-info').after("<%= j render 'admin/topics/excell' %>");
 $('.excell-li').remove();
 var dom = $("<%= j render 'replies/reply', reply: @reply %>");
 $(".reply-all").append(dom);
-var group_buttons = $("<%= j render 'topics/group_buttons', topic: @topic %>")
-$('.group-buttons').html(group_buttons)
-$('html,body').animate({ scrollTop:0 },5);
+var group_buttons = $("<%= j render 'topics/group_buttons', topic: @topic %>");
+$('.group-buttons').html(group_buttons);
+<%= render 'admin/topics/scroll_top' %>

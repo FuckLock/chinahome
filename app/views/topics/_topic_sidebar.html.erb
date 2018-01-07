@@ -18,11 +18,13 @@
 </div>
 
 <div class="replies-count">
-  <span>共收到 <%= @replies.count %> 条回复</span>
+  共收到 <span class="count"><%= replies.count %></span> 条回复
 </div>
 
 <div class="group-buttons">
-  <%= render 'group_buttons' %>
+  <% cache([:topic_group_buttons, @topic.updated_at, current_user]) do %>
+    <%= render 'group_buttons' %>
+  <% end %>
 </div>
 
 <div class="topic-down">

@@ -1,6 +1,8 @@
 <div class="alert alert-warning alert-block">
   <h5 class="title">此贴已暂时被屏蔽!</h5>
   <div class="markdown">
-    <p><%= target.body_html %></p>
+    <% if target %>
+      <p><%= target.body_html %></p>
+    <% end %>
   </div>
 </div>

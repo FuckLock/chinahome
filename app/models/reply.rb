@@ -4,6 +4,8 @@ class Reply < ApplicationRecord
   belongs_to :user, touch: true
   belongs_to :topic, touch: true
 
+  scope :without_action, -> { where("action is null") }
+
   class << self
     def create_action(opts = {})
       opts[:body] ||= ""

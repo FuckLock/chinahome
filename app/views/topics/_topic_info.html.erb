@@ -1,20 +1,26 @@
-<% cache([:topic_info, @topic.updated_at]) do %>
-  <div class="topic-info">
-    <div class="topic-info-left">
-      <div>
-        <span class="node-name"><%= @topic.node.name %></span>
-        <span class="topic-title"><%= @topic.title %></span>
-      </div>
-      <div class="topic-date">
-        <%= current_user.login %> · 发布于<%= @topic.created_at.to_date %>
-      </div>
+<div class="topic-info">
+  <div class="topic-info-left">
+    <div>
+      <span class="node-name"><%= @topic.node_name %></span>
+      <span class="topic-title"><%= @topic.title %></span>
     </div>
-    <div class="topic-info-right">
-      <%= user_avatar_tag current_user, :md %>
+    <div class="topic-date">
+      <span><%= @topic.user.login %></span>
+      <span>  · 发布于 <%= timeago_tag(@topic.created_at) %></span>
+      <% if replies.present? %>
+        <% last_reply = replies.last %>
+        <span> · 最后由 <%= last_reply.user.login %></span>
+        <span>回复于 <%= timeago_tag(last_reply.created_at) %></span>
+      <% end %>
     </div>
   </div>
-<% end %>
+  <div class="topic-info-right">
+    <%= user_avatar_tag current_user, :md %>
+  </div>
+</div>
 
-<% if @topic.excellent %>
-  <%= render 'admin/topics/excell' %>
+<% cache([:topic_excellent, @topic.excellent]) do %>
+  <% if @topic.excellent %>
+    <%= render 'admin/topics/excell' %>
+  <% end %>
 <% end %>

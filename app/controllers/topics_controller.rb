@@ -21,7 +21,8 @@ class TopicsController < ApplicationController
 
   def show
     @reply = Reply.new
-    @replies = @topic.replies.order("id asc")
+    @replies = @topic.replies.order("id asc").includes(:user)
+    @replies_without_action = @replies.without_action
     @ban_reply = @topic.replies.where(action: "ban").order("id desc").limit(1).first
   end
 

@@ -1,8 +1,8 @@
 $('.alert-action').remove();
-$(".topic-sidebar-panel").attr("style","top:95px;")
-var buttons = $("<%= j render 'topics/buttons', topic: @topic %>")
+<%= render 'admin/topics/change_location' %>
+var buttons = $("<%= j render 'topics/buttons', topic: @topic %>");
 $('#main').prepend("<%= j render 'admin/topics/alert_action', target: @msg %>");
-$('.buttons-footer').html(buttons)
-var group_buttons = $("<%= j render 'topics/group_buttons', topic: @topic %>")
-$('.group-buttons').html(group_buttons)
-$('html,body').animate({ scrollTop:0 },5);
+$('.buttons-footer').html(buttons);
+var group_buttons = $("<%= j render 'topics/group_buttons', topic: @topic %>");
+$('.group-buttons').html(group_buttons);
+<%= render 'admin/topics/scroll_top' %>

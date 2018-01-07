@@ -1,19 +1,26 @@
 <div class="row">
   <div class="col-md-9 topic-right-siderbar">
     <div class="panel panel-topic">
-      <div class="panel-header">
-        <%= render 'topic_info' %>
+      <div class="panel-header panel-topic-info">
+        <% cache([:topic_info, @replies_without_action.maximum(:updated_at), @topic.updated_at]) do %>
+          <%= render 'topic_info', replies: @replies_without_action %>
+        <% end %>
       </div>
-      <div class="panel-body">
-        <%= @topic.body_html %>
-      </div>
-      <div class="panel-footer buttons-footer">
-        <%= render "buttons", topic: @topic %>
-      </div>
+
+      <% cache([:topic_body_button, @topic.updated_at, current_user]) do %>
+        <div class="panel-body">
+          <%= @topic.body_html %>
+        </div>
+        <div class="panel-footer buttons-footer">
+          <%= render "buttons", topic: @topic %>
+        </div>
+      <% end %>
     </div>
 
     <% if @topic.ban %>
-      <%= render 'admin/topics/alert_nopoint', target: @ban_reply %>
+      <% cache([:topic_ban, @topic.ban]) do %>
+        <%= render 'admin/topics/alert_nopoint', target: @ban_reply %>
+      <% end %>
     <% end %>
 
     <div class="panel reply-info">
@@ -25,19 +32,23 @@
       <% end %>
     </div>
 
-    <% if @topic.discuss %>
-      <div class="panel topic-show-editor">
-        <%= render 'editor_footer' %>
-      </div>
-    <% else %>
-      <%= render 'admin/topics/alert_close' %>
+    <% cache([:topic_discuss, @topic.discuss]) do %>
+      <% if @topic.discuss %>
+        <div class="panel topic-show-editor">
+          <%= render 'editor_footer' %>
+        </div>
+      <% else %>
+        <%= render 'admin/topics/alert_close' %>
+      <% end %>
     <% end %>
   </div>
 
   <div class="col-md-3 topic-sidebar-panel">
     <div class="panel">
       <div class="panel-body topic-sidebar">
-        <%= render 'topic_sidebar' %>
+        <% cache([:topic_sidebar, @topic.updated_at, @replies_without_action.maximum(:updated_at), current_user]) do %>
+          <%= render 'topic_sidebar', replies: @replies_without_action %>
+        <% end %>
       </div>
     </div>
   </div>

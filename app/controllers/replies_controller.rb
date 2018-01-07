@@ -8,6 +8,8 @@ class RepliesController < ApplicationController
            else
              @reply.errors.full_messages.join("<br />")
            end
+    @topic = Topic.find_by(id: params[:topic_id])
+    @replies_without_action = @topic.replies.order("id asc").without_action.includes(:user)
   end
 
   def reply_params

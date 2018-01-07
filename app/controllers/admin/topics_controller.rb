@@ -19,7 +19,7 @@ class Admin::TopicsController < Admin::ApplicationController
     when "excellent"
       @reply = @topic.excellent!
       @msg = "话题已经加精成功。"
-      render template: "admin/topics/excellent"
+      render partial: "excellent"
     when "unexcellent"
       @reply = @topic.unexcellent!
       @msg = "话题已经取消加精。"

@@ -1,7 +1,7 @@
-$('.reply-alert .alert').remove();
+$('.alert-reply').remove();
 <% if @reply.errors.present? %>
-  $(".reply-alert").append("<%= j(render 'replies/alert_messages', target: @msg, alert: 'warning')  %>")
+  $(".reply-info").after("<%= j(render 'replies/alert_messages', target: @msg, alert: 'warning')  %>")
 <% else %>
-  <%= render 'create_callback', reply: @reply %>
-  $(".reply-alert").append("<%= j(render 'replies/alert_messages', target: @msg, alert: 'success')  %>")
+  <%= render 'create_callback', reply: @reply, topic: @topic, replies: @replies_without_action %>
+  $(".reply-info").after("<%= j(render 'replies/alert_messages', target: @msg, alert: 'success')  %>")
 <% end %>

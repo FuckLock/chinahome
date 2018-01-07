@@ -1,5 +1,9 @@
 var dom = $("<%= j(render('reply', reply: reply)) %>");
 $(".reply-all").append(dom);
-dom.last().addClass('light');
+var count = parseInt($(".replies-count .count").text()) + 1
+$(".replies-count .count").text(count)
+var topicInfo = $("<%= j render 'topics/topic_info', topic: topic, replies: replies %>");
+$('.panel-topic-info').html(topicInfo)
+$(".reply").last().addClass('light');
 topicView.resetClearReplyHightTimer();
 topicView.clearTextArea();

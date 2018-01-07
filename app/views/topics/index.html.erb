@@ -2,13 +2,19 @@
 
 <div class="row">
   <div class="col-lg-9">
-    <%= render 'topic_index' %>
+    <% cache([:topic_index, @topics.maximum(:updated_at), @topics.count]) do %>
+      <%= render 'topic_index' %>
+    <% end %>
   </div>
 
   <div class="col-lg-3">
-    <%= render 'sidebar_box_new_topic' %>
-    <%= render 'sidebar_box_help_hints' %>
+    <% cache([:sidebar_box_new_help, Time.now.strftime("%Y-%m-%d")]) do %>
+      <%= render 'sidebar_box_new_topic' %>
+      <%= render 'sidebar_box_help_hints' %>
+    <% end %>
     <%= render 'sidebar_box_tips' %>
-    <%= render 'sidebar_box_count_info' %>
+    <% cache(["sidebar_box_count_info",Time.now.strftime("%Y-%m-%d %H")]) do %>
+      <%= render 'sidebar_box_count_info' %>
+    <% end %>
   </div>
 </div>

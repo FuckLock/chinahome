@@ -1,14 +1,14 @@
 $('.alert-action').remove();
 $('.alert-close').remove();
-$(".topic-sidebar-panel").attr("style","top:95px;")
+<%= render 'admin/topics/change_location' %>
 $('#main').prepend("<%= j render 'admin/topics/alert_action', target: @msg %>");
-var dom = $("<%= j render 'replies/reply', reply: @reply %>")
+var dom = $("<%= j render 'replies/reply', reply: @reply %>");
 $(".reply-all").append(dom);
-var buttons = $("<%= j render 'topics/buttons', topic: @topic %>")
-$('.buttons-footer').html(buttons)
-var editor_footer = $("<%= j render 'topics/editor_footer' %>")
+var buttons = $("<%= j render 'topics/buttons', topic: @topic %>");
+$('.buttons-footer').html(buttons);
+var editor_footer = $("<%= j render 'topics/editor_footer' %>");
 $('.topic-show-editor').html(editor_footer);
-$('textarea[name="reply[body]"]').html('')
-var group_buttons = $("<%= j render 'topics/group_buttons', topic: @topic %>")
-$('.group-buttons').html(group_buttons)
-$('html,body').animate({ scrollTop:0 },5);
+$('textarea[name="reply[body]"]').html('');
+var group_buttons = $("<%= j render 'topics/group_buttons', topic: @topic %>");
+$('.group-buttons').html(group_buttons);
+<%= render 'admin/topics/scroll_top' %>

@@ -1,10 +1,10 @@
 zh-CN:
   date:
     formats:
-      default: 'zh-CN'
+      default: "%Y-%m-%d"
   time:
     formats:
-      default: 'zh-CN'
+      default: "%Y-%m-%d"
   activerecord:
     attributes:
       user:

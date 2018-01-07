@@ -2,5 +2,14 @@
   <a class="close" data-dismiss="alert" href="#">
     <i class="fa fa-close"></i>
   </a>
-  <%= target %>
+  <% if target %>
+    <%= target %>
+  <% end %>
 </div>
+
+<script type="text/javascript">
+  $('.alert-action').on('closed.bs.alert', function () {
+    $('.panel-topic').css('margin-top', '60px')
+    $(".topic-sidebar-panel").css("top","45px")
+  })
+</script>

@@ -10,7 +10,7 @@
 #= require social-share-button
 #= require social-share-button/wechat
 #= require rails-timeago
-#= require locales/jquery.timeago.zh-CN.js
+#= require timeago-zh-CN
 
 class App
   isLogined: ->

@@ -3,7 +3,6 @@
     <div class="reply-left">
       <%= user_avatar_tag reply.user, :md, link: true %>
     </div>
-    <% debugger %>
     <div class="reply-right">
        <div class="reply-right-top">
          <div class="reply-user">
@@ -47,9 +46,16 @@
     <div class="reply-right">
        <div class="reply-right-top">
          <div class="reply-user">
-           <span class="admin-reply"><%= reply.user.login %>  <%= reply.ban_title %> </span>
+           <span class="admin-reply"><%= reply.user.login %>  <%= reply.ban_title %> </span> ·
+           <span class="admin-reply"><%= timeago_tag(reply.created_at) %></span>
          </div>
        </div>
     </div>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  $(function () {
+    $("time").timeago()
+  })
+</script>
