@@ -23,6 +23,13 @@
       }
       .reply-button {
         float: right;
+        a {
+          color: #666;
+          text-decoration: none;
+        }
+        .active {
+          color: #e76f3c;
+        }
       }
     }
   }

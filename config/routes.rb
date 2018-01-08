@@ -27,6 +27,14 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :replies do
+    member do
+      post :like
+      post :unlike
+    end
+  end
+
+
   devise_for :users, path: 'account', controllers: {
     registrations: :account,
     sessions: :sessions,

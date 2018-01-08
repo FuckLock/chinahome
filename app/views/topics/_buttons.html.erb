@@ -2,7 +2,7 @@
   <ul>
     <% user_admin? %>
     <% topic_belong_to_user? %>
-    <%= like_topic_tag %>
+    <%= like_target_tag target: @topic %>
     <%= collect_topic_tag %>
     <%= place_top_topic_tag %>
     <%= excellent_topic_tag %>

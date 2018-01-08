@@ -16,7 +16,7 @@ class App
   isLogined: ->
     document.getElementsByName('current-user').length > 0
 
-  alert : (msg,to) ->
+  alert: (msg,to) ->
     $(".alert").remove()
     $(to).before("<div class='alert alert-warning'><a class='close' href='#' data-dismiss='alert'><i class='fa fa-close'></i></a>#{msg}</div>")
 
@@ -39,13 +39,13 @@ $(document).on 'click', '.button-block-node', (e) ->
     span.text("取消屏蔽")
   return false
 
-$(document).on 'click', '.button-heart', (e) ->
+$(document).on 'click', '.button-topic-heart', (e) ->
   if !app.isLogined()
     location.href = '/account/sign_in'
     return false
   btn = $(e.currentTarget)
   topicId = btn.data('id')
-  span = $('.button-heart').find("span")
+  span = $('.button-topic-heart').find("span")
   popover = $('[data-toggle="popover"]').popover('hide')
   if btn.hasClass("active")
     $.post("/topics/#{topicId}/unlike", (data) ->
@@ -57,7 +57,7 @@ $(document).on 'click', '.button-heart', (e) ->
       else
         span.text("")
     )
-    $('.button-heart').removeClass('active')
+    $('.button-topic-heart').removeClass('active')
   else
     $.post("/topics/#{topicId}/like", (data) ->
       data = data.data
@@ -68,7 +68,7 @@ $(document).on 'click', '.button-heart', (e) ->
       else
         span.text("")
     )
-    $('.button-heart').addClass('active')
+    $('.button-topic-heart').addClass('active')
   return false
 
 $(document).on 'click', '.button-collect', (e) ->
@@ -83,4 +83,33 @@ $(document).on 'click', '.button-collect', (e) ->
   else
     $.post("/topics/#{topicId}/collect")
     $('.button-collect').addClass('active')
+  return false
+
+$(document).on 'click', '.button-reply-heart', (e) ->
+  btn = $(e.currentTarget)
+  replyId = btn.data('id')
+  span = btn.find("span")
+  popover = $('[data-toggle="popover"]').popover('hide')
+  if btn.hasClass("active")
+    $.post("/replies/#{replyId}/unlike", (data) ->
+      data = data.data
+      likeReplyCount = data.like_users_count
+      popover.attr('data-content', data.like_users)
+      if  likeReplyCount > 0
+        span.text(" #{likeReplyCount} 个 赞")
+      else
+        span.text("")
+    )
+    btn.removeClass('active')
+  else
+    $.post("/replies/#{replyId}/like", (data) ->
+      data = data.data
+      likeReplyCount = data.like_users_count
+      popover.attr('data-content', data.like_users)
+      if likeReplyCount > 0
+        span.text(" #{likeReplyCount} 个 赞")
+      else
+        span.text("")
+    )
+    btn.addClass('active')
   return false

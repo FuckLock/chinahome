@@ -1,12 +1,16 @@
 module TopicsHelper
-  def like_topic_tag opts = {}
+  def like_target_tag opts = {}
+    return nil unless opts[:target]
+    target = "#{opts[:target].class.name.downcase}"
+    action_target = "like_#{target}?"
+    class_name = "button-#{target}-heart"
     if current_user
-      like = "active" if current_user.like_topic? @topic
+      like = "active" if current_user.send(action_target, opts[:target])
     end
-    like_counts = " #{@topic.like_users.count} 个 赞" if @topic.like_users.present?
-    users = user_avatar_tag(@topic.like_users, :xs, link: true)
+    like_counts = " #{opts[:target].like_users.count} 个 赞" if opts[:target].like_users.present?
+    users = user_avatar_tag(opts[:target].like_users, :xs, link: true)
     content = link_to(raw("<i class='fa fa fa-heart'></i><span>#{like_counts}</span>"), "#",
-                      class: " button-heart #{like}", data: { id: @topic.id },
+                      class: " #{class_name} #{like}", data: { id: opts[:target].id },
                       "data-toggle" => "popover", "data-content" => users.to_s)
     if opts[:label] == false
       raw(content)

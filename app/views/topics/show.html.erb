@@ -7,7 +7,7 @@
         <% end %>
       </div>
 
-      <% cache([:topic_body_button, @topic.updated_at, current_user]) do %>
+      <% cache([:topic_body_button, Action.all.maximum(:updated_at), current_user]) do %>
         <div class="panel-body">
           <%= @topic.body_html %>
         </div>
@@ -24,7 +24,7 @@
     <% end %>
 
     <div class="panel reply-info">
-      <% cache([:replies, @replies.maximum(:updated_at)]) do %>
+      <% cache([:replies, Action.all.maximum(:updated_at), @replies.maximum(:updated_at)]) do %>
         <div class="panel-heading">共收到 <%= @replies.count %>回复</div>
         <div class="reply-all">
           <%= render partial: "replies/reply", collection: @replies %>
@@ -46,7 +46,8 @@
   <div class="col-md-3 topic-sidebar-panel">
     <div class="panel">
       <div class="panel-body topic-sidebar">
-        <% cache([:topic_sidebar, @topic.updated_at, @replies_without_action.maximum(:updated_at), current_user]) do %>
+        <% cache([:topic_sidebar, Action.all.maximum(:updated_at),
+          @replies_without_action.maximum(:updated_at), current_user]) do %>
           <%= render 'topic_sidebar', replies: @replies_without_action %>
         <% end %>
       </div>
