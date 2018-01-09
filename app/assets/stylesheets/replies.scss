@@ -33,8 +33,13 @@
         .floor {
           color: #7AA87A;
         }
-        .reply-to-id {
-
+      }
+      .reply-to-id {
+        padding: 0px 8px;
+        background: #beeadb;
+        color: #666;
+        .reply-body {
+          display: none;
         }
       }
       .reply-button {

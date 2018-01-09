@@ -17,7 +17,11 @@
            </div>
            <% if reply.reply_to_id %>
              <div class="reply-to-id">
-               <span></span>
+               对 <%= user_avatar_tag reply.user, :xs, link: true %>
+               <%= link_to raw("#{reply.user.login}"), '#', class: "btn-reply-to-id" %>  回复
+               <div class="reply-body">
+                 <%= Reply.find_by(id: reply.reply_to_id).body_html %>
+               </div>
              </div>
             <% end %>
            <div class="reply-button">

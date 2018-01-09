@@ -141,3 +141,11 @@ $(document).on 'click', '.btn-reply', (e) ->
 
 $(document).on 'click', '.close-button', () ->
   $('input[name="reply[reply_to_id]"]').val("")
+
+$(document).on 'click', '.btn-reply-to-id', (e) ->
+  btn = $(e.currentTarget)
+  if $('.reply-to-id .reply-body').css("display") == "none"
+    $('.reply-to-id .reply-body').css("display", "block")
+  else
+    $('.reply-to-id .reply-body').css("display", "none")
+  return false
