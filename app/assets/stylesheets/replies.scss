@@ -24,6 +24,7 @@
     .reply-right-top {
       margin-bottom: 10px;
       .reply-user {
+        display: inline-block;
         color: black;
         font-weight: bold;
         .admin-reply {
@@ -35,14 +36,23 @@
         }
       }
       .reply-to-id {
+        .heading {
+          font-size: 12px;
+          padding-bottom: 30px;
+        }
         padding: 0px 8px;
-        background: #beeadb;
+        background: #f9f9f9;
         color: #666;
+        a {
+          color: #666;
+        }
         .reply-body {
           display: none;
+          padding: 3px 5px;
         }
       }
       .reply-button {
+        display: inline-block;
         float: right;
         a {
           color: #666;

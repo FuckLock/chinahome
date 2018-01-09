@@ -15,15 +15,6 @@
              <span class="admin-reply floor"><%= reply.floor %> ·</span>
              <span class="admin-reply"><%= timeago_tag(reply.created_at) %></span>
            </div>
-           <% if reply.reply_to_id %>
-             <div class="reply-to-id">
-               对 <%= user_avatar_tag reply.user, :xs, link: true %>
-               <%= link_to raw("#{reply.user.login}"), '#', class: "btn-reply-to-id" %>  回复
-               <div class="reply-body">
-                 <%= Reply.find_by(id: reply.reply_to_id).body_html %>
-               </div>
-             </div>
-            <% end %>
            <div class="reply-button">
              <% if current_user == reply.user %>
               <%= link_to raw('<i class="fa fa-pencil"></i>'), edit_topic_reply_path(reply.topic, reply) %>
@@ -32,6 +23,17 @@
                  class: "btn-reply", data: { id: reply.id, login: reply.user.login } %>
              <%= like_target_tag label: false, target: reply %>
            </div>
+           <% if reply.reply_to_id %>
+             <div class="reply-to-id">
+               <span class="heading">
+                 对 <%= user_avatar_tag reply.user, :xs, link: true %>
+                 <%= link_to raw("#{reply.user.login}  #{reply.floor}"), '#', class: "btn-reply-to-id" %>  回复
+               </span>
+               <div class="reply-body">
+                 <%= Reply.find_by(id: reply.reply_to_id).body_html %>
+               </div>
+             </div>
+           <% end %>
          </div>
          <div class="reply-body">
            <%= reply.body_html %>

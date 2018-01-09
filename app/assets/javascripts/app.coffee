@@ -144,8 +144,9 @@ $(document).on 'click', '.close-button', () ->
 
 $(document).on 'click', '.btn-reply-to-id', (e) ->
   btn = $(e.currentTarget)
-  if $('.reply-to-id .reply-body').css("display") == "none"
-    $('.reply-to-id .reply-body').css("display", "block")
+  replyBody = btn.parent().next()
+  if replyBody.css("display") == "none"
+    replyBody.css("display", "block")
   else
-    $('.reply-to-id .reply-body').css("display", "none")
+    replyBody.css("display", "none")
   return false
