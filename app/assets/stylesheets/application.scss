@@ -52,6 +52,11 @@ body {
 .alert-action {
   margin-top: 60px;
 }
+
+.main-container {
+  margin-top: 50px;
+}
+
 // 导航条
 .navbar {
   width: 100%;
@@ -77,7 +82,8 @@ body {
       }
     }
     .navbar-user {
-      width: 60px;
+      display: flex;
+      flex-direction: row;
       position: relative;
       left: 15px;
       margin-bottom: 0px;
@@ -210,6 +216,9 @@ body {
   }
 }
 
+.new-topic-panel {
+  margin-top: -30px;
+}
 @media (max-width: 767px) {
   .navbar {
     .container {

@@ -22,6 +22,26 @@
     color: #999;
     text-decoration: none;
   }
+  .alert-user {
+    text-decoration: none;
+    margin-left: 15px;
+    padding: 4px 5px;
+    .close-button {
+      border: none;
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 0;
+      color: #222527;
+      text-shadow: 0 1px 0 #fff;
+      background: #d2ecf1;
+      opacity: .5;
+      height: 20px;
+      cursor: pointer;
+      outline: none;
+      position: relative;
+      top: 3px;
+    }
+  }
   .pull-right {
     .fa-image {
       margin-right: 10px;
@@ -43,53 +63,56 @@
   }
 }
 
-.topic {
-  border-bottom: 1px solid #F0F0F0;
-  padding-bottom: 10px;
-  .topic-left {
-    padding-top: 10px;
-    display: inline-block;
-    margin-right: 5px;
-  }
-  .topic-body {
-    .node-name {
-      color: #777;
+.topic-index-panel {
+  margin-top: -30px;
+  margin-bottom: 50px;
+  .topic {
+    border-bottom: 1px solid #F0F0F0;
+    padding-bottom: 10px;
+    .topic-left {
+      padding-top: 10px;
+      display: inline-block;
+      margin-right: 5px;
     }
-    .topic-title {
-      a {
-        color: #333;
-        text-decoration: none;
+    .topic-body {
+      .node-name {
+        color: #777;
+      }
+      .topic-title {
+        a {
+          color: #333;
+          text-decoration: none;
+        }
+      }
+      .topic-info {
+        color: #8f8d8b;
+        font-size: 12px;
+      }
+      vertical-align: middle;
+      display: inline-block;
+      .fa-angle-double-up {
+        cursor: pointer;
+        color: #45c723;
+      }
+      .fa-check {
+        color: #45c723;
+        cursor: pointer;
       }
     }
-    .topic-info {
-      color: #8f8d8b;
-      font-size: 12px;
+    .topic-right {
+      float: right;
+      margin-top: 25px;
+      margin-right: 15px;
+      display: inline-block;
+      background: #CFD3E6;
+      border-radius: 100px;
+      padding: 0px 9px;
+      color: white;
     }
-    vertical-align: middle;
-    display: inline-block;
-    .fa-angle-double-up {
-      cursor: pointer;
-      color: #45c723;
-    }
-    .fa-check {
-      color: #45c723;
-      cursor: pointer;
-    }
-  }
-  .topic-right {
-    float: right;
-    margin-top: 25px;
-    margin-right: 15px;
-    display: inline-block;
-    background: #CFD3E6;
-    border-radius: 100px;
-    padding: 0px 9px;
-    color: white;
   }
 }
 
 .panel-topic {
-  margin-top: 65px;
   .topic-info {
     background: #fafafa;
     margin-bottom: 10px;
@@ -167,7 +190,6 @@
       padding: 3px 3px;
     }
     ul {
-      margin-top: 40px;
       .all-node {
         margin-right: 15px;
       }
@@ -288,7 +310,7 @@
 
 .topic-sidebar-panel {
   position: fixed;
-  top: 45px;
+  top: 50px;
   right: 50px;
 }
 

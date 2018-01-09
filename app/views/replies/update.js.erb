@@ -1,0 +1,6 @@
+$('.target-error').remove();
+<% if @reply.errors.any? %>
+  $('.update-reply-panel-heading').append("<%= j render 'shared/error_messages', target: @reply %>");
+<% else %>
+  document.location.href = '<%= topic_path(@reply.topic_id) %>';
+<% end %>

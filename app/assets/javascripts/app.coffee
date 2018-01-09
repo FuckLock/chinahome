@@ -20,6 +20,9 @@ class App
     $(".alert").remove()
     $(to).before("<div class='alert alert-warning'><a class='close' href='#' data-dismiss='alert'><i class='fa fa-close'></i></a>#{msg}</div>")
 
+  setReplyId: (id) ->
+    $('input[name="reply[reply_to_id]"]').val(id)
+
 app = new App()
 
 $(document).on 'ajax:error', '#new_user', (event, xhr, status, error) ->
@@ -86,6 +89,9 @@ $(document).on 'click', '.button-collect', (e) ->
   return false
 
 $(document).on 'click', '.button-reply-heart', (e) ->
+  if !app.isLogined()
+    location.href = '/account/sign_in'
+    return false
   btn = $(e.currentTarget)
   replyId = btn.data('id')
   span = btn.find("span")
@@ -113,3 +119,25 @@ $(document).on 'click', '.button-reply-heart', (e) ->
     )
     btn.addClass('active')
   return false
+
+$(document).on 'click', '.btn-reply', (e) ->
+  if !app.isLogined()
+    location.href = '/account/sign_in'
+    return false
+  $(".alert-user").remove()
+  btn = $(e.currentTarget)
+  replyToId = btn.data('id')
+  user = btn.data('login')
+  $(".preview").after('<a class="alert alert-info alert-dismissible fade show alert-user" role="alert" href="/' + user + '"' + '>' +
+                      '<i class="fa fa-mail-reply" title="回复"></i>' + '  ' +
+                      user +
+                      '<button type="button" class="close-button" data-dismiss="alert" aria-label="Close">' +
+                      '<span aria-hidden="true">&times;</span>' +
+                      '</button>' +
+                      '</a>'
+                      )
+  app.setReplyId(replyToId)
+  return false
+
+$(document).on 'click', '.close-button', () ->
+  $('input[name="reply[reply_to_id]"]').val("")

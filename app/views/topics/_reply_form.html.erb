@@ -1,11 +1,7 @@
 <%= render 'topics/editor_toolbar' %>
 
 <%= simple_form_for @reply, url: topic_replies_path(@topic), method: :post, remote: true do |f| %>
-  <div class="form-group">
-    <%= f.text_area :body, class: "topic-editor form-control", rows: "4" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.submit t("topics.submit_reply"),  class: "btn btn-primary", 'data-disable-with' => '正在提交回复' %>
-  </div>
+  <%= f.input :body, as: :text, label: false, input_html: { rows: 4, class: "topic-editor form-control" } %>
+  <%= f.hidden_field :reply_to_id %>
+  <%= f.submit t("topics.submit_reply"),  class: "btn btn-primary", 'data-disable-with' => '正在提交回复' %>
 <% end %>

@@ -1,4 +1,14 @@
-<div class="panel-heading">回帖</div>
-<div class="panel-body">
-  <%= render 'topics/reply_form' %>
-</div>
+<% if current_user %>
+  <div class="panel-heading">回帖</div>
+  <div class="panel-body">
+    <%= render 'topics/reply_form' %>
+  </div>
+<% else %>
+  <div class="panel-body">
+    <span>
+      <span>需要 </span>
+      <%= link_to '登录', new_user_session_path, class: "btn btn-primary" %>
+      <span>后方可回复, 如果你还没有账号请点击这里</span>
+      <%= link_to '注册', new_user_registration_path, class: "btn btn-danger" %> 。</span>
+  </div>
+<% end %>

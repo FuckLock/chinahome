@@ -1,24 +1,39 @@
 <% if reply.action.blank? %>
   <div class="reply">
-    <div class="reply-left">
-      <%= user_avatar_tag reply.user, :md, link: true %>
-    </div>
-    <div class="reply-right">
-       <div class="reply-right-top">
-         <div class="reply-user">
-           <span class="admin-reply"><%= reply.user.login %></span> ·
-           <span class="admin-reply"><%= timeago_tag(reply.created_at) %></span>
+    <% if reply.deleted_at %>
+      <div class="deleted">
+        <span><%= reply.floor %> 已删除</span>
+      </div>
+    <% else %>
+      <div class="reply-left">
+        <%= user_avatar_tag reply.user, :md, link: true %>
+      </div>
+      <div class="reply-right">
+         <div class="reply-right-top">
+           <div class="reply-user">
+             <span class="admin-reply"><%= reply.user.login %> ·</span>
+             <span class="admin-reply floor"><%= reply.floor %> ·</span>
+             <span class="admin-reply"><%= timeago_tag(reply.created_at) %></span>
+           </div>
+           <% if reply.reply_to_id %>
+             <div class="reply-to-id">
+               <span></span>
+             </div>
+            <% end %>
+           <div class="reply-button">
+             <% if current_user == reply.user %>
+              <%= link_to raw('<i class="fa fa-pencil"></i>'), edit_topic_reply_path(reply.topic, reply) %>
+             <% end %>
+             <%= link_to raw('<i class="fa fa-mail-reply"></i>'), '#',
+                 class: "btn-reply", data: { id: reply.id, login: reply.user.login } %>
+             <%= like_target_tag label: false, target: reply %>
+           </div>
          </div>
-         <div class="reply-button">
-           <i class="fa fa-pencil"></i>
-           <i class="fa fa-mail-reply"></i>
-          <%= like_target_tag label: false, target: reply %>
+         <div class="reply-body">
+           <%= reply.body_html %>
          </div>
-       </div>
-       <div class="reply-body">
-         <%= reply.body_html %>
-       </div>
-    </div>
+      </div>
+    <% end %>
   </div>
 <% else %>
   <div class="reply">

@@ -1,6 +1,6 @@
 <div class="topic">
   <div class="topic-left avatar">
-    <%= user_avatar_tag current_user, :md %>
+    <%= user_avatar_tag topic.user, :md %>
   </div>
 
   <div class="topic-body">
@@ -19,7 +19,7 @@
       </span>
     </div>
     <div class="topic-info">
-      <%= current_user.login %> · 发布于 · <%= timeago_tag(topic.created_at) %>
+      <%= topic.user.login %> · 发布于 · <%= timeago_tag(topic.created_at) %>
     </div>
   </div>
 

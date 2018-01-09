@@ -1,6 +1,16 @@
 .light { background:#F7F2FC; }
 .reply {
-  border-bottom: 1px solid #eee;
+  .deleted {
+    display: inline-block;
+    vertical-align: center;
+    width: 100%;
+    text-align: center;
+    color: #86bfc3;
+    text-decoration: line-through;
+    font-size: 12px;
+    padding-bottom: 5px;
+  }
+  border-top: 1px solid #eee;
   display:flex;
   padding-left: 15px;
   padding-top: 10px;
@@ -19,6 +29,12 @@
         .admin-reply {
           font-size: 12px;
           color: #666;
+        }
+        .floor {
+          color: #7AA87A;
+        }
+        .reply-to-id {
+
         }
       }
       .reply-button {

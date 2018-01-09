@@ -1,0 +1,12 @@
+<div class="panel">
+  <div class="panel-heading update-reply-panel-heading">修改回帖</div>
+  <div class="panel-body">
+    <%= render 'topics/editor_toolbar' %>
+    <%= simple_form_for [@topic, @reply], remote: true do |f| %>
+      <%= f.input :body, as: :text, label: false,
+            input_html: { class: "form-control topic-editor", rows: 10 } %>
+      <%= f.submit t("common.save"), class: "btn btn-primary" %>
+      <%= link_to "删除",[@topic,@reply], class: "pull-right btn btn-danger", method: :delete, data: { confirm: "确定要删除此回复么？" } %>
+    <% end %>
+  </div>
+</div>

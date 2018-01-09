@@ -24,7 +24,8 @@
     <% end %>
 
     <div class="panel reply-info">
-      <% cache([:replies, Action.all.maximum(:updated_at), @replies.maximum(:updated_at)]) do %>
+      <% cache([:replies, Action.all.maximum(:updated_at),
+          @replies.maximum(:updated_at), current_user, @replies.count]) do %>
         <div class="panel-heading">共收到 <%= @replies.count %>回复</div>
         <div class="reply-all">
           <%= render partial: "replies/reply", collection: @replies %>
@@ -32,7 +33,7 @@
       <% end %>
     </div>
 
-    <% cache([:topic_discuss, @topic.discuss]) do %>
+    <% cache([:topic_discuss, @topic.discuss, current_user]) do %>
       <% if @topic.discuss %>
         <div class="panel topic-show-editor">
           <%= render 'editor_footer' %>
