@@ -1,0 +1,21 @@
+<div class="notifications">
+  <div class="notifications-heading">
+    <div class="title">所有通知</div>
+    <div class="delete">
+      <%= link_to "清空", "#", class: "btn btn-sm btn-danger", method: 'delete' %>
+    </div>
+  </div>
+
+  <div class="notifications-body">
+    <% if @notifications.blank? %>
+        没有通知
+    <% else %>
+      <% @notification_groups.each do |group, notifications| %>
+        <div class="notification-group">
+          <div class="notification-group-time"><i class="fa fa-clock-o"></i>  <%= group %></div>
+          <%= render notifications %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

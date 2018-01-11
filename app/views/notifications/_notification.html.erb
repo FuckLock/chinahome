@@ -1,0 +1,12 @@
+<div class="notification-group-body">
+  <div class="media-left">
+    <%= user_avatar_tag notification.subject, :sm, link: true %>
+  </div>
+  <div class="media-right">
+    <% title = notification.ancestry.title %>
+    在帖子  <%= link_to title, topic_path(notification.ancestry_id) %>  回复了：
+    <div class="reply-body-html">
+      <%= notification.second_ancestry.body_html %>
+    </div>
+  </div>
+</div>

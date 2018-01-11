@@ -7,9 +7,14 @@ class RepliesController < ApplicationController
   before_action :find_topic, only: %i[edit]
 
   def create
+    if params[:reply][:reply_to_id]
+      reply_user = Reply.find_by(id: params[:reply][:reply_to_id]).user
+    end
     @reply = Reply.new(reply_params)
+    @reply.mentioned_user_ids << reply_user.id
     @reply.topic_id = params[:topic_id]
     @reply.user_id = current_user.id
+
     @reply.floor = "##{@reply.topic.replies.count + 1}"
     @msg = if @reply.save
              "回复成功"

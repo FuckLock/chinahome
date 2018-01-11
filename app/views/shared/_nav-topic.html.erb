@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-<i class="fa fa-bell"></i>
+<%= link_to raw('<i class="fa fa-bell"></i>'), notifications_path %>
 <ul class="navbar-nav navbar-topic d-none d-md-block">
   <div class="dropdow">
     <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

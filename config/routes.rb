@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  get "/notifications", to: "notifications#index", as: 'notifications'
   if Setting.has_module?(:home)
     root to: 'home#index'
   else

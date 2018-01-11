@@ -14,6 +14,8 @@ class User < ApplicationRecord
   has_many :topics
   has_many :replies
 
+  has_many :notifications, -> { where(notify_type: 'mention') }, foreign_key: :target_id, dependent: :destroy
+
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -54,4 +56,5 @@ class User < ApplicationRecord
   def self.current=(user)
     Thread.current[:current_user] = user
   end
+
 end

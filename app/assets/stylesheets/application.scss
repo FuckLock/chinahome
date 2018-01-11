@@ -4,13 +4,14 @@
  *= require highlight
  *= require topic
  *= require replies
+ *= require notifications
  */
 
 @import "vars";
 @import "bootstrap";
 @import "social-share-button";
 
-全局样式设置
+// 全局样式设置
 * {
   margin: 0;
   padding: 0;
@@ -146,7 +147,8 @@ body {
   }
   .fa-bell {
     position: absolute;
-    right: 135px;
+    right: 175px;
+    top: 12px;
   }
 }
 
