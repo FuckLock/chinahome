@@ -7,11 +7,11 @@ class RepliesController < ApplicationController
   before_action :find_topic, only: %i[edit]
 
   def create
-    if params[:reply][:reply_to_id]
-      reply_user = Reply.find_by(id: params[:reply][:reply_to_id]).user
-    end
     @reply = Reply.new(reply_params)
-    @reply.mentioned_user_ids << reply_user.id
+    if params[:reply][:reply_to_id].present?
+      reply_user = Reply.find_by(id: params[:reply][:reply_to_id]).user
+      @reply.mentioned_user_ids << reply_user.id
+    end
     @reply.topic_id = params[:topic_id]
     @reply.user_id = current_user.id
 

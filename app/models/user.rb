@@ -57,4 +57,12 @@ class User < ApplicationRecord
     Thread.current[:current_user] = user
   end
 
+  def unread?
+    self.notifications.where(read_at: nil).present?
+  end
+
+  def unread_count
+    self.notifications.where(read_at: nil).count
+  end
+
 end

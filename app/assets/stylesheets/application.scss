@@ -68,6 +68,9 @@ body {
   padding-top: 1px;
   padding-bottom: 1px;
   .container {
+    .active {
+      color: red;
+    }
     position: relative;
     .navbar-brand {
       color: #666 !important;

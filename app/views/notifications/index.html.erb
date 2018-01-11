@@ -12,7 +12,7 @@
     <% else %>
       <% @notification_groups.each do |group, notifications| %>
         <div class="notification-group">
-          <div class="notification-group-time"><i class="fa fa-clock-o"></i>  <%= group %></div>
+          <div class="notification-group-top"><i class="fa fa-clock-o"></i>  <%= group %></div>
           <%= render notifications %>
         </div>
       <% end %>
