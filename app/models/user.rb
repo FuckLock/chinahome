@@ -62,7 +62,8 @@ class User < ApplicationRecord
   end
 
   def unread_count
-    self.notifications.where(read_at: nil).count
+    count = self.notifications.where(read_at: nil).count
+    count == 0 ? nil : count
   end
 
 end

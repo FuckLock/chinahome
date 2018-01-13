@@ -152,9 +152,6 @@ GEM
     nio4r (2.1.0)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
-    notifications (0.4.3)
-      kaminari (>= 0.15)
-      rails (>= 4.2.0)
     oauth2 (1.4.0)
       faraday (>= 0.8, < 0.13)
       jwt (~> 1.0)
@@ -342,7 +339,6 @@ DEPENDENCIES
   letter_avatar
   listen (~> 3.0.5)
   newrelic_rpm
-  notifications
   omniauth
   omniauth-github
   pg

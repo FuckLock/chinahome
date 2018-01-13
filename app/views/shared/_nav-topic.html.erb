@@ -1,7 +1,6 @@
 <% if user_signed_in? %>
  <%  unread = "active" if current_user.unread? %>
  <%= link_to raw("<i class='fa fa-bell #{unread}'>#{current_user.unread_count}</i>"), notifications_path %>
-
 <ul class="navbar-nav navbar-topic d-none d-md-block">
   <div class="dropdow">
     <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

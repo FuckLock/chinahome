@@ -17,4 +17,5 @@ class NotificationsController < ApplicationController
     raise "You need reqiure user login for /notifications page." unless current_user
     Notification.where(target_id: current_user.id)
   end
+
 end

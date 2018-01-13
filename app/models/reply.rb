@@ -11,17 +11,24 @@ class Reply < ApplicationRecord
   after_commit :create_notifications, on: [:create]
 
   def create_notifications
+    return nil unless mention_user?
     self.mentioned_user_ids.each do |target_id|
-      Notification.create(
-        subject_id: self.user.id,
-        notify_type: 'mention',
-        target_id: target_id,
-        ancestry_type: 'Topic',
-        ancestry_id: self.topic.id,
-        second_ancestry_type: 'Reply',
-        second_ancestry_id: self.id
-      )
+      if target_id != self.user_id
+        Notification.create(
+          subject_id: self.user.id,
+          notify_type: 'mention',
+          target_id: target_id,
+          ancestry_type: 'Topic',
+          ancestry_id: self.topic.id,
+          second_ancestry_type: 'Reply',
+          second_ancestry_id: self.id
+        )
+      end
     end
+  end
+
+  def mention_user?
+    self.mentioned_user_ids.present?
   end
 
   class << self

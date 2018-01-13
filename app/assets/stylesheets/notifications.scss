@@ -49,6 +49,7 @@
     background: white;
     padding: 10px 15px;
     .notification-group {
+      margin-bottom: 30px;
       .notification-group-top {
         padding-bottom: 10px;
         color: #aaa;
@@ -56,18 +57,25 @@
         margin-bottom: 10px;
       }
       .notification-group-bottom {
-        border: 1px solid red;
         color: #555;
         .media-left {
           vertical-align: top;
-          display: inline-block;
+          display: table-cell;
         }
         .media-right {
-          margin-bottom: 30px;
-          .reply-body-html {
-            padding-top: 10px;
+          width: 100%;
+          vertical-align: top;
+          display: table-cell;
+          padding-left: 10px;
+          .media-title {
+            .time {
+              color: #AAA;
+              font-size: 13px;
+            }
           }
-          display: inline-block;
+          .media-body {
+            padding-top: 5px;
+          }
           a {
             text-decoration: none;
             color: #6b9653;

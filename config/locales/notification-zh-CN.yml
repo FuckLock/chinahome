@@ -1,0 +1,4 @@
+zh-CN:
+  time:
+    formats:
+      short: "%H:%m"

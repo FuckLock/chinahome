@@ -3,9 +3,12 @@
     <%= user_avatar_tag notification.subject, :sm, link: true %>
   </div>
   <div class="media-right">
-    <% title = notification.ancestry.title %>
-    在帖子  <%= link_to title, topic_path(notification.ancestry_id) %>  回复了：
-    <div class="reply-body-html">
+    <div class="media-title">
+      <% title = notification.ancestry.title %>
+      在帖子  <%= link_to title, topic_path(notification.ancestry_id) %>  回复了：
+      <span class="pull-right time"><%= l notification.second_ancestry.created_at, format: :short %></span>
+    </div>
+    <div class="media-body">
       <%= notification.second_ancestry.body_html %>
     </div>
   </div>
