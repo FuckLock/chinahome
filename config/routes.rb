@@ -1,7 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  get "/notifications", to: "notifications#index", as: 'notifications'
+
   if Setting.has_module?(:home)
     root to: 'home#index'
   else
@@ -57,6 +57,8 @@ Rails.application.routes.draw do
     mount PgHero::Engine, at: "pghero"
     mount ExceptionTrack::Engine => "/exception-track"
   end
+
+  mount Notifications::Engine, at: 'notifications'
 
   namespace :admin do
     root to: 'home#index', as: 'root'

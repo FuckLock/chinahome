@@ -4,7 +4,6 @@ class Topic < ApplicationRecord
   belongs_to :node, touch: true
   belongs_to :user, touch: true
   has_many :replies, dependent: :destroy
-  has_many :notifications, -> { where(notify_type: 'mention') }, foreign_key: :ancestry_id, dependent: :destroy
 
   scope :no_reply,              -> { where(replies_count: 0) }
   scope :without_ban,           -> { where.not(ban: true) }

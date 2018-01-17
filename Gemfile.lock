@@ -1,3 +1,8 @@
+PATH
+  remote: /Users/baodongdong/rails_projects/rails-notifications
+  specs:
+    rails-notifications (0.1.0)
+
 GEM
   remote: https://gems.ruby-china.org/
   specs:
@@ -346,6 +351,7 @@ DEPENDENCIES
   pygments.rb
   rails (~> 5.0.5)
   rails-controller-testing
+  rails-notifications!
   rails-settings-cached
   rails-timeago
   redcarpet

@@ -5,7 +5,7 @@
 <div class="collapse navbar-collapse" id="main-navbar-collapse">
   <ul class="navbar-nav mr-auto">
     <%= render_list_items do |li|
-      li << link_to(t("menu.topics"), Setting.has_module?(:home) ? topics_path : root_path,class: "nav-link")
+      li << link_to(t("menu.topics"), Setting.has_module?(:home) ? main_app.topics_path : root_path,class: "nav-link")
       li << link_to(t("menu.press"), '/fds',class: "nav-link")
       li << link_to(t("menu.recruit"), '/fds',class: "nav-link")
       li << link_to(t("menu.wiki"), '/fds',class: "nav-link")

@@ -14,8 +14,6 @@ class User < ApplicationRecord
   has_many :topics
   has_many :replies
 
-  has_many :notifications, -> { where(notify_type: 'mention') }, foreign_key: :target_id, dependent: :destroy
-
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -57,12 +55,8 @@ class User < ApplicationRecord
     Thread.current[:current_user] = user
   end
 
-  def unread?
-    self.notifications.where(read_at: nil).present?
-  end
-
   def unread_count
-    count = self.notifications.where(read_at: nil).count
+    count = self.notifications.unread.count
     count == 0 ? nil : count
   end
 

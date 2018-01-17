@@ -20,7 +20,7 @@
             end
             li << "<div class='dropdown-divider'></div>"
           end
-          li << link_to(t("common.logout"), destroy_user_session_path, method: "delete", class: "dropdown-item" )
+          li << link_to(t("common.logout"), main_app.destroy_user_session_path, method: "delete", class: "dropdown-item" )
         end %>
       </div>
     </div>

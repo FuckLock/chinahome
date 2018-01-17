@@ -8,6 +8,8 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
+gem 'rails-notifications', path: File.expand_path('../../rails-notifications', __FILE__)
+
 gem 'kaminari'
 
 gem 'bootstrap', '~> 4.0.0.beta2.1'

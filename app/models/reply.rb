@@ -3,8 +3,6 @@ class Reply < ApplicationRecord
   validates :body, presence: true
   belongs_to :user, touch: true
   belongs_to :topic, touch: true
-  has_many :notifications,-> { where(notify_type: 'mention', ancestry_type: 'Topic',
-                          second_ancestry_type: 'Reply') }, foreign_key: :second_ancestry_id
 
   scope :without_action, -> { where("action is null") }
 
