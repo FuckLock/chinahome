@@ -16,6 +16,6 @@ Notifications.configure do
   # self.second_ancestry_type = 'current_user'
 
   # Method of user avatar in User model, default: nil
-  # self.user_avatar_method = nil
+  self.user_avatar_method = 'user_avatar_tag'
 
 end

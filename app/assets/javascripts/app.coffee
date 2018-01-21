@@ -25,6 +25,51 @@ class App
 
 app = new App()
 
+window.App =
+  scanMentionableLogins: (query) ->
+    logins = []
+    for e in query
+      $e = $(e)
+      item =
+        login      : $e.find(".btn-reply").first().data('login')
+        name       : $e.find(".btn-reply").first().data('name')
+        avatar_url : $e.find(".media-object").first().attr("src")
+
+      continue if not item.login
+      continue if not item.name
+
+      logins.push(item)
+
+    logins = window.App.unique(logins)
+    return logins
+
+  mentionable : (el, logins) ->
+    logins = [] if !logins
+    $(el).atwho
+      at         : "@"
+      limit      : 8
+      callbacks  :
+        remoteFilter: (query, callback) ->
+          $.getJSON '/search/users.json', { q: query }, (data) ->
+            for login in logins
+              data.unshift(login)
+
+            data = window.App.unique(data)
+            callback(data)
+      displayTpl : "<li><img src=${avatar_url} class='avatar-16'/> ${login} <small>${name}</small></li>"
+      insertTpl  : "@${login}"
+
+  unique : (data) ->
+    res = []
+    json = {}
+    for login in data
+     if(!json[login.login])
+      res.push(login)
+      json[login.login] = true
+    return res
+
+
+
 $(document).on 'ajax:error', '#new_user', (event, xhr, status, error) ->
   app.alert(xhr.responseText, '#main')
 

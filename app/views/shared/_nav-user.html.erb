@@ -16,7 +16,7 @@
             if params[:controller].start_with?("admin")
               li << link_to("前台", root_path,class: "dropdown-item")
             else
-              li << link_to("后台", admin_root_path,class: "dropdown-item")
+              li << link_to("后台", main_app.admin_root_path,class: "dropdown-item")
             end
             li << "<div class='dropdown-divider'></div>"
           end

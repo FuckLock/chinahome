@@ -3,6 +3,7 @@ require "digest/md5"
 class User < ApplicationRecord
   include OmniauthCallbacks
   include Actionable
+  include LetterAvatar::AvatarHelper
 
   mount_uploader :avatar, AvatarUploader
   second_level_cache expires_in: 2.weeks
@@ -58,6 +59,23 @@ class User < ApplicationRecord
   def unread_count
     count = self.notifications.unread.count
     count == 0 ? nil : count
+  end
+
+  def self.search(term, options = {})
+    limit = options[:limit].to_i
+    term = term.to_s + "%"
+    users = User.where("login ilike ? or name ilike ?", term, term).order("replies_count desc").limit(limit).to_a
+    users.uniq!
+    users.compact!
+    users.first(limit)
+  end
+
+  def large_avatar_url
+    if self[:avatar].present?
+      self.avatar.url(:lg)
+    else
+      self.letter_avatar_url(login)
+    end
   end
 
 end

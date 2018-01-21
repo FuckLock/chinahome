@@ -20,7 +20,7 @@
               <%= link_to raw('<i class="fa fa-pencil"></i>'), edit_topic_reply_path(reply.topic, reply) %>
              <% end %>
              <%= link_to raw('<i class="fa fa-mail-reply"></i>'), '#',
-                 class: "btn-reply", data: { id: reply.id, login: reply.user.login } %>
+                 class: "btn-reply", data: { id: reply.id, login: reply.user.login, name: reply.user.name } %>
              <%= like_target_tag label: false, target: reply %>
            </div>
            <% if reply.reply_to_id %>

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   get 'topics/node:id', to: 'topics#node', as: 'node_topics'
+  get '/search/users', to: 'search#users', as: 'search_users'
 
   resources :topics do
     collection  do

@@ -36,7 +36,7 @@ module UsersHelper
               raw(image_tag(letter_avatar_url(user.login, width), class: img_class))
             end
       return img if opts[:link] != true
-      raw(link_to(raw(img), user_path(user.login)))
+      raw(link_to(raw(img), main_app.user_path(user.login)))
     end
   end
 end

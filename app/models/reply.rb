@@ -3,6 +3,7 @@ class Reply < ApplicationRecord
   validates :body, presence: true
   belongs_to :user, touch: true
   belongs_to :topic, touch: true
+  before_save :extract_mentioned_users
 
   scope :without_action, -> { where("action is null") }
 
@@ -27,6 +28,13 @@ class Reply < ApplicationRecord
 
   def mention_user?
     self.mentioned_user_ids.present?
+  end
+
+  def extract_mentioned_users
+    logins = body.scan(/@([#{User::LOGIN_FORMAT}]{3,20})/).flatten.map(&:downcase)
+    if logins.any?
+      self.mentioned_user_ids = User.where("lower(login) IN (?) AND id != (?)", logins, user.id).limit(5).pluck(:id)
+    end
   end
 
   class << self
