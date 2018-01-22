@@ -29,7 +29,7 @@ class TopicsController < ApplicationController
   def index
     @place_top_topics = Topic.place_top.limit(3)
     @topics = Topic.without_place_top
-    @topics = @topics.exclude_column_ids(current_user.block_node_ids) if current_user
+    @topics = @topics.exclude_column_ids(current_user.blocking_node_ids) if current_user
     @topics.without_ban.includes(:node)
   end
 
@@ -76,8 +76,8 @@ class TopicsController < ApplicationController
     current_user.like_topic(@topic)
     render json: {
       data: {
-        like_users_count: @topic.like_users.count,
-        like_users: user_avatar_tag(@topic.like_users, :xs, link: true)
+        likeed_users_count: @topic.likeed_users.count,
+        likeed_users: user_avatar_tag(@topic.likeed_users, :xs, link: true)
       }
     }
   end
@@ -86,8 +86,8 @@ class TopicsController < ApplicationController
     current_user.unlike_topic(@topic)
     render json: {
       data: {
-        like_users_count: @topic.like_users.count,
-        like_users: user_avatar_tag(@topic.like_users, :xs, link: true)
+        likeed_users_count: @topic.likeed_users.count,
+        likeed_users: user_avatar_tag(@topic.likeed_users, :xs, link: true)
       }
     }
   end

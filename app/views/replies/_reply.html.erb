@@ -1,5 +1,5 @@
 <% if reply.action.blank? %>
-  <div class="reply">
+  <div class="reply" id="reply-<%= reply.id %>">
     <% if reply.deleted_at %>
       <div class="deleted">
         <span><%= reply.floor %> 已删除</span>

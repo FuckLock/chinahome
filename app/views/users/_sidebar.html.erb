@@ -32,19 +32,14 @@
       </div>
 
       <div class="follow-info row">
-        <div class="col-md-4 col-4">
-          <%= link_to "0", "#",class: "counter" %>
-          <%= link_to "关注者", "#", class: "text" %>
-        </div>
-        <div class="col-md-4 col-4">
-          <%= link_to "0", "#",class: "counter" %>
-          <%= link_to "正在关注", "#", class: "text" %>
-        </div>
-        <div class="col-md-4 col-4">
-          <%= link_to "0", "#",class: "counter" %>
-          <%= link_to "收藏", "#", class: "text" %>
-        </div>
+        <%= render 'follow_info', user: user %>
       </div>
+
+      <% if current_user && current_user != user %>
+        <div class="user-slash-btn row">
+          <%= render 'user_slash', user: user %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

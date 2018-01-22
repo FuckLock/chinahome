@@ -7,9 +7,9 @@ module TopicsHelper
     if current_user
       like = "active" if current_user.send(action_target, opts[:target])
     end
-    like_counts = " #{opts[:target].like_users.count} 个 赞" if opts[:target].like_users.present?
-    users = user_avatar_tag(opts[:target].like_users, :xs, link: true)
-    content = link_to(raw("<i class='fa fa fa-heart'></i><span>#{like_counts}</span>"), "#",
+    likeed_counts = " #{opts[:target].likeed_users.count} 个 赞" if opts[:target].likeed_users.present?
+    users = user_avatar_tag(opts[:target].likeed_users, :xs, link: true)
+    content = link_to(raw("<i class='fa fa fa-heart'></i><span>#{likeed_counts}</span>"), "#",
                       class: " #{class_name} #{like}", data: { id: opts[:target].id },
                       "data-toggle" => "popover", "data-content" => users.to_s)
     if opts[:label] == false

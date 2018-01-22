@@ -1,0 +1,12 @@
+<div class="col-md-4 col-4">
+  <%= link_to user.followed_users.count, "#",class: "counter" %>
+  <%= link_to "关注者", "#", class: "text" %>
+</div>
+<div class="col-md-4 col-4">
+  <%= link_to user.following_users.count, "#",class: "counter" %>
+  <%= link_to "正在关注", "#", class: "text" %>
+</div>
+<div class="col-md-4 col-4">
+  <%= link_to "0", "#",class: "counter" %>
+  <%= link_to "收藏", "#", class: "text" %>
+</div>

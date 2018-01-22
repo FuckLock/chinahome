@@ -1,0 +1,10 @@
+<% follow = current_user.follow_user?(user) ? "取消关注" : "关注" %>
+
+<div class="col-md-6 col-4">
+  <%= link_to raw("<i class='fa fa-user'></i><span>#{follow}</span>"),
+    current_user.follow_user?(user) ? unfollow_user_path(user.login) : follow_user_path(user.login),
+    class: "btn btn-primary btn-block", remote: true %>
+</div>
+<div class="col-md-6 col-4">
+  <%= link_to raw("<i class='fa fa-eye-slash'></i><span>屏蔽</span>"), '#', class: "btn btn-default btn-block", remote: true %>
+</div>

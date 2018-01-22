@@ -47,8 +47,8 @@ class RepliesController < ApplicationController
     current_user.like_reply(@reply)
     render json: {
       data: {
-        like_users_count: @reply.like_users.count,
-        like_users: user_avatar_tag(@reply.like_users, :xs, link: true)
+        likeed_users_count: @reply.likeed_users.count,
+        likeed_users: user_avatar_tag(@reply.likeed_users, :xs, link: true)
       }
     }
   end
@@ -57,8 +57,8 @@ class RepliesController < ApplicationController
     current_user.unlike_reply(@reply)
     render json: {
       data: {
-        like_users_count: @reply.like_users.count,
-        like_users: user_avatar_tag(@reply.like_users, :xs, link: true)
+        likeed_users_count: @reply.likeed_users.count,
+        likeed_users: user_avatar_tag(@reply.likeed_users, :xs, link: true)
       }
     }
   end

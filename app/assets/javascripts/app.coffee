@@ -98,8 +98,8 @@ $(document).on 'click', '.button-topic-heart', (e) ->
   if btn.hasClass("active")
     $.post("/topics/#{topicId}/unlike", (data) ->
       data = data.data
-      likeTopicCount = data.like_users_count
-      popover.attr('data-content', data.like_users)
+      likeTopicCount = data.likeed_users_count
+      popover.attr('data-content', data.likeed_users)
       if  likeTopicCount > 0
         span.text(" #{likeTopicCount} 个 赞")
       else
@@ -109,8 +109,8 @@ $(document).on 'click', '.button-topic-heart', (e) ->
   else
     $.post("/topics/#{topicId}/like", (data) ->
       data = data.data
-      likeTopicCount = data.like_users_count
-      popover.attr('data-content', data.like_users)
+      likeTopicCount = data.likeed_users_count
+      popover.attr('data-content', data.likeed_users)
       if likeTopicCount > 0
         span.text(" #{likeTopicCount} 个 赞")
       else
@@ -144,8 +144,8 @@ $(document).on 'click', '.button-reply-heart', (e) ->
   if btn.hasClass("active")
     $.post("/replies/#{replyId}/unlike", (data) ->
       data = data.data
-      likeReplyCount = data.like_users_count
-      popover.attr('data-content', data.like_users)
+      likeReplyCount = data.likeed_users_count
+      popover.attr('data-content', data.likeed_users)
       if  likeReplyCount > 0
         span.text(" #{likeReplyCount} 个 赞")
       else
@@ -155,8 +155,8 @@ $(document).on 'click', '.button-reply-heart', (e) ->
   else
     $.post("/replies/#{replyId}/like", (data) ->
       data = data.data
-      likeReplyCount = data.like_users_count
-      popover.attr('data-content', data.like_users)
+      likeReplyCount = data.likeed_users_count
+      popover.attr('data-content', data.likeed_users)
       if likeReplyCount > 0
         span.text(" #{likeReplyCount} 个 赞")
       else

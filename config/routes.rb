@@ -75,7 +75,12 @@ Rails.application.routes.draw do
   end
 
   constraints(id: /[#{User::LOGIN_FORMAT}]*/) do
-    resources :users, path: ''
+    resources :users, path: '' do
+      member do
+        get :follow
+        get :unfollow
+      end
+    end
   end
 
   resources :nodes do

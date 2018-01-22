@@ -1,6 +1,6 @@
 <div class="media-title">
   <% title = notification.ancestry.title %>
-  在帖子  <%= link_to title, main_app.topic_path(notification.ancestry_id) %>  回复了：
+  在帖子  <%= link_to title, "#{main_app.topic_path(notification.ancestry_id)}/#reply-#{notification.second_ancestry_id}" %>  回复了：
   <span class="pull-right time"><%= l notification.second_ancestry.created_at, format: :short %></span>
 </div>
 <div class="media-body">
