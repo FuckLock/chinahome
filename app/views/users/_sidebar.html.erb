@@ -1,45 +1,43 @@
-<div class="col-md-4">
-  <div class="panel">
-    <div class="panel-body">
-      <div class="media">
-        <div class="avatar media-left">
-          <div class="image">
-            <%= user_avatar_tag(user, :lg) %>
-            <div class="level">
-              <% if current_user.admin? %>
-                <span class="label-info">管理员</span>
-              <% else %>
-                <span class="label-info">会员</span>
-              <% end %>
-            </div>
-          </div>
-        </div>
-
-        <div class="media-body">
-          <div class="item">
-              <%= "#{user.login}(#{user.name})" %>
-          </div>
-          <div class="item number">
-            第<%= "#{user.id}" %>位为会员/<%= "#{user.created_at.to_date}" %>
-          </div>
-          <div class="item counts">
-              0 篇帖子 • 0 条回帖
-          </div>
-          <div class="item">
-            <i class="fa fa-envelope-o"></i>
+<div class="panel">
+  <div class="panel-body">
+    <div class="media">
+      <div class="avatar media-left">
+        <div class="image">
+          <%= user_avatar_tag(user, :lg) %>
+          <div class="level">
+            <% if current_user.admin? %>
+              <span class="label-info">管理员</span>
+            <% else %>
+              <span class="label-info">会员</span>
+            <% end %>
           </div>
         </div>
       </div>
 
-      <div class="follow-info row">
-        <%= render 'follow_info', user: user %>
-      </div>
-
-      <% if current_user && current_user != user %>
-        <div class="user-slash-btn row">
-          <%= render 'user_slash', user: user %>
+      <div class="media-body">
+        <div class="item">
+            <%= "#{user.login}(#{user.name})" %>
         </div>
-      <% end %>
+        <div class="item number">
+          第<%= "#{user.id}" %>位为会员/<%= "#{user.created_at.to_date}" %>
+        </div>
+        <div class="item counts">
+            0 篇帖子 • 0 条回帖
+        </div>
+        <div class="item">
+          <i class="fa fa-envelope-o"></i>
+        </div>
+      </div>
     </div>
+
+    <div class="follow-info row">
+      <%= render 'follow_info', user: user %>
+    </div>
+
+    <% if current_user && current_user != user %>
+      <div class="user-slash-btn row">
+        <%= render 'user_slash', user: user %>
+      </div>
+    <% end %>
   </div>
 </div>

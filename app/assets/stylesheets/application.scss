@@ -6,6 +6,7 @@
  *= require replies
  *= require notifications
  *= require jquery.atwho
+ *= require cal-heatmap
  */
 
 @import "vars";
@@ -178,6 +179,7 @@ body {
     }
     .media {
       .media-left {
+        display: table-cell;
         margin-right: 6px;
         .image {
           padding: 10px 3px !important;
@@ -224,6 +226,9 @@ body {
     .user-slash-btn {
       padding: 12px 0px;
       border-bottom: 1px solid #f0f0f0;
+    }
+    #cal-heatmap {
+      overflow: auto;
     }
   }
 }

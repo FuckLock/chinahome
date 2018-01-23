@@ -11,6 +11,8 @@
 #= require social-share-button/wechat
 #= require rails-timeago
 #= require timeago-zh-CN
+#= require d3.min
+#= require cal-heatmap.min
 
 class App
   isLogined: ->
