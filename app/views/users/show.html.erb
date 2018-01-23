@@ -6,41 +6,37 @@
   <div class="col-lg-8">
     <%= render "menu" %>
     <div class="panel">
-      <div class="panel-body">
+      <div id="cal-heatmap"></div>
+      <%
+       start_date = 12.months.ago.beginning_of_month
+      %>
+      <script type="text/javascript">
+      $(function() {
 
-        <div id="cal-heatmap"></div>
-        <%
-         start_date = 12.months.ago.beginning_of_month
-        %>
-        <script type="text/javascript">
-        $(function() {
-
-        })
-          var cal = new CalHeatMap();
-          cal.init({
-            itemSelector: "#cal-heatmap",
-            animationDuration: 200,
-            domain: "month",
-            subDomain: 'day',
-            rowLimit: 7,
-            domainGutter: 0,
-            data: '',
-            start: new Date(<%= start_date.year %>, <%= start_date.month %>, <%= start_date.day %>),
-            legendHorizontalPosition: 'right',
-            // subDomainTextFormat: "%d",
-            domainLabelFormat: "%b",
-            legend: [1, 5, 10, 15],
-            itemName: ['event', 'events'],
-            highlight: 'now',
-            label: {
-              position: 'top'
-            },
-            displayLegend: true
-          });
-        </script>
-      </div>
+      })
+        var cal = new CalHeatMap();
+        cal.init({
+          itemSelector: "#cal-heatmap",
+          animationDuration: 200,
+          domain: "month",
+          subDomain: 'day',
+          rowLimit: 7,
+          domainGutter: 0,
+          tooltip: true,
+          data: '',
+          start: new Date(<%= start_date.year %>, <%= start_date.month %>, <%= start_date.day %>),
+          legendHorizontalPosition: 'right',
+          // subDomainTextFormat: "%d",
+          domainLabelFormat: "%b",
+          legend: [1, 5, 10, 15],
+          itemName: ['event', 'events'],
+          highlight: 'now',
+          label: {
+            position: 'top'
+          },
+          displayLegend: true
+        });
+      </script>
     </div>
-
-
   </div>
 </div>
