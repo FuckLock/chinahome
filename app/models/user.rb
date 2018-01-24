@@ -78,4 +78,15 @@ class User < ApplicationRecord
     end
   end
 
+  def calendar_data
+    date_from = 12.months.ago.beginning_of_month.to_date
+    replies = self.replies.where("created_at > ?", date_from)
+                  .group("date(created_at)")
+                  .select("date(created_at) AS date, count(id) AS total_amount")
+
+    replies.each_with_object({}) do |reply, timestamps|
+      timestamps[reply["date"].to_time.to_i.to_s] = reply["total_amount"]
+    end
+  end
+
 end

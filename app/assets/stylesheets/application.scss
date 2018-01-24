@@ -227,12 +227,10 @@ body {
       padding: 12px 0px;
       border-bottom: 1px solid #f0f0f0;
     }
-    #cal-heatmap {
-      overflow: auto;
-    }
   }
   #cal-heatmap {
-    padding: 10px 10px;
+    margin: 10px 10px;
+    padding-bottom: 10px;
   }
 }
 

@@ -19,4 +19,9 @@ class UsersController < ApplicationController
     @user = User.find_by(login: params[:id])
     current_user.unfollow_user @user
   end
+
+  def calendar
+    data = @user.calendar_data
+    render json: data
+  end
 end
