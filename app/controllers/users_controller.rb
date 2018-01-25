@@ -11,8 +11,15 @@ class UsersController < ApplicationController
   end
 
   def follow
-    @user = User.find_by(login: params[:id])
-    current_user.follow_user(@user)
+    if params[:extra_user]
+      current_user.follow_user(@user)
+      @user = User.find_by(login: params[:extra_user])
+      @users = @user.following_users.page(params[:page]).per(60)
+      render template: "users/following" and return
+    else
+      @user = User.find_by(login: params[:id])
+      current_user.follow_user(@user)
+    end
   end
 
   def unfollow
@@ -48,7 +55,11 @@ class UsersController < ApplicationController
   def cancelfollow
     @user = User.find_by(login: params[:id])
     current_user.unfollow_user @user
-    @users = current_user.following_users.order("id asc").page(params[:page]).per(60)
-    @current_user = current_user
+    if params[:extra_user]
+      @user = User.find_by(login: params[:extra_user])
+    else
+      @user = current_user
+    end
+    @users = @user.following_users.order("id asc").page(params[:page]).per(60)
   end
 end

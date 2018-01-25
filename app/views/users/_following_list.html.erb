@@ -1,22 +1,49 @@
 <div class="panel">
   <div class="panel-body">
     <div class="row">
-      <% @users.each do |user| %>
-        <div class="col-md-4">
-          <div class="media-following">
-            <div class="media-left">
-              <%= user_avatar_tag user, :md, link: true %>
-            </div>
-            <div class="media-body">
-              <div class="media-heading">
-                <%= link_to user.login, user_path(user.login) %>
+      <% if current_user == @user %>
+        <% @users.each do |user| %>
+          <div class="col-md-4">
+            <div class="media-following">
+              <div class="media-left">
+                <%= user_avatar_tag user, :md, link: true %>
               </div>
-              <div class="infos">
-                <%= link_to raw('<i class="fa fa-user"> <span class="follow">取消关注</span></i>'), cancelfollow_user_path(user.login), remote: true %>
+              <div class="media-body">
+                <div class="media-heading">
+                  <%= link_to user.login, user_path(user.login) %>
+                </div>
+                <div class="infos">
+                  <%= link_to raw('<i class="fa fa-user"> <span class="follow">取消关注</span></i>'), cancelfollow_user_path(user.login), remote: true %>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        <% end %>
+      <% end %>
+
+      <% if current_user != @user %>
+        <% @users.each do |user| %>
+          <div class="col-md-4">
+            <div class="media-following">
+              <div class="media-left">
+                <%= user_avatar_tag user, :md, link: true %>
+              </div>
+              <div class="media-body">
+                <div class="media-heading">
+                  <%= link_to user.login, user_path(user.login) %>
+                </div>
+                <div class="infos">
+                  <% if current_user != user && !current_user.follow_user?(user) %>
+                    <%= link_to raw('<i class="fa fa-user"> <span class="follow">关注</span></i>'), follow_user_path(user.login, extra_user: @user.login), remote: true %>
+                  <% end %>
+                  <% if current_user != user && current_user.follow_user?(user) %>
+                    <%= link_to raw('<i class="fa fa-user"> <span class="follow">取消关注</span></i>'), cancelfollow_user_path(user.login, extra_user: @user.login), remote: true %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
