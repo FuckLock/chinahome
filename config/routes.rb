@@ -80,6 +80,11 @@ Rails.application.routes.draw do
         get :follow
         get :unfollow
         get :calendar
+        get :following
+        get :followed
+        get :topics
+        get :replies
+        get :collects
       end
     end
   end

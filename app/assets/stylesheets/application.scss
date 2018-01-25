@@ -206,6 +206,31 @@ body {
         }
       }
     }
+    .media-following {
+      padding: 10px 10px;
+      .media-left {
+        display: inline-block;
+        vertical-align: top;
+      }
+      .media-body {
+        display: inline-block;
+        .media-heading {
+          a {
+            color: #333;
+          }
+          font-weight: bold;
+        }
+        .infos {
+          a {
+            color: gray;
+            font-size: 3px;
+            :hover {
+              background: #e5e5e5;
+            }
+          }
+        }
+      }
+    }
     .follow-info {
       margin-top: 10px;
       padding: 10px;
@@ -218,14 +243,47 @@ body {
       .counter {
         font-size: 32px;
         color: #356DD0;
+        text-decoration: none;
       }
       .text {
         color: #999;
+        text-decoration: none;
       }
     }
     .user-slash-btn {
       padding: 12px 0px;
       border-bottom: 1px solid #f0f0f0;
+    }
+    .topic-list, .collect-list {
+      display: flex;
+      justify-content: space-between;
+      background: #fafafa;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      padding: 10px 10px;
+      .topic-item, .collect-item {
+        .timeago {
+          font-style: normal;
+          font-size: 12px;
+          color: #bbb;
+        }
+      }
+    }
+    .reply-list {
+      border-top: 1px solid #f5f5f5;
+      border-bottom: 1px solid #f5f5f5;
+      padding-top: 10px;
+      .reply-top {
+        margin-bottom: 15px;
+        a {
+          color: #666;
+        }
+        .timeago {
+          font-style: normal;
+          font-size: 12px;
+          color: #bbb;
+        }
+      }
     }
   }
   #cal-heatmap {

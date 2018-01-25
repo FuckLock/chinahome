@@ -1,12 +1,12 @@
 <div class="col-md-4 col-4">
-  <%= link_to user.followed_users.count, "#",class: "counter" %>
-  <%= link_to "关注者", "#", class: "text" %>
+  <%= link_to user.followed_users.count, followed_user_path(user.login), class: "counter", remote: true %>
+  <%= link_to "关注者", followed_user_path(user.login), class: "text", remote: true %>
 </div>
 <div class="col-md-4 col-4">
-  <%= link_to user.following_users.count, "#",class: "counter" %>
-  <%= link_to "正在关注", "#", class: "text" %>
+  <%= link_to user.following_users.count, following_user_path(user.login), class: "counter", remote: true %>
+  <%= link_to "正在关注", following_user_path(user.login), class: "text", remote: true%>
 </div>
 <div class="col-md-4 col-4">
-  <%= link_to "0", "#",class: "counter" %>
-  <%= link_to "收藏", "#", class: "text" %>
+  <%= link_to "0", collects_user_path(user.login), class: "counter", remote: true %>
+  <%= link_to "收藏", collects_user_path(user.login), class: "text", remote: true %>
 </div>

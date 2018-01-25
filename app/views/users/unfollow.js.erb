@@ -2,3 +2,6 @@ var followInfo = $("<%= j render 'follow_info', user: @user %>")
 var userSlash = $("<%= j render 'user_slash', user: @user %>")
 $(".follow-info").html(followInfo)
 $(".user-slash-btn").html(userSlash)
+
+var following = $('<%= j render "following_list", users: @users %>')
+$('#menu-bottom').html(following)

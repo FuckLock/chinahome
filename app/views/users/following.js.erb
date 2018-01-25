@@ -1,0 +1,3 @@
+$(".nav-tabs .following").tab('show')
+var following = $('<%= j render "following_list", users: @users %>')
+$('#menu-bottom').html(following)

@@ -18,10 +18,31 @@ class UsersController < ApplicationController
   def unfollow
     @user = User.find_by(login: params[:id])
     current_user.unfollow_user @user
+    @users = current_user.following_users.order("id asc").page(params[:page]).per(60)
   end
 
   def calendar
     data = @user.calendar_data
     render json: data
+  end
+
+  def following
+    @users = @user.following_users.order("id asc").page(params[:page]).per(60)
+  end
+
+  def followed
+    @users = @user.followed_users.order("id asc").page(params[:page]).per(60)
+  end
+
+  def topics
+    @topics = @user.topics.includes(:node).order("created_at desc").page(params[:page]).per(20)
+  end
+
+  def replies
+    @replies = @user.replies.without_action.includes(:topic).order("created_at desc").page(params[:page]).per(20)
+  end
+
+  def collects
+    @collects = @user.collecting_topics.order("created_at desc").page(params[:page]).per(20)
   end
 end

@@ -1,10 +1,10 @@
 <ul class="nav nav-tabs pt-4" style="margin-bottom: -21px;">
   <%= render_list_items do |li|
-    li << link_to("个人信息", "#", class: "nav-link active", data: { toggle: "tab" })
-    li << link_to("话题", "#", class: "nav-link", data: { toggle: "tab" })
-    li << link_to("回帖", "#", class: "nav-link", data: { toggle: "tab" })
-    li << link_to("收藏", "#", class: "nav-link", data: { toggle: "tab" })
-    li << link_to("正在关注", "#", class: "nav-link", data: { toggle: "tab" })
-    li << link_to("关注者", "#", class: "nav-link", data: { toggle: "tab" })
+    li << link_to("个人信息", user_path(@user.login), class: "nav-link active")
+    li << link_to("话题", topics_user_path(@user.login), class: "nav-link", data: { toggle: "tab" }, remote: true)
+    li << link_to("回帖", replies_user_path(@user.login), class: "nav-link", data: { toggle: "tab" }, remote: true)
+    li << link_to("收藏", collects_user_path(@user.login), class: "nav-link collects", data: { toggle: "tab" }, remote: true)
+    li << link_to("正在关注", following_user_path(@user.login), class: "nav-link following", data: { toggle: "tab" }, remote: true)
+    li << link_to("关注者", followed_user_path(@user.login), class: "nav-link followed", data: { toggle: "tab" }, remote: true)
   end %>
 </ul>

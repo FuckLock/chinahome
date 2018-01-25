@@ -1,0 +1,3 @@
+$(".nav-tabs .collects").tab('show')
+var collects = $('<%= j render "collect_list", collects: @collects %>')
+$('#menu-bottom').html(collects)

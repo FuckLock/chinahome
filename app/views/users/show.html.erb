@@ -4,50 +4,8 @@
   </div>
   <div class="col-lg-8">
     <%= render "menu" %>
-    <div class="panel">
-      <div id="cal-heatmap"></div>
-      <%
-       start_date = 12.months.ago.beginning_of_month
-      %>
-      <script type="text/javascript">
-        var cal = new CalHeatMap();
-        cal.init({
-          itemSelector: "#cal-heatmap",
-          animationDuration: 200,
-          domain: "month",
-          subDomain: 'day',
-          rowLimit: 7,
-          domainGutter: 0,
-          tooltip: true,
-          data: '<%= calendar_user_path(@user.login, format: 'json') %>',
-          start: new Date(<%= start_date.year %>, <%= start_date.month %>, <%= start_date.day %>),
-          legendHorizontalPosition: 'right',
-          domainLabelFormat: "%m月",
-          subDomainDateFormat: "%Y年/%m月/%d日",
-          subDomainTitleFormat: {
-            empty: '休养生息<br/>{date}',
-            filled: "{count} {name} {date}"
-          },
-          legend: [1, 5, 10, 15],
-          itemName: ["次回复<br/>","次回复<br/>"],
-          legendTitleFormat: {
-            lower: "小于{min}次回复",
-            inner: "{down}次回复~{up}次回复",
-            upper: "大于{max}次回复",
-          },
-          label: {
-           width: 46,
-           position: "right",
-           offset: {x: 0, y: 110}
-          },
-          highlight: 'now',
-          label: {
-            position: 'top'
-          },
-          displayLegend: true,
-          itemNamespace: "cal"
-        });
-      </script>
+    <div id="menu-bottom">
+      <%= render "calinfo" %>
     </div>
   </div>
 </div>

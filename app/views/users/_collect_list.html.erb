@@ -1,0 +1,25 @@
+<div class="panel">
+  <div class="panel-body">
+    <% @collects.each do |collect| %>
+      <div class="collect-list">
+        <div class="collect-item">
+          <%= link_to collect.node.try(:name), node_topics_path(collect.node) %>
+        </div>
+        <div class="collect-item">
+          <%= link_to collect.title, topic_path(collect) %>
+          <span class="timeago"><%= timeago_tag(collect.created_at) %></span>
+        </div>
+        <div class="collect-item">
+          <span><%= "#{collect.replies.without_action.count}次回复 / #{collect.likeed_users.count}个❤️" %></span>
+        </div>
+      </div>
+    <% end %>
+    <%= paginate @collects %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(function () {
+    $("time").timeago()
+  })
+</script>
