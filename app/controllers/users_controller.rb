@@ -18,7 +18,6 @@ class UsersController < ApplicationController
   def unfollow
     @user = User.find_by(login: params[:id])
     current_user.unfollow_user @user
-    @users = current_user.following_users.order("id asc").page(params[:page]).per(60)
   end
 
   def calendar
@@ -44,5 +43,12 @@ class UsersController < ApplicationController
 
   def collects
     @collects = @user.collecting_topics.order("created_at desc").page(params[:page]).per(20)
+  end
+
+  def cancelfollow
+    @user = User.find_by(login: params[:id])
+    current_user.unfollow_user @user
+    @users = current_user.following_users.order("id asc").page(params[:page]).per(60)
+    @current_user = current_user
   end
 end

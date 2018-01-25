@@ -1,0 +1,4 @@
+var following = $('<%= j render "following_list", users: @users %>')
+$('#menu-bottom').html(following)
+var followInfo = $('<%= j render "follow_info", user: @current_user %>')
+$(".follow-info").html(followInfo)
