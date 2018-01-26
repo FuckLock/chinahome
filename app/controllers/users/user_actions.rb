@@ -69,5 +69,9 @@ module Users
       @hot_topics = @user.topics.hot_topics(0)
     end
 
+    def recent_replies
+      @recent_replies = @user.replies.without_action.order("created_at desc").limit(25)
+    end
+
   end
 end

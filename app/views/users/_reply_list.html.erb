@@ -1,21 +1,9 @@
-<div class="panel">
-  <div class="panel-body">
-    <% @replies.each do |reply|  %>
-      <div class="reply-list">
-        <div class="reply-top">
-          <%= link_to reply.topic.try(:title), "#{topic_path(reply.topic)}#reply-#{reply.id}" %>
-          <span class="timeago"><%= timeago_tag(reply.created_at) %></span>
-        </div>
-        <div class="reply-bottom">
-          <%= reply.body_html %>
-        </div>
-      </div>
-    <% end %>
+<div class="reply-list">
+  <div class="reply-top">
+    <%= link_to reply.topic.try(:title), "#{topic_path(reply.topic)}#reply-#{reply.id}" %>
+    <span class="timeago"><%= timeago_tag(reply.created_at) %></span>
+  </div>
+  <div class="reply-bottom">
+    <%= reply.body_html %>
   </div>
 </div>
-
-<script type="text/javascript">
-  $(function () {
-    $("time").timeago()
-  })
-</script>

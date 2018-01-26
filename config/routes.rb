@@ -86,6 +86,7 @@ Rails.application.routes.draw do
         get :replies
         get :collects
         get :hot_topics
+        get :recent_replies
       end
     end
   end

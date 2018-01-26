@@ -1,0 +1,4 @@
+$(".nav-tabs .recent-reply").tab('show')
+var recentReplyies = $('<%= j render partial: "reply_list", collection: @recent_replies, as: :reply %>')
+$('#hot-topics').html(recentReplyies)
+$("time").timeago()

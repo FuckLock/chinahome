@@ -1,2 +1,3 @@
-var replies = $('<%= j render "reply_list", collection: @replies %>')
+var replies = $('<%= j render "reply_list", collection: @replies, as: :reply %>')
 $('#menu-bottom').html(replies)
+$("time").timeago()
