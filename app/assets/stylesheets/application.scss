@@ -193,6 +193,10 @@ body {
             background: #add0ff;
             border-radius: 3px;
           }
+          .admin {
+            color: #666;
+            background: #FF6969;
+          }
         }
       }
       .media-body {
@@ -226,6 +230,12 @@ body {
             font-size: 3px;
             :hover {
               background: #e5e5e5;
+            }
+          }
+          .active {
+            color: #e76f3c;
+            .fa-user {
+              -webkit-animation: following .3s;
             }
           }
         }
@@ -283,6 +293,28 @@ body {
           font-size: 12px;
           color: #bbb;
         }
+      }
+    }
+    .hot-topic {
+      padding: 5px 10px;
+      border-bottom: 1px solid #eeeeee;
+      .hot-topics-top {
+        .node-name {
+          a {
+            color: #777;
+          }
+          margin-right: 10px;
+        }
+        .topic-title {
+          a {
+            color: #666;
+          }
+        }
+      }
+      .hot-topics-bottom {
+        color: #bbb;
+        font-size: 12px;
+        margin-top: 3px;
       }
     }
   }
@@ -378,4 +410,10 @@ body {
     display: inline-block;
     width: 100px;
   }
+}
+
+@-webkit-keyframes following
+{
+  from {font-size: 14px;}
+  to {font-size: 16px;}
 }

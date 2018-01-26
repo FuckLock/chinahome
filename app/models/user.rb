@@ -88,5 +88,4 @@ class User < ApplicationRecord
       timestamps[reply["date"].to_time.to_i.to_s] = reply["total_amount"]
     end
   end
-
 end

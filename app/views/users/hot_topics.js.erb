@@ -1,0 +1,3 @@
+$(".nav-tabs .hot-topic").tab('show')
+var hotTopics = $('<%= j render partial: "hot_topic", collection: @hot_topics %>')
+$('#hot-topics').html(hotTopics)

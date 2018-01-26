@@ -85,7 +85,7 @@ Rails.application.routes.draw do
         get :topics
         get :replies
         get :collects
-        get :cancelfollow
+        get :hot_topics
       end
     end
   end

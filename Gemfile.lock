@@ -1,5 +1,5 @@
 PATH
-  remote: /Users/baodong/rails_projects/rails-notifications
+  remote: /Users/baodongdong/rails_projects/rails-notifications
   specs:
     rails-notifications (0.1.0)
 

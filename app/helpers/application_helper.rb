@@ -76,5 +76,4 @@ module ApplicationHelper
     return "" if tips.blank?
     tips.split("\n").sample
   end
-
 end

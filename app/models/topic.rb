@@ -10,7 +10,9 @@ class Topic < ApplicationRecord
   scope :place_top,             -> { where(place_top: true).order(suggested_at: :desc) }
   scope :without_place_top,     -> { where(place_top: false) }
 
+
   scope :exclude_column_ids,    ->(ids) { where.not(node_id: ids) }
+  scope :hot_topics,            ->(replies_count) { where("replies_count >= ?", replies_count)}
 
   def place_top!
     transaction do

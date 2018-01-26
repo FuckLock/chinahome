@@ -31,8 +31,13 @@
                   <%= link_to user.login, user_path(user.login) %>
                 </div>
                 <div class="infos">
-                  <%= link_to raw('<span class="active"><i class="fa fa-user"></i></span> <span class="follow">取消关注</span>'),
-                      unfollow_user_path(user.login, page: :following), remote: true %>
+                  <% if current_user.follow_user?(user) %>
+                    <%= link_to raw('<i class="fa fa-user"> <span class="follow">取消关注</span></i>'),
+                        unfollow_user_path(user.login, page: :followed), remote: true %>
+                  <% else %>
+                    <%= link_to raw('<i class="fa fa-user"> <span class="follow">关注</span></i>'),
+                        follow_user_path(user.login, page: :followed), remote: true %>
+                  <% end %>
                 </div>
               </div>
             </div>
@@ -53,13 +58,13 @@
                 </div>
                 <div class="infos">
 
-                  <% if current_user != user  %>
+                  <% if current_user != user %>
                     <% if current_user.follow_user?(user) %>
                       <%= link_to raw('<i class="fa fa-user"> <span class="follow">取消关注</span></i>'),
-                          unfollow_user_path(user.login, page: :following, sidebar_user: @user.login), remote: true %>
+                          unfollow_user_path(user.login, page: :followed, sidebar_user: @user.login), remote: true %>
                     <% else %>
                       <%= link_to raw('<i class="fa fa-user"> <span class="follow">关注</span></i>'),
-                          follow_user_path(user.login, page: :following, sidebar_user: @user.login), remote: true %>
+                          follow_user_path(user.login, page: :followed, sidebar_user: @user.login), remote: true %>
                     <% end %>
                   <% end %>
 
@@ -69,7 +74,7 @@
           </div>
         <% end %>
       <% end %>
-      
+
     </div>
   </div>
   <%= paginate @users %>

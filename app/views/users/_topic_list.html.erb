@@ -7,10 +7,13 @@
         </div>
         <div class="topic-item">
           <%= link_to topic.title, topic_path(topic) %>
+          <% if topic.excellent %>
+            <span><i class="fa fa-diamond"></i></span>
+          <% end %>
           <span class="timeago"><%= timeago_tag(topic.created_at) %></span>
         </div>
         <div class="topic-item">
-          <span><%= "#{topic.replies.without_action.count}次回复 / #{topic.likeed_users.count}个❤️" %></span>
+          <span><%= "#{topic.replies.without_action.count}次回复 / #{topic.likeed_users.count}个💖" %></span>
         </div>
       </div>
     <% end %>

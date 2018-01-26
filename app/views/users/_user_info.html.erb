@@ -3,8 +3,8 @@
     <div class="image">
       <%= user_avatar_tag(user, :lg) %>
       <div class="level">
-        <% if current_user.admin? %>
-          <span class="label-info">管理员</span>
+        <% if user.admin? %>
+          <span class="label-info admin">管理员</span>
         <% else %>
           <span class="label-info">会员</span>
         <% end %>
@@ -17,10 +17,10 @@
         <%= "#{user.login}(#{user.name})" %>
     </div>
     <div class="item number">
-      第<%= "#{user.id}" %>位为会员/<%= "#{user.created_at.to_date}" %>
+      第 <%= "#{user.id}" %> 位为会员 / <%= "#{user.created_at.to_date}" %>
     </div>
     <div class="item counts">
-        0 篇帖子 • 0 条回帖
+        <%= user.topics.count %> 篇帖子 • <%= user.replies.without_action.count %> 条回帖
     </div>
     <div class="item">
       <i class="fa fa-envelope-o"></i>

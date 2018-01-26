@@ -1,0 +1,17 @@
+<div class="hot-topic">
+  <div class="hot-topics-top">
+    <span class="node-name">
+      <%= link_to hot_topic.node.name, node_topics_path(hot_topic.node) %>
+    </span>
+    <span class="topic-title">
+      <%= link_to hot_topic.title, topic_path(hot_topic) %>
+    </span>
+    <% if hot_topic.excellent %>
+      <i class="fa fa-diamond"></i>
+    <% end %>
+  </div>
+
+  <div class="hot-topics-bottom">
+    <%= hot_topic.likeed_users.count %> 个💖 · <%= hot_topic.replies.count %> 条回复
+  </div>
+</div>

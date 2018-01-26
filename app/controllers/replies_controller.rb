@@ -12,21 +12,23 @@ class RepliesController < ApplicationController
       reply_user = Reply.find_by(id: params[:reply][:reply_to_id]).user
       @reply.mentioned_user_ids << reply_user.id
     end
+    replies_count = @reply.topic.replies.count
     @reply.topic_id = params[:topic_id]
     @reply.user_id = current_user.id
+    @reply.topic.replies_count = replies_count + 1
 
-    @reply.floor = "##{@reply.topic.replies.count + 1}"
+    @reply.floor = "##{replies_count + 1}"
     @msg = if @reply.save
              "回复成功"
            else
              @reply.errors.full_messages.join("<br />")
            end
+
     @topic = Topic.find_by(id: params[:topic_id])
     @replies_without_action = @topic.replies.order("id asc").without_action.includes(:user)
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     @reply.body = params[:reply][:body]
@@ -64,6 +66,7 @@ class RepliesController < ApplicationController
   end
 
   private
+
   def find_reply
     @reply = Reply.find_by(id: params[:id])
   end

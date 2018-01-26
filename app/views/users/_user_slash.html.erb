@@ -2,7 +2,7 @@
 
 <div class="col-md-6 col-4">
   <%= link_to raw("<i class='fa fa-user'></i><span>#{follow}</span>"),
-    current_user.follow_user?(user) ? unfollow_user_path(user.login) : follow_user_path(user.login),
+    current_user.follow_user?(user) ? unfollow_user_path(user.login, page: :sidebar) : follow_user_path(user.login, page: :sidebar),
     class: "btn btn-primary btn-block", remote: true %>
 </div>
 <div class="col-md-6 col-4">

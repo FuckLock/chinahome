@@ -7,5 +7,22 @@
     <div id="menu-bottom">
       <%= render "calinfo" %>
     </div>
+
+    <div class="">
+      <ul class="nav nav-tabs pt-4" style="margin-bottom: -21px;">
+        <%= render_list_items do |li|
+          li << link_to("热门话题", hot_topics_user_path(@user.login), class: "nav-link active hot-topic", remote: true)
+          li << link_to("最近回帖", "#", class: "nav-link", data: { toggle: "tab" }, remote: true)
+          li << link_to("个人介绍", "#", class: "nav-link", data: { toggle: "tab" }, remote: true)
+        end %>
+      </ul>
+      <div class="panel">
+        <div class="panel-body">
+          <div id="hot-topics">
+            <%= render partial: "hot_topic", collection: @hot_topics %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
