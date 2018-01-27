@@ -1,28 +1,17 @@
-<div class="panel">
-  <div class="panel-body">
-    <% @topics.each do |topic| %>
-      <div class="topic-list">
-        <div class="topic-item">
-          <%= link_to topic.node.try(:name), node_topics_path(topic.node) %>
-        </div>
-        <div class="topic-item">
-          <%= link_to topic.title, topic_path(topic) %>
-          <% if topic.excellent %>
-            <span><i class="fa fa-diamond"></i></span>
-          <% end %>
-          <span class="timeago"><%= timeago_tag(topic.created_at) %></span>
-        </div>
-        <div class="topic-item">
-          <span><%= "#{topic.replies.without_action.count}次回复 / #{topic.likeed_users.count}个💖" %></span>
-        </div>
-      </div>
+<div class="topic-list">
+  <div class="topic-item">
+    <%= link_to topic.node.try(:name), node_topics_path(topic.node) %>
+  </div>
+  <div class="topic-item">
+    <%= link_to topic.title, topic_path(topic) %>
+    <% if topic.excellent %>
+      <span><i class="fa fa-diamond"></i></span>
     <% end %>
-    <%= paginate @topics %>
+    <span class="timeago"><%= timeago_tag(topic.created_at) %></span>
+  </div>
+  <div class="topic-item">
+    <span><%= "#{topic.replies.without_action.count}次回复 / #{topic.likeed_users.count}个💖" %></span>
   </div>
 </div>
 
-<script type="text/javascript">
-  $(function () {
-    $("time").timeago()
-  })
-</script>
+<%= paginate @topics %>

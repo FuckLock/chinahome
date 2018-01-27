@@ -1,2 +1,4 @@
-var topics = $('<%= j render "topic_list", collection: @topics %>')
+var topics = $('<%= j render partial: "topic_list", collection: @topics, as: :topic %>')
 $('#menu-bottom').html(topics)
+$("time").timeago()
+$(".downmenu-con").hide();

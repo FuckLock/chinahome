@@ -1,3 +1,5 @@
-$(".nav-tabs .following").tab('show')
-var following = $('<%= j render "following_list", users: @users, user: @user %>')
-$('#menu-bottom').html(following)
+var following = $('<%= j render partial: "following_list", collection: @users, as: :user, locals: { sidebar_user: @user } %>')
+$('#menu-bottom').html("")
+$('#menu-bottom').prepend("<div class='following-list-row row'></div>")
+$('.following-list-row').prepend(following)
+$(".downmenu-con").hide();

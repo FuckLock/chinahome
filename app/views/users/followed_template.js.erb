@@ -1,4 +1,4 @@
-var followed = $('<%= j render "followed_list", users: @users, user: @user %>')
-$('#menu-bottom').html(followed)
+var followed = $('<%= j render partial: "followed_list", collection: @users, as: :user, locals: { sidebar_user: @user} %>')
+$('.followed-list-row').html(followed)
 var followInfo = $('<%= j render "follow_info", user: @user %>')
 $(".follow-info").html(followInfo)

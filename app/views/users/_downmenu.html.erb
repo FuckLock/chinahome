@@ -1,0 +1,9 @@
+<div class="downmenu">
+  <ul class="nav nav-tabs pt-4" style="margin-bottom: -21px;">
+    <%= render_list_items do |li|
+      li << link_to("热门话题", hot_topics_user_path(@user.login), class: "nav-link active hot-topic", data: { toggle: "tab" }, remote: true)
+      li << link_to("最近回帖", recent_replies_user_path(@user.login), class: "nav-link recent-reply", data: { toggle: "tab" }, remote: true)
+      li << link_to("个人介绍", "#", class: "nav-link", data: { toggle: "tab" }, remote: true)
+    end %>
+  </ul>
+</div>

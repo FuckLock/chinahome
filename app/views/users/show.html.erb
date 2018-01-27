@@ -3,26 +3,28 @@
     <%= render "sidebar", user: @user %>
   </div>
   <div class="col-lg-8">
+
     <%= render "menu" %>
-    <div id="menu-bottom">
-      <%= render "calinfo" %>
+
+    <div class="panel">
+      <div class="panel-body">
+        <div id="menu-bottom">
+          <%= render "calinfo" %>
+        </div>
+      </div>
     </div>
 
-    <div class="">
-      <ul class="nav nav-tabs pt-4" style="margin-bottom: -21px;">
-        <%= render_list_items do |li|
-          li << link_to("热门话题", hot_topics_user_path(@user.login), class: "nav-link active hot-topic", remote: true)
-          li << link_to("最近回帖", recent_replies_user_path(@user.login), class: "nav-link recent-reply", data: { toggle: "tab" }, remote: true)
-          li << link_to("个人介绍", "#", class: "nav-link", data: { toggle: "tab" }, remote: true)
-        end %>
-      </ul>
+    <div class="downmenu-con">
+      <%= render 'downmenu', user: @user  %>
+
       <div class="panel">
         <div class="panel-body">
-          <div id="hot-topics">
-            <%= render partial: "hot_topic", collection: @hot_topics %>
+          <div id="downmenu-bottom">
+            <%= render partial: "hot_topic", collection: @hot_topics, as: :topic %>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 </div>

@@ -1,3 +1,4 @@
-var replies = $('<%= j render "reply_list", collection: @replies, as: :reply %>')
+var replies = $('<%= j render partial: "reply_list", collection: @replies, as: :reply %>')
 $('#menu-bottom').html(replies)
 $("time").timeago()
+$(".downmenu-con").hide();
