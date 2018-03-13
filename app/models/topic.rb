@@ -9,6 +9,7 @@ class Topic < ApplicationRecord
   scope :without_ban,           -> { where.not(ban: true) }
   scope :place_top,             -> { where(place_top: true).order(suggested_at: :desc) }
   scope :without_place_top,     -> { where(place_top: false) }
+  scope :with_excellent,        -> { where(excellent: true) }
 
 
   scope :exclude_column_ids,    ->(ids) { where.not(node_id: ids) }

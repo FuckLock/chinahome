@@ -1,3 +1,4 @@
 var collects = $('<%= j render partial: "collect_list", collection: @collects, as: :collect %>')
 $('#menu-bottom').html(collects)
+$("time").timeago()
 $(".downmenu-con").hide();

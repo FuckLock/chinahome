@@ -1,5 +1,17 @@
 <%= raw Setting.index_html %>
-<div class="home_suggest_topics panel panel-default">
-  <div class="panel-heading">社区精华帖</div>
+<%= render 'gems' %>
+<%= render 'items' %>
 
+<div class="panel topic-index-panel">
+  <div class="panel-heading">
+    社区精华帖
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <%= render partial: "topic", collection: @topics %>
+    </div>
+  </div>
 </div>
+
+<%= render "section", sections: @sections %>
+<%= render "province" %>

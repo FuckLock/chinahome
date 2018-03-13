@@ -12,6 +12,8 @@ gem 'rails-notifications', path: File.expand_path('../../rails-notifications', _
 
 gem 'kaminari'
 
+gem 'oauth2'
+
 gem 'bootstrap', '~> 4.0.0'
 gem 'font-awesome-rails'
 

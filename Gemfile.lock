@@ -344,6 +344,7 @@ DEPENDENCIES
   letter_avatar
   listen (~> 3.0.5)
   newrelic_rpm
+  oauth2
   omniauth
   omniauth-github
   pg

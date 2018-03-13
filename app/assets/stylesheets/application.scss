@@ -170,6 +170,50 @@ body {
   }
   .panel-body {
     padding: 10px 10px;
+    .hot-city {
+      text-align: center;
+      a {
+        color: #333;
+        margin-right: 10px;
+      }
+    }
+    .section {
+      .section-name {
+        display: inline-block;
+        min-width: 130px;
+        text-align: right;
+        font-weight: normal;
+        color: #aaa;
+        margin-right: 10px;
+      }
+      .node-name {
+        margin-right: 40px;
+        a {
+          text-decoration: none;
+          color: #333;
+        }
+      }
+    }
+    .gems {
+      text-align: center;
+      .gems-left {
+        display: inline-block;
+      }
+      .gems-right {
+        display: inline-block;
+        vertical-align: middle;
+        .rubygems {
+          text-align: left;
+          padding-left: 15px;
+        }
+        .source {
+          background: #f8f2f5;
+          color: #e83e8c;
+          font-size: 90%;
+          font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+        }
+      }
+    }
     .btn-outline-primary {
       cursor: pointer;
     }
@@ -416,4 +460,48 @@ body {
 {
   from {font-size: 14px;}
   to {font-size: 16px;}
+}
+
+
+.items {
+  margin-top: 20px;
+  a  {
+    text-decoration: none;
+  }
+  .item {
+    height: 135px;
+    .icon {
+      background: white;
+      i  {
+        font-size: 60px;
+        height: 100px;
+        display:flex;
+        align-items:center;
+        justify-content: center;
+      }
+    }
+    .fa-comments-o  {
+      color: #F86334;
+    }
+    .fa-support {
+      color: #FFD52F;
+    }
+    .fa-users  {
+      color: #317DDA;
+    }
+    .fa-diamond {
+      color: #3BD54E;
+    }
+    .text {
+      color: #666;
+      padding: 6px 15px;
+      background: #f5f5f5;
+    }
+  }
+}
+
+.copyright {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  text-align: center;
 }

@@ -1,0 +1,15 @@
+<div class="panel">
+  <div class="panel-heading">
+    讨论节点分类导航
+  </div>
+  <div class="panel-body">
+    <% @sections.each do |section| %>
+      <div class="section">
+        <span class="section-name"><%= section.name %></span>
+        <% section.nodes.each do |node| %>
+          <span class="node-name"><%= link_to(node.name, node_topics_path(node.id), title: node.name, data: { id: node.id }, class: "node-a")%></span>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

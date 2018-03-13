@@ -1,5 +1,5 @@
 <% @place_top_topics = @place_top_topics.to_a %>
-<div class="panel topic-index-panel">
+<div class="panel topic-index-panel" style="margin-top:-30px;">
   <div class="panel-body">
       <% cache([:topic_index, @place_top_topics]) do %>
         <% if @place_top_topics.present? %>
